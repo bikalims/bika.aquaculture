@@ -13,13 +13,15 @@
   -->
   <!--<includeDependencies package="." />-->
 
+  <!--<includeDependencies package="." />-->
+  <include package="senaite.core.permissions" />
   <include package=".browser" />
 
   <include file="permissions.zcml" />
 
   <genericsetup:registerProfile
       name="default"
-      title="bika.aquaculture"
+      title="BIKA AQUACULTURE"
       directory="profiles/default"
       description="Installs the bika.aquaculture add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"

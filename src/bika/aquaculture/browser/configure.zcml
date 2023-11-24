@@ -18,4 +18,5 @@
       directory="static"
       />
 
+  <include package=".listingview"/>
 </configure>
