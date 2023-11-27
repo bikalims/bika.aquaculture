@@ -33,11 +33,13 @@ def uninstall(context):
 
 
 def setup(portal):
-    pt = api.get_tool("portal_types", context=portal)
     # Batches
     batches = portal['batches']
     batches.title = 'Cases'
     batches.reindexObject()
+
+    # pt
+    pt = api.get_tool("portal_types", context=portal)
     # Batch
     fti = pt.get("Batch")
     fti.title = 'Case'
@@ -48,5 +50,11 @@ def setup(portal):
     for idx, action in enumerate(actions):
         if action.title == "Batches":
             action.title = "Cases"
+
+    # Sample Types
+    portal['bika_setup']["bika_sampletypes"].setTitle("Specimen Types")
+    # Sample Type
+    fti = pt.get("SampleType")
+    fti.title = 'Specimen Type'
 
     logger.info("BIKA.AQUACULTURE setup [DONE]")
