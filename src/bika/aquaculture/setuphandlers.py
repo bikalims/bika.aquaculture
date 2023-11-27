@@ -41,4 +41,12 @@ def setup(portal):
     # Batch
     fti = pt.get("Batch")
     fti.title = 'Case'
+
+    # Client
+    fti = pt.get("Client")
+    actions = fti.listActions()
+    for idx, action in enumerate(actions):
+        if action.title == "Batches":
+            action.title = "Cases"
+
     logger.info("BIKA.AQUACULTURE setup [DONE]")

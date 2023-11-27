@@ -1,12 +1,12 @@
 from archetypes.schemaextender.interfaces import ISchemaModifier
-from bika.lims.interfaces import IBatch
+from bika.lims.interfaces import IAnalysisRequest
 from bika.aquaculture.config import is_installed
 from zope.component import adapts
 from zope.interface import implements
 
 
-class BatchSchemaModifier(object):
-    adapts(IBatch)
+class AnalysisRequestSchemaModifier(object):
+    adapts(IAnalysisRequest)
     implements(ISchemaModifier)
 
     def __init__(self, context):
@@ -18,8 +18,8 @@ class BatchSchemaModifier(object):
         if is_installed():
             schema['Batch'].widget.label = "Case"
             schema['Batch'].widget.description = "Assign a sample to a case"
-            schema['ClientBatchID'].widget.label = "Case Number"
+            schema['ClientSampleID'].widget.label = "Pool ID"
             schema['SubGroup'].widget.label = "Case Sub Group"
-            schema['SubGroup'].widget.description = "The assigned batch sub group of this request"
+            schema['SubGroup'].widget.description = "The assigned case sub group of this request"
 
         return schema

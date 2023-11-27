@@ -6,6 +6,9 @@
     <adapter name='bika.aquaculture.batch.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".batch.BatchSchemaModifier" />
+    <adapter name='bika.aquaculture.analysisrequest.schemamodifier'
+             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             factory=".analysisrequest.AnalysisRequestSchemaModifier" />
 
 </configure>
 
