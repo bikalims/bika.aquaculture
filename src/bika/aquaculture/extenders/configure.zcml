@@ -9,6 +9,12 @@
     <adapter name='bika.aquaculture.analysisrequest.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".analysisrequest.AnalysisRequestSchemaModifier" />
+    <adapter name='bika.aquaculture.samplepoint.schemamodifier'
+             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             factory=".samplepoint.SamplePointSchemaModifier" />
+    <adapter name='bika.aquaculture.method.schemamodifier'
+             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             factory=".method.MethodSchemaModifier" />
 
 </configure>
 

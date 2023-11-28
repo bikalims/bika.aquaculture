@@ -8,4 +8,25 @@
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".sampletypes.SampleTypesListingViewAdapter"/>
 
+    <!-- sample points listing -->
+    <subscriber
+            for="bika.lims.controlpanel.bika_samplepoints.SamplePointsView
+                 zope.interface.Interface"
+            provides="senaite.app.listing.interfaces.IListingViewAdapter"
+            factory=".samplepoints.SamplePointsListingViewAdapter"/>
+
+    <!-- client sample points listing -->
+    <!--
+    <subscriber
+            for="bika.lims.browser.client.views.samplepoints.ClientSamplePointsView
+                 zope.interface.Interface"
+            provides="senaite.app.listing.interfaces.IListingViewAdapter"
+            factory=".samplepoints.SamplePointsListingViewAdapter"/>
+    -->
+    <subscriber
+            for="bika.lims.browser.methodfolder.MethodFolderContentsView
+                 zope.interface.Interface"
+            provides="senaite.app.listing.interfaces.IListingViewAdapter"
+            factory=".methodfolder.MethodsListingViewAdapter"/>
+
 </configure>

@@ -44,17 +44,33 @@ def setup(portal):
     fti = pt.get("Batch")
     fti.title = 'Case'
 
+    # Methods
+    methods = portal['methods']
+    methods.title = 'Protocols'
+    methods.reindexObject()
+    # Method
+    fti = pt.get("Method")
+    fti.title = 'Protocol'
+
     # Client
     fti = pt.get("Client")
     actions = fti.listActions()
     for idx, action in enumerate(actions):
         if action.title == "Batches":
             action.title = "Cases"
+        if action.title == "Sample Points":
+            action.title = "Ponds"
 
     # Sample Types
     portal['bika_setup']["bika_sampletypes"].setTitle("Specimen Types")
     # Sample Type
     fti = pt.get("SampleType")
     fti.title = 'Specimen Type'
+
+    # Sample Points
+    portal['bika_setup']["bika_samplepoints"].setTitle("Ponds")
+    # Sample Type
+    fti = pt.get("SamplePoint")
+    fti.title = 'Pond'
 
     logger.info("BIKA.AQUACULTURE setup [DONE]")
