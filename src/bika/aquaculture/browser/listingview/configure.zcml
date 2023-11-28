@@ -1,11 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser">
 
-    <!-- client folder listing -->
+    <!-- sample types listing -->
     <subscriber
-            for="bika.lims.browser.batchfolder.BatchFolderContentsView
+            for="bika.lims.controlpanel.bika_sampletypes.SampleTypesView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
-            factory=".batchfolder.BatchFolderContentsListingViewAdapter"/>
+            factory=".sampletypes.SampleTypesListingViewAdapter"/>
 
 </configure>
