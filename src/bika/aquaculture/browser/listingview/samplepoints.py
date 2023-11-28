@@ -26,18 +26,7 @@ class SamplePointsListingViewAdapter(object):
         if "SampleTypes" in self.listing.columns:
             self.listing.columns['SampleTypes']['title'] = "Specimen Types"
 
-    def update(self):
-        import pdb; pdb.set_trace()
-        if not is_installed():
-            return
-        self.listing.title = self.context.translate(_("Ponds"))
-        if "Title" in self.listing.columns:
-            self.listing.columns['Title']['title'] = "Pond"
-        if "SampleTypes" in self.listing.columns:
-            self.listing.columns['SampleTypes']['title'] = "Specimen Types"
-
     def folder_item(self, obj, item, index):
-        import pdb; pdb.set_trace()
         if not is_installed():
             return item
         return item
