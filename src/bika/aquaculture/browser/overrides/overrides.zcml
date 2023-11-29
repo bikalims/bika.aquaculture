@@ -1,0 +1,16 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+       xmlns:zcml="http://namespaces.zope.org/browser"
+       xmlns:fss="http://namespaces.zope.org/browser"
+       xmlns:browser="http://namespaces.zope.org/browser"
+       xmlns:five="http://namespaces.zope.org/five"
+       i18n_domain="bika.aquaculture">
+
+    <browser:page
+      for="bika.lims.interfaces.IClient"
+      name="samplepoints"
+      class=".client.ClientSamplePointsView"
+      permission="zope2.View"
+      layer="bika.lims.interfaces.IBikaLIMS"
+    />
+
+</configure>
