@@ -16,10 +16,7 @@ class BatchSchemaModifier(object):
         """
         """
         if is_installed():
-            schema['Batch'].widget.label = "Case"
-            schema['Batch'].widget.description = "Assign a sample to a case"
             schema['ClientBatchID'].widget.label = "Case Number"
-            schema['SubGroup'].widget.label = "Case Sub Group"
-            schema['SubGroup'].widget.description = "The assigned batch sub group of this request"
+            schema['BatchLabels'].widget.label = "Case Labels"
 
         return schema
