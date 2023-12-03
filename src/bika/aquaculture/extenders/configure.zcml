@@ -3,6 +3,9 @@
            i18n_domain="bika.aquaculture">
 
     <include package="archetypes.schemaextender"/>
+    <adapter name='bika.aquaculture.batch'
+             provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             factory=".batch.BatchSchemaExtender"/>
     <adapter name='bika.aquaculture.batch.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".batch.BatchSchemaModifier" />
