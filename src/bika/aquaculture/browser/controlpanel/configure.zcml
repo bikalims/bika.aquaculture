@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <include package="senaite.core.permissions" />
+
+  <!-- Purpose of Testing -->
+  <browser:page
+      for="bika.aquaculture.content.purposeoftestingfolder.IPurposeOfTestingFolder"
+      name="view"
+      class=".purposeoftestingfolder.PurposeOfTestingFolderView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="bika.aquaculture.interfaces.IBikaAquacultureLayer"/>
+
+</configure>
