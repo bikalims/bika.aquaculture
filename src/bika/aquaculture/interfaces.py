@@ -15,5 +15,9 @@ class IPurposeOfTestingFolder(Interface):
 
 
 class IPaymentMethodFolder(Interface):
-    """Marker interface for purposeoftesting setup folder
+    """Marker interface for payment methods setup folder
+    """
+
+class ISpeciesFolder(Interface):
+    """Marker interface for species setup folder
     """

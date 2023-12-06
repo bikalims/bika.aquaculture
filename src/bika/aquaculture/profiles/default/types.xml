@@ -10,5 +10,9 @@
   <object name="PaymentMethod" meta_type="Dexterity FTI" />
   <object name="PaymentMethodFolder" meta_type="Dexterity FTI" />
 
+  <!-- Species -->
+  <object name="Species" meta_type="Dexterity FTI" />
+  <object name="SpeciesFolder" meta_type="Dexterity FTI" />
+
 </object>
 
