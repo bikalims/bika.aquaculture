@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from AccessControl import ClassSecurityInfo
-from bika.aquaculture.interfaces import IPaymentMethod
-from bika.lims.interfaces import IDeactivable
 from plone.dexterity.content import Container
 from plone.supermodel import model
-from senaite.core.catalog import SETUP_CATALOG
-from senaite import api
 from zope.interface import implementer
 
+from bika.aquaculture.interfaces import ILifeStage
+from bika.lims.interfaces import IDeactivable
+from senaite.core.catalog import SETUP_CATALOG
+from senaite import api
 
-class IPaymentMethodSchema(model.Schema):
-    """Marker interface and Dexterity Python Schema for PaymentMethod"""
+
+class ILifeStageSchema(model.Schema):
+    """Marker interface and Dexterity Python Schema for LifeStage"""
 
 
-@implementer(IPaymentMethod, IPaymentMethodSchema, IDeactivable)
-class PaymentMethod(Container):
+@implementer(ILifeStage, ILifeStageSchema, IDeactivable)
+class LifeStage(Container):
     """Content-type class for IPaymentMethod"""
 
     _catalogs = [SETUP_CATALOG]

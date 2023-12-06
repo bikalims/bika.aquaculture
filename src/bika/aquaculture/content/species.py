@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from AccessControl import ClassSecurityInfo
+from bika.aquaculture.interfaces import ISpecies
 from bika.lims.interfaces import IDeactivable
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -9,11 +10,11 @@ from senaite import api
 from zope.interface import implementer
 
 
-class ISpecies(model.Schema):
+class ISpeciesSchema(model.Schema):
     """Marker interface and Dexterity Python Schema for Species"""
 
 
-@implementer(ISpecies, IDeactivable)
+@implementer(ISpecies, ISpeciesSchema, IDeactivable)
 class Species(Container):
     """Content-type class for ISpecies"""
 

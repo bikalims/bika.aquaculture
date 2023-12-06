@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from AccessControl import ClassSecurityInfo
+from bika.aquaculture.interfaces import IPurposeOfTesting
 from bika.lims.interfaces import IDeactivable
 from plone.dexterity.content import Container
 from plone.supermodel import model
@@ -9,11 +10,11 @@ from senaite import api
 from zope.interface import implementer
 
 
-class IPurposeOfTesting(model.Schema):
+class IPurposeOfTestingSchema(model.Schema):
     """Marker interface and Dexterity Python Schema for SamplePointLocation"""
 
 
-@implementer(IPurposeOfTesting, IDeactivable)
+@implementer(IPurposeOfTesting, IPurposeOfTestingSchema, IDeactivable)
 class PurposeOfTesting(Container):
     """Content-type class for ISamplePointLocation"""
 

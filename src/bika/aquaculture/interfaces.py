@@ -9,8 +9,18 @@ class IBikaAquacultureLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+class IPurposeOfTesting(Interface):
+    """Marker interface for purposeoftesting
+    """
+
+
 class IPurposeOfTestingFolder(Interface):
     """Marker interface for purposeoftesting setup folder
+    """
+
+
+class IPaymentMethod(Interface):
+    """Marker interface for payment method
     """
 
 
@@ -18,6 +28,22 @@ class IPaymentMethodFolder(Interface):
     """Marker interface for payment methods setup folder
     """
 
+
+class ISpecies(Interface):
+    """Marker interface for species
+    """
+
+
 class ISpeciesFolder(Interface):
     """Marker interface for species setup folder
+    """
+
+
+class ILifeStage(Interface):
+    """Marker interface for Lifestage
+    """
+
+
+class ILifeStageFolder(Interface):
+    """Marker interface for life stage setup folder
     """

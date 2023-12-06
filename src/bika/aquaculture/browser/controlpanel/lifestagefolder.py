@@ -27,28 +27,28 @@ from senaite.app.listing import ListingView
 from senaite.core.catalog import SETUP_CATALOG
 
 
-class PaymentMethodFolderView(ListingView):
+class LifeStageFolderView(ListingView):
     """Displays all available sample containers in a table
     """
 
     def __init__(self, context, request):
-        super(PaymentMethodFolderView, self).__init__(context, request)
+        super(LifeStageFolderView, self).__init__(context, request)
 
         self.catalog = SETUP_CATALOG
 
         self.contentFilter = {
-            "portal_type": "PaymentMethod",
+            "portal_type": "LifeStage",
             "sort_on": "sortable_title",
         }
 
         self.context_actions = {
             _("Add"): {
-                "url": "++add++PaymentMethod",
+                "url": "++add++LifeStage",
                 "icon": "++resource++bika.lims.images/add.png",
             }}
 
         t = self.context.translate
-        self.title = t(_("Payment Methods"))
+        self.title = t(_("Life Stages"))
         self.description = t(_(""))
 
         self.show_select_column = True

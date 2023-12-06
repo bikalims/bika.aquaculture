@@ -14,5 +14,9 @@
   <object name="Species" meta_type="Dexterity FTI" />
   <object name="SpeciesFolder" meta_type="Dexterity FTI" />
 
+  <!-- Life stages -->
+  <object name="LifeStage" meta_type="Dexterity FTI" />
+  <object name="LifeStageFolder" meta_type="Dexterity FTI" />
+
 </object>
 
