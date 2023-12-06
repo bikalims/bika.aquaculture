@@ -6,5 +6,9 @@
   <object name="PurposeOfTesting" meta_type="Dexterity FTI" />
   <object name="PurposeOfTestingFolder" meta_type="Dexterity FTI" />
 
+  <!-- Payment method -->
+  <object name="PaymentMethod" meta_type="Dexterity FTI" />
+  <object name="PaymentMethodFolder" meta_type="Dexterity FTI" />
+
 </object>
 

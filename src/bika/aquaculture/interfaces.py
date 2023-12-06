@@ -12,3 +12,8 @@ class IBikaAquacultureLayer(IDefaultBrowserLayer):
 class IPurposeOfTestingFolder(Interface):
     """Marker interface for purposeoftesting setup folder
     """
+
+
+class IPaymentMethodFolder(Interface):
+    """Marker interface for purposeoftesting setup folder
+    """

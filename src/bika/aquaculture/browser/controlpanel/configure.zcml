@@ -5,11 +5,19 @@
 
   <include package="senaite.core.permissions" />
 
-  <!-- Purpose of Testing -->
+  <!-- Purpose of Testing Folder-->
   <browser:page
       for="bika.aquaculture.content.purposeoftestingfolder.IPurposeOfTestingFolder"
       name="view"
       class=".purposeoftestingfolder.PurposeOfTestingFolderView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="bika.aquaculture.interfaces.IBikaAquacultureLayer"/>
+
+  <!-- Payment Methods Folder -->
+  <browser:page
+      for="bika.aquaculture.content.paymentmethodfolder.IPaymentMethodFolder"
+      name="view"
+      class=".paymentmethodfolder.PaymentMethodFolderView"
       permission="senaite.core.permissions.ManageBika"
       layer="bika.aquaculture.interfaces.IBikaAquacultureLayer"/>
 

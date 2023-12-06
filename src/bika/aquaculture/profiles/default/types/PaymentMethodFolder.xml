@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object name="PurposeOfTestingFolder" meta_type="Dexterity FTI"
+<object name="PaymentMethodFolder" meta_type="Dexterity FTI"
         i18n:domain="bika.aquaculture"
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Title and Description -->
   <property name="title"
-            i18n:translate="">Purpose of Testing Folder</property>
+            i18n:translate="">Payment Methods</property>
   <property name="description"
             i18n:translate=""></property>
 
@@ -13,10 +13,10 @@
   <property name="icon_expr">senaite_theme/icon/container</property>
 
   <!-- factory name; usually the same as type name -->
-  <property name="factory">PurposeOfTestingFolder</property>
+  <property name="factory">PaymentMethodFolder</property>
 
   <!-- URL TALES expression to add an item TTW -->
-  <property name="add_view_expr">string:${folder_url}/++add++PurposeOfTestingFolder</property>
+  <property name="add_view_expr">string:${folder_url}/++add++PaymentMethodFolder</property>
 
   <property name="link_target"/>
   <property name="immediate_view">view</property>
@@ -28,7 +28,7 @@
   <property name="filter_content_types">True</property>
   <!-- If filtering, what's allowed -->
   <property name="allowed_content_types">
-    <element value="PurposeOfTesting" />
+    <element value="PaymentMethod" />
   </property>
 
   <property name="allow_discussion">False</property>
@@ -45,8 +45,8 @@
   <property name="add_permission">cmf.AddPortalContent</property>
 
   <!-- Python class for content items of this sort -->
-  <property name="schema">bika.aquaculture.content.purposeoftestingfolder.IPurposeOfTestingFolder</property>
-  <property name="klass">bika.aquaculture.content.purposeoftestingfolder.PurposeOfTestingFolder</property>
+  <property name="schema">bika.aquaculture.content.paymentmethodfolder.IPaymentMethodFolder</property>
+  <property name="klass">bika.aquaculture.content.paymentmethodfolder.PaymentMethodFolder</property>
 
   <!-- Dexterity behaviours for this type -->
   <property name="behaviors">
@@ -87,4 +87,3 @@
   </action>
 
 </object>
-
