@@ -46,12 +46,18 @@ def add_dexterity_setup_items(portal):
         ("purpose_of_testing_folder",
          "Purpose of Testing Folder",
          "PurposeOfTestingFolder"),
+
         ("payment_method_folder",
          "Payment Methods",
          "PaymentMethodFolder"),
+
         ("species_folder",
          "Species",
          "SpeciesFolder"),
+
+        ("life_stage_folder",
+         "Life Stages",
+         "LifeStageFolder"),
     ]
     setup = api.get_setup()
     add_dexterity_items(setup, items)
