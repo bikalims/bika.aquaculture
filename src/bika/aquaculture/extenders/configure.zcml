@@ -3,21 +3,26 @@
            i18n_domain="bika.aquaculture">
 
     <include package="archetypes.schemaextender"/>
+    <adapter name='bika.aquaculture.analysisrequest'
+             provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             factory=".analysisrequest.AnalysisRequestSchemaExtender"/>
+    <adapter name='bika.aquaculture.analysisrequest.schemamodifier'
+             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             factory=".analysisrequest.AnalysisRequestSchemaModifier" />
+
     <adapter name='bika.aquaculture.batch'
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
              factory=".batch.BatchSchemaExtender"/>
     <adapter name='bika.aquaculture.batch.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".batch.BatchSchemaModifier" />
-    <adapter name='bika.aquaculture.analysisrequest.schemamodifier'
-             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
-             factory=".analysisrequest.AnalysisRequestSchemaModifier" />
+
     <adapter name='bika.aquaculture.samplepoint.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".samplepoint.SamplePointSchemaModifier" />
+
     <adapter name='bika.aquaculture.method.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".method.MethodSchemaModifier" />
 
 </configure>
-

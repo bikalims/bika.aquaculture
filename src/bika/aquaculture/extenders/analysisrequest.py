@@ -1,9 +1,185 @@
+# -*- coding: utf-8 -*-
+
+from Products.Archetypes.atapi import SelectionWidget
+from Products.Archetypes.Widget import IntegerWidget
+from Products.Archetypes.Widget import StringWidget
+from Products.CMFCore.permissions import View
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import ISchemaExtender
 from archetypes.schemaextender.interfaces import ISchemaModifier
-from bika.lims.interfaces import IAnalysisRequest
+from zope.interface import implements
+from zope.component import adapts
+from zope.interface import implementer
+
 from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
-from zope.component import adapts
-from zope.interface import implements
+from bika.aquaculture.interfaces import IBikaAquacultureLayer
+from bika.aquaculture.vocabularies import SEXES
+from bika.aquaculture.vocabularies import get_ages
+from bika.extras.extenders.fields import ExtStringField, ExtIntegerField
+from bika.extras.extenders.fields import ExtUIDReferenceField
+from bika.lims import FieldEditContact
+from bika.lims import SETUP_CATALOG
+from bika.lims.interfaces import IAnalysisRequest
+from senaite.core.browser.widgets.referencewidget import ReferenceWidget
+
+
+lot_field = ExtStringField(
+    "LOT",
+    required=False,
+    mode="rw",
+    read_permission=View,
+    write_permission=FieldEditContact,
+    widget=StringWidget(
+        label=_(u"LOT"),
+        render_own_label=False,
+        showOn=True,
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+    ),
+)
+
+species_field = ExtUIDReferenceField(
+    "Species",
+    required=False,
+    allowed_types=("Species",),
+    relationship="AnalysisRequestSpecies",
+    format="select",
+    mode="rw",
+    read_permission=View,
+    write_permission=FieldEditContact,
+    widget=ReferenceWidget(
+        label=_(u"Species"),
+        render_own_label=False,
+        size=20,
+        catalog_name=SETUP_CATALOG,
+        base_query={"sort_on": "sortable_title", "is_active": True},
+        showOn=True,
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+        ui_item="title",
+        colModel=[
+            dict(columnName="UID", hidden=True),
+            dict(columnName="title", width="60", label=_("Title")),
+        ],
+    ),
+)
+
+life_stage_field = ExtUIDReferenceField(
+    "LifeStage",
+    required=False,
+    allowed_types=("LifeStage",),
+    relationship="AnalysisRequestLifeStage",
+    format="select",
+    mode="rw",
+    read_permission=View,
+    write_permission=FieldEditContact,
+    widget=ReferenceWidget(
+        label=_(u"Life Stage"),
+        render_own_label=False,
+        size=20,
+        catalog_name=SETUP_CATALOG,
+        base_query={"sort_on": "sortable_title", "is_active": True},
+        showOn=True,
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+        ui_item="title",
+        colModel=[
+            dict(columnName="UID", hidden=True),
+            dict(columnName="title", width="60", label=_("Title")),
+        ],
+    ),
+)
+
+number_of_animals_field = ExtIntegerField(
+    "NumberOfAnimals",
+    mode="rw",
+    widget=IntegerWidget(
+        label=_(u"Number Of Animals"),
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+    ),
+)
+
+sex_field = ExtStringField(
+    "Sex",
+    mode="rw",
+    vocabulary=SEXES,
+    widget=SelectionWidget(
+        label=_("Sex"),
+        description=_("Select sex of the sample."),
+        format='select',
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+    )
+)
+
+age_field = ExtIntegerField(
+    "Age",
+    mode="rw",
+    default="",
+    vocabulary=get_ages(),
+    widget=SelectionWidget(
+        label=_(u"Age"),
+        format='select',
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+    ),
+)
+
+
+@implementer(ISchemaExtender, IBrowserLayerAwareExtender)
+class AnalysisRequestSchemaExtender(object):
+    adapts(IAnalysisRequest)
+    layer = IBikaAquacultureLayer
+
+    fields = [
+        lot_field,
+        species_field,
+        life_stage_field,
+        number_of_animals_field,
+        sex_field,
+        age_field,
+    ]
+
+    def __init__(self, context):
+        self.context = context
+
+    def getOrder(self, schematas):
+        return schematas
+
+    def getFields(self):
+        return self.fields
 
 
 class AnalysisRequestSchemaModifier(object):
