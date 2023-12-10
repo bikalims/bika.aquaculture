@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.Widget import IntegerWidget
 from Products.Archetypes.Widget import StringWidget
 from Products.CMFCore.permissions import View
@@ -21,19 +20,20 @@ from bika.extras.extenders.fields import ExtUIDReferenceField
 from bika.lims import FieldEditContact
 from bika.lims import SETUP_CATALOG
 from bika.lims.interfaces import IAnalysisRequest
+from bika.lims.browser.widgets import SelectionWidget
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 
 
 lot_field = ExtStringField(
-    "LOT",
+    "Lot",
     required=False,
     mode="rw",
     read_permission=View,
     write_permission=FieldEditContact,
     widget=StringWidget(
-        label=_(u"LOT"),
-        render_own_label=False,
-        showOn=True,
+        label=_(u"Lot"),
+        description=_("Lot"),
+        render_own_label=True,
         visible={
             "add": "edit",
             "header_table": "visible",
@@ -55,7 +55,8 @@ species_field = ExtUIDReferenceField(
     write_permission=FieldEditContact,
     widget=ReferenceWidget(
         label=_(u"Species"),
-        render_own_label=False,
+        description=_("Select the species"),
+        render_own_label=True,
         size=20,
         catalog_name=SETUP_CATALOG,
         base_query={"sort_on": "sortable_title", "is_active": True},
@@ -86,7 +87,8 @@ life_stage_field = ExtUIDReferenceField(
     write_permission=FieldEditContact,
     widget=ReferenceWidget(
         label=_(u"Life Stage"),
-        render_own_label=False,
+        description=_("Life stage"),
+        render_own_label=True,
         size=20,
         catalog_name=SETUP_CATALOG,
         base_query={"sort_on": "sortable_title", "is_active": True},
@@ -111,6 +113,8 @@ number_of_animals_field = ExtIntegerField(
     mode="rw",
     widget=IntegerWidget(
         label=_(u"Number Of Animals"),
+        description=_("Number of animals."),
+        render_own_label=True,
         visible={
             "add": "edit",
             "header_table": "visible",
@@ -128,6 +132,8 @@ sex_field = ExtStringField(
     widget=SelectionWidget(
         label=_("Sex"),
         description=_("Select sex of the sample."),
+        render_own_label=True,
+        showOn=True,
         format='select',
         visible={
             "add": "edit",
@@ -145,8 +151,11 @@ age_field = ExtIntegerField(
     default="",
     vocabulary=get_ages(),
     widget=SelectionWidget(
-        label=_(u"Age"),
+        label=_("label_sample_age", default="Age"),
+        description=_("Select the age of the sample."),
         format='select',
+        render_own_label=True,
+        showOn=False,
         visible={
             "add": "edit",
             "header_table": "visible",
