@@ -159,6 +159,7 @@ class BatchSchemaExtender(object):
         country_of_origin_field,
         pooling_info_field,
         destination_country_field,
+        payment_method_field,
         batch_priority_field,
     ]
 
