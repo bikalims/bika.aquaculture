@@ -44,7 +44,7 @@ def add_dexterity_setup_items(portal):
     # Tuples of ID, Title, FTI
     items = [
         ("purpose_of_testing_folder",
-         "Purpose of Testing Folder",
+         "Purpose of Testing",
          "PurposeOfTestingFolder"),
 
         ("payment_method_folder",
