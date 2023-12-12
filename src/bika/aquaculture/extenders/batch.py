@@ -186,5 +186,6 @@ class BatchSchemaModifier(object):
         if is_installed():
             schema['ClientBatchID'].widget.label = "Case Number"
             schema['BatchLabels'].widget.label = "Case Labels"
+            schema['title'].widget.description = "If no Title value is entered, the Case ID will be used."
 
         return schema

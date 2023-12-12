@@ -183,6 +183,7 @@ class AnalysisRequestSchemaModifier(object):
             schema['Batch'].widget.description = _("Assign a sample to a case")
             schema['ClientSampleID'].widget.label = _("Pool ID")
             schema['SampleType'].widget.label = _("Specimen Type")
+            schema['SampleType'].widget.description = _("Select the specimen type of this specimen")
             schema['SamplePoint'].widget.label = _("Pond")
             schema['SubGroup'].widget.label = _("Case Sub Group")
             schema['SubGroup'].widget.description = _("The assigned case sub group of this request")
