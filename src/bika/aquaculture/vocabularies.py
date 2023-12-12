@@ -19,9 +19,3 @@ def get_countries():
     items = map(lambda country: (country.alpha_2, country.name), geo.get_countries())
     items.insert(0, ("", ""))
     return items
-
-
-def get_ages():
-    items = map(lambda age: (str(age), age), range(0, 100))
-    items.insert(0, ("", ""))
-    return items

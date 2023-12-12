@@ -14,7 +14,6 @@ from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
 from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from bika.aquaculture.vocabularies import SEXES
-from bika.aquaculture.vocabularies import get_ages
 from bika.extras.extenders.fields import ExtStringField, ExtIntegerField
 from bika.extras.extenders.fields import ExtUIDReferenceField
 from bika.lims import FieldEditContact
@@ -145,27 +144,6 @@ sex_field = ExtStringField(
     )
 )
 
-age_field = ExtIntegerField(
-    "Age",
-    mode="rw",
-    default="",
-    vocabulary=get_ages(),
-    widget=SelectionWidget(
-        label=_("label_sample_age", default="Age"),
-        description=_("Select the age of the sample."),
-        format='select',
-        render_own_label=True,
-        showOn=False,
-        visible={
-            "add": "edit",
-            "header_table": "visible",
-            "secondary": "disabled",
-            "verified": "view",
-            "published": "view",
-        },
-    ),
-)
-
 
 @implementer(ISchemaExtender, IBrowserLayerAwareExtender)
 class AnalysisRequestSchemaExtender(object):
@@ -178,7 +156,6 @@ class AnalysisRequestSchemaExtender(object):
         life_stage_field,
         number_of_animals_field,
         sex_field,
-        age_field,
     ]
 
     def __init__(self, context):
