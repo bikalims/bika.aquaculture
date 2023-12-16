@@ -44,6 +44,7 @@ purpose_of_testing_field = ExtUIDReferenceField(
     "PurposeOfTesting",
     required=False,
     allowed_types=("PurposeOfTesting",),
+    multiValued=1,
     relationship="AnalysisRequestPurposeOfTesting",
     format="select",
     mode="rw",
