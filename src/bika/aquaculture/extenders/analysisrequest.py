@@ -19,6 +19,7 @@ from bika.extras.extenders.fields import ExtUIDReferenceField
 from bika.lims import FieldEditContact
 from bika.lims import SETUP_CATALOG
 from bika.lims.interfaces import IAnalysisRequest
+from bika.lims.interfaces import IBatch
 from bika.lims.browser.widgets import SelectionWidget
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 
@@ -187,5 +188,8 @@ class AnalysisRequestSchemaModifier(object):
             schema['SamplePoint'].widget.label = _("Pond")
             schema['SubGroup'].widget.label = _("Case Sub Group")
             schema['SubGroup'].widget.description = _("The assigned case sub group of this request")
+            if schema.get("Sampler"):
+                if IBatch.providedBy(self.context.aq_parent):
+                    schema['Sampler'].default = self.context.aq_parent.Sampler
 
         return schema
