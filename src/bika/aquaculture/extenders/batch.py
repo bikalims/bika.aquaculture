@@ -13,6 +13,7 @@ from zope.interface import implementer
 from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
 from bika.aquaculture.vocabularies import BATCH_PRIORITY
+from bika.aquaculture.vocabularies import getUsers
 from bika.aquaculture.vocabularies import get_countries
 from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from bika.extras.extenders.fields import ExtStringField
@@ -147,6 +148,18 @@ batch_priority_field = ExtStringField(
     )
 )
 
+sampler_field = ExtStringField(
+    "Sampler",
+    required=False,
+    mode="rw",
+    write_permission=FieldEditContact,
+    vocabulary=getUsers(None, ["Sampler"]),
+    widget=SelectionWidget(
+        label=_("Sampler"),
+        format='select',
+    )
+)
+
 
 @implementer(ISchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
@@ -160,6 +173,7 @@ class BatchSchemaExtender(object):
         country_of_origin_field,
         pooling_info_field,
         destination_country_field,
+        sampler_field,
         payment_method_field,
         batch_priority_field,
     ]
@@ -185,6 +199,7 @@ class BatchSchemaModifier(object):
         """
         """
         if is_installed():
+            schema['Sampler'].vocabulary = getUsers(self.context, ["Sampler"])
             schema['ClientBatchID'].widget.label = "Case Number"
             schema['BatchLabels'].widget.label = "Case Labels"
             schema['title'].widget.description = "If no Title value is entered, the Case ID will be used."
