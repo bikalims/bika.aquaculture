@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import six
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.Widget import StringWidget
 from Products.CMFCore.permissions import View
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import IExtensionField
 from archetypes.schemaextender.interfaces import ISchemaModifier
 from archetypes.schemaextender.interfaces import ISchemaExtender
+from plone import api as ploneapi
 from zope.interface import implements
 from zope.component import adapts
 from zope.interface import implementer
-import six
-from archetypes.schemaextender.interfaces import IExtensionField
 from Products.Archetypes import public
 
 from bika.aquaculture.config import _
@@ -64,8 +65,8 @@ class SamplerExtensionField(object):
                          }
                 brains = api.search(query, SAMPLE_CATALOG)
                 if brains:
-                    message = _("""Cannot change sampler field because one of
-                                speciman has been verified""")
+                    message = _("""Case sampler cannot  be modified - the case
+                                   contains verified specimen""")
                     pu.addPortalMessage(message, 'error')
                     change_samples = False
                 else:
@@ -76,8 +77,12 @@ class SamplerExtensionField(object):
                 for sample in samples:
                     sample.Sampler = value
                     sample.reindexObject()
-                message = _("""Changed child samples of this batch""")
-                pu.addPortalMessage(message, 'info')
+                if samples:
+                    user = ploneapi.user.get(userid=value)
+                    fullname = user.getProperty("fullname")
+                    message = _("""Changed the sampler on child specimen of this
+                                   case to {}""").format(fullname)
+                    pu.addPortalMessage(message, 'info')
                 self.set(batch, value)
 
         return mutator
