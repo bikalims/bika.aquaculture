@@ -2,6 +2,7 @@
 <metadata>
   <version>1.0.1</version>
   <dependencies>
+    <dependency>profile-bika.extras:default</dependency>
     <dependency>profile-senaite.samplepointlocations:default</dependency>
   </dependencies>
 </metadata>
