@@ -9,6 +9,9 @@ from archetypes.schemaextender.interfaces import ISchemaExtender
 from zope.interface import implements
 from zope.component import adapts
 from zope.interface import implementer
+import six
+from archetypes.schemaextender.interfaces import IExtensionField
+from Products.Archetypes import public
 
 from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
@@ -18,10 +21,82 @@ from bika.aquaculture.vocabularies import get_countries
 from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from bika.extras.extenders.fields import ExtStringField
 from bika.extras.extenders.fields import ExtUIDReferenceField
+from bika.lims import api
 from bika.lims import FieldEditContact
-from bika.lims import SETUP_CATALOG
 from bika.lims.interfaces import IBatch
+from senaite.core.catalog import SETUP_CATALOG
+from senaite.core.catalog import SAMPLE_CATALOG
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
+
+
+class SamplerExtensionField(object):
+    """Mix-in class to make Archetypes fields not depend on generated
+    accessors and mutators, and use AnnotationStorage by default.
+    """
+
+    implements(IExtensionField)
+    storage = public.AnnotationStorage()
+
+    def __init__(self, *args, **kwargs):
+        super(SamplerExtensionField, self).__init__(*args, **kwargs)
+        self.args = args
+        self.kwargs = kwargs
+
+    def getAccessor(self, instance):
+        def accessor():
+            return self.get(instance)
+        return accessor
+
+    def getEditAccessor(self, instance):
+        def edit_accessor():
+            return self.getRaw(instance)
+        return edit_accessor
+
+    def getMutator(self, batch):
+        def mutator(value, **kw):
+            old_value = batch.getField('Sampler').get(batch)
+            pu = api.get_tool("plone_utils")
+            change_samples = False
+            if old_value != value:
+                query = {"getBatchUID": batch.UID(),
+                         "portal_type": "AnalysisRequest",
+                         "getDateVerified": {'query': '', 'range': 'min'},
+                         }
+                brains = api.search(query, SAMPLE_CATALOG)
+                if brains:
+                    message = _("""Cannot change sampler field because one of
+                                speciman has been verified""")
+                    pu.addPortalMessage(message, 'error')
+                    change_samples = False
+                else:
+                    change_samples = True
+
+            if change_samples:
+                samples = batch.getAnalysisRequests()
+                for sample in samples:
+                    sample.Sampler = value
+                    sample.reindexObject()
+                message = _("""Changed child samples of this batch""")
+                pu.addPortalMessage(message, 'info')
+                self.set(batch, value)
+
+        return mutator
+
+    def getIndexAccessor(self, instance):
+        name = getattr(self, "index_method", None)
+        if name is None or name == "_at_accessor":
+            return self.getAccessor(instance)
+        elif name == "_at_edit_accessor":
+            return self.getEditAccessor(instance)
+        elif not isinstance(name, six.string_types):
+            raise ValueError("Bad index accessor value: %r", name)
+        else:
+            return getattr(instance, name)
+
+
+class ExtSamplerStringField(SamplerExtensionField, public.StringField):
+    "Field extender"
+
 
 nan_field = ExtStringField(
     "NAN",
@@ -148,7 +223,7 @@ batch_priority_field = ExtStringField(
     )
 )
 
-sampler_field = ExtStringField(
+sampler_field = ExtSamplerStringField(
     "Sampler",
     required=False,
     mode="rw",
