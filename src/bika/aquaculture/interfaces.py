@@ -4,8 +4,18 @@
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
+from bika.lims.interfaces import IBikaLIMS
 
-class IBikaAquacultureLayer(IDefaultBrowserLayer):
+
+class IBikaAquacultureLayer(IBikaLIMS):
+    """Zope 3 browser Layer interface specific for senaite.sampleimporter
+    This interface is referred in profiles/default/browserlayer.xml.
+    All views and viewlets register against this layer will appear in the site
+    only when the add-on installer has been run.
+    """
+
+
+class IBikaBrowserAquacultureLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 

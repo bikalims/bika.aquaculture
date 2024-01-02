@@ -18,12 +18,13 @@ received_samples_email_body_field = ExtTextField(
     default_output_type="text/x-html-safe",
     schemata="Notifications",
     # Needed to fetch the default value from the registry
-    default="The sample $sample_link has been rejected because of the "
-            "following reasons:"
-            "<br/><br/>$reasons<br/><br/>"
-            "For further information, please contact us under the "
-            "following address.<br/><br/>"
-            "$lab_address",
+    default=_("Dear $recipients,"
+              "br/>"
+              "br/>"
+              "We received your samples and $number_of_samples were submitted "
+              "to the lab for Analysis."
+              "<br/>"
+              "Much appreciated"),
     widget=RichWidget(
         label=_(
             "label_bikasetup_received_samples_email_body",
@@ -33,7 +34,8 @@ received_samples_email_body_field = ExtTextField(
             default="Set the email body text to be used by default when "
             "sending out received samples notification the selected recipients. "
             "You can use reserved keywords: "
-            "$client_name, $recipients, $lab_name, $lab_address"),
+            "$client_name, $recipients, $lab_name, $lab_address, "
+            "$number_of_samples"),
         default_mime_type="text/x-html",
         output_mime_type="text/x-html",
         allow_file_upload=False,

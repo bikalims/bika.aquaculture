@@ -23,13 +23,12 @@
             factory=".samplepoints.SamplePointsListingViewAdapter"/>
 
     <!-- client sample points listing -->
-    <!--
     <subscriber
             for="bika.lims.browser.client.views.samplepoints.ClientSamplePointsView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".samplepoints.SamplePointsListingViewAdapter"/>
-    -->
+
     <subscriber
             for="bika.lims.browser.methodfolder.MethodFolderContentsView
                  zope.interface.Interface"

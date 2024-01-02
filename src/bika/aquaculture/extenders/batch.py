@@ -2,6 +2,7 @@
 
 import six
 from Products.Archetypes.atapi import SelectionWidget
+from Products.Archetypes.Widget import BooleanWidget
 from Products.Archetypes.Widget import StringWidget
 from Products.CMFCore.permissions import View
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
@@ -20,6 +21,7 @@ from bika.aquaculture.vocabularies import BATCH_PRIORITY
 from bika.aquaculture.vocabularies import getUsers
 from bika.aquaculture.vocabularies import get_countries
 from bika.aquaculture.interfaces import IBikaAquacultureLayer
+from bika.extras.extenders.fields import ExtBooleanField
 from bika.extras.extenders.fields import ExtStringField
 from bika.extras.extenders.fields import ExtUIDReferenceField
 from bika.lims import api
@@ -240,6 +242,20 @@ sampler_field = ExtSamplerStringField(
     )
 )
 
+notified_samples_received_field = ExtBooleanField(
+    "NotifiedSamplesReceived",
+    mode="rw",
+    schemata="default",
+    widget=BooleanWidget(
+        label=_("Notified Batch Samples have been Received"),
+        format='select',
+        visible={
+            "add": "invinsible",
+            "edit": "invinsible",
+        },
+    )
+)
+
 
 @implementer(ISchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
@@ -256,6 +272,7 @@ class BatchSchemaExtender(object):
         sampler_field,
         payment_method_field,
         batch_priority_field,
+        notified_samples_received_field,
     ]
 
     def __init__(self, context):
