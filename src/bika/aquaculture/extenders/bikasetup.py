@@ -22,7 +22,7 @@ received_samples_email_body_field = ExtTextField(
               "br/>"
               "br/>"
               "We received $number_of_samples samples and they were submitted "
-              "to the lab for Analysis in batch $case_number, $case_title"
+              "to the lab for Analysis in case $case_number, $case_title"
               "br/>"
               "br/>"
               "Much appreciated"
