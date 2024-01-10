@@ -21,10 +21,14 @@ received_samples_email_body_field = ExtTextField(
     default=_("Dear $recipients,"
               "br/>"
               "br/>"
-              "We received your samples and $number_of_samples were submitted "
-              "to the lab for Analysis."
-              "<br/>"
-              "Much appreciated"),
+              "We received $number_of_samples samples and they were submitted "
+              "to the lab for Analysis in batch $case_number, $case_title"
+              "br/>"
+              "br/>"
+              "Much appreciated"
+              "br/>"
+              "br/>"
+              "$lab_name"),
     widget=RichWidget(
         label=_(
             "label_bikasetup_received_samples_email_body",
