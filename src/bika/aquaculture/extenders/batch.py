@@ -227,6 +227,7 @@ batch_priority_field = ExtStringField(
         label=_("Batch Priority"),
         description=_("Select batch priority"),
         format='select',
+        default="routine",
     )
 )
 
@@ -300,5 +301,6 @@ class BatchSchemaModifier(object):
             schema['ClientBatchID'].widget.label = "Case Number"
             schema['BatchLabels'].widget.label = "Case Labels"
             schema['title'].widget.description = "If no Title value is entered, the Case ID will be used."
+            schema['BatchPriority'].default = "routine"
 
         return schema
