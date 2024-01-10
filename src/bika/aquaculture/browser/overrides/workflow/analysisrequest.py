@@ -152,14 +152,16 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         lab_address = setup.laboratory.getPrintAddress()
         number_of_samples = len(samples)
         client_name = batch.getClient().Title() if batch.getClient() else ""
+        batch_id = api.get_id(batch)
         batch_url = batch.absolute_url()
         client_batch_id = batch.getClientBatchID()
         body = Template(setup.ReceivedSamplesEmailBody())
         body = body.safe_substitute({
+            "case_id": get_link(batch_url, value=batch_id),
             "case_title": get_link_for(batch, csrf=False),
             "case_number": get_link(batch_url, value=client_batch_id),
             "client_name": client_name,
-            "lab_name": "<br/>".join(lab_name),
+            "lab_name": lab_name,
             "lab_address": "<br/>".join(lab_address),
             "number_of_samples": number_of_samples,
             "recipients": ", ".join([i.getFullname() for i in contacts]),
