@@ -142,7 +142,7 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         batch = samples[0].getBatch()
         # Compose the email
         subject = self.context.translate(_(
-            "Samples received for Batch: ${batch_id}",
+            "Samples received for case: ${batch_id}",
             mapping={"batch_id": api.get_id(batch)}
         ))
 
