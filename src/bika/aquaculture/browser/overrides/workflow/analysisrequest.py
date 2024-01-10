@@ -13,6 +13,7 @@ from bika.lims import api
 from bika.lims.api.mail import compose_email
 from bika.lims.api.mail import is_valid_email_address
 from bika.lims.interfaces import IContact
+from bika.lims.utils import get_link
 from bika.lims.utils import get_link_for
 from senaite.app.listing.adapters.workflow import ListingWorkflowTransition
 from senaite.app.listing.interfaces import IListingWorkflowTransition
@@ -146,18 +147,22 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         ))
 
         setup = api.get_setup()
+        lab_name = setup.laboratory.Title()
         lab_email = setup.laboratory.getEmailAddress()
         lab_address = setup.laboratory.getPrintAddress()
-        client_name = batch.getClient().Title() if batch.getClient() else ""
         number_of_samples = len(samples)
+        client_name = batch.getClient().Title() if batch.getClient() else ""
+        batch_url = batch.absolute_url()
+        client_batch_id = batch.getClientBatchID()
         body = Template(setup.ReceivedSamplesEmailBody())
         body = body.safe_substitute({
-            "lab_address": "<br/>".join(lab_address),
-            "batch_id": api.get_id(batch),
-            "batch_link": get_link_for(batch, csrf=False),
+            "batch_title": get_link_for(batch, csrf=False),
+            "client_batch_id": get_link(batch_url, value=client_batch_id),
             "client_name": client_name,
+            "lab_name": "<br/>".join(lab_name),
+            "lab_address": "<br/>".join(lab_address),
             "number_of_samples": number_of_samples,
-            "recipients": ",".join([i.getFullname() for i in contacts]),
+            "recipients": ", ".join([i.getFullname() for i in contacts]),
         })
 
         return compose_email(from_addr=lab_email, to_addr=recipients,
