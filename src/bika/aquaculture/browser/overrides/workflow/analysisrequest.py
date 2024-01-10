@@ -156,8 +156,8 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         client_batch_id = batch.getClientBatchID()
         body = Template(setup.ReceivedSamplesEmailBody())
         body = body.safe_substitute({
-            "batch_title": get_link_for(batch, csrf=False),
-            "client_batch_id": get_link(batch_url, value=client_batch_id),
+            "case_title": get_link_for(batch, csrf=False),
+            "case_number": get_link(batch_url, value=client_batch_id),
             "client_name": client_name,
             "lab_name": "<br/>".join(lab_name),
             "lab_address": "<br/>".join(lab_address),
