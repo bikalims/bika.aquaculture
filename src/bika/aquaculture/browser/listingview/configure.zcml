@@ -15,6 +15,13 @@
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".sampletypes.SampleTypesListingViewAdapter"/>
 
+    <!-- sample point locations listing -->
+    <subscriber
+            for="senaite.samplepointlocations.browser.samplepointlocations.SamplePointLocationsView
+                 zope.interface.Interface"
+            provides="senaite.app.listing.interfaces.IListingViewAdapter"
+            factory=".samplepointlocations.SamplePointLocationsListingViewAdapter"/>
+
     <!-- sample points listing -->
     <subscriber
             for="bika.lims.controlpanel.bika_samplepoints.SamplePointsView

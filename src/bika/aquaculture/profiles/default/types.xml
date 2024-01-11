@@ -17,6 +17,7 @@
   <!-- Life stages -->
   <object name="LifeStage" meta_type="Dexterity FTI" />
   <object name="LifeStageFolder" meta_type="Dexterity FTI" />
+  <object name="SamplePointLocation" meta_type="Dexterity FTI" />
 
 </object>
 

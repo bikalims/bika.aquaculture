@@ -91,6 +91,10 @@ def setup(portal):
             action.title = _("Cases")
         if action.title == "Sample Points":
             action.title = _("Ponds")
+        if action.title == "Sample Point Locations":
+            action.title = _("Pond Locations")
+        if action.title == "SamplePointLocations":
+            action.title = _("Pond Locations")
 
     # Sample Types
     portal['bika_setup']["bika_sampletypes"].setTitle("Specimen Types")

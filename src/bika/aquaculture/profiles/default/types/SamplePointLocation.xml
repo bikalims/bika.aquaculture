@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n" name="SamplePointLocation" meta_type="Dexterity FTI"
+        i18n:domain="bika.aquaculture">
+  <!-- Basic properties -->
+  <property
+      i18n:translate=""
+      name="title" purge="True">Pond Location</property>
+  <property
+      i18n:translate=""
+      name="description">A container of Ponds in an area</property>
+  <schema name="schema">
+        <field name="sample_point_location_id">
+            <property name="title">New Field Label</property>
+        </field>
+    </schema>
+</object>

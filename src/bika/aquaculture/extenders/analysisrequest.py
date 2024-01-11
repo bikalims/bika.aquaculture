@@ -172,6 +172,7 @@ class AnalysisRequestSchemaExtender(object):
 class AnalysisRequestSchemaModifier(object):
     adapts(IAnalysisRequest)
     implements(ISchemaModifier)
+    layer = IBikaAquacultureLayer
 
     def __init__(self, context):
         self.context = context
@@ -186,6 +187,7 @@ class AnalysisRequestSchemaModifier(object):
             schema['SampleType'].widget.label = _("Specimen Type")
             schema['SampleType'].widget.description = _("Select the specimen type of this specimen")
             schema['SamplePoint'].widget.label = _("Pond")
+            schema['SamplePointLocation'].widget.label = "Pond Location"
             schema['SubGroup'].widget.label = _("Case Sub Group")
             schema['SubGroup'].widget.description = _("The assigned case sub group of this request")
             if schema.get("Sampler"):
