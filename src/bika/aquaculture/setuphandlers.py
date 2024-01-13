@@ -7,6 +7,8 @@ from bika.aquaculture.config import PROFILE_ID
 from bika.aquaculture.config import logger
 from bika.lims import api
 from senaite.core.setuphandlers import add_dexterity_items
+from senaite.samplepointlocations.content.samplepointlocation import (
+    ISamplePointLocation)
 
 
 @implementer(INonInstallable)
@@ -107,5 +109,9 @@ def setup(portal):
     # Sample Type
     fti = pt.get("SamplePoint")
     fti.title = _('Pond')
+
+    # SamplePointLocation
+    spl_schema = ISamplePointLocation
+    spl_schema["sample_point_location_id"].title = _("Pond Location ID")
 
     logger.info("BIKA.AQUACULTURE setup [DONE]")
