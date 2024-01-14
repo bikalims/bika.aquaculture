@@ -41,7 +41,7 @@ class PondLocationView(SPLV):
                 (
                     "sample_types",
                     dict(
-                        title=_("Speciman Type"),
+                        title=_("Specimen Type"),
                     ),
                 ),
                 (

@@ -113,5 +113,12 @@ def setup(portal):
     # SamplePointLocation
     spl_schema = ISamplePointLocation
     spl_schema["sample_point_location_id"].title = _("Pond Location ID")
+    fti = pt.get("SamplePointLocation")
+    actions = fti.listActions()
+    for idx, action in enumerate(actions):
+        if action.title == "Sample Point Locations":
+            action.title = _("Pond Locations")
+        if action.title == "SamplePointLocations":
+            action.title = _("Pond Locations")
 
     logger.info("BIKA.AQUACULTURE setup [DONE]")
