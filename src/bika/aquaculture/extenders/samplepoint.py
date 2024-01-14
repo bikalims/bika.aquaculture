@@ -22,5 +22,7 @@ class SamplePointSchemaModifier(object):
                     """The list of sample types that can be collected at this
                        sample point. If no sample types are selected, then all
                        sample types are available.""")
+            schema['SamplePointId'].widget.label = "Pond ID"
+            schema['SamplePointLocation'].widget.label = "Pond Location"
 
         return schema

@@ -20,4 +20,12 @@
 
   <include package=".listingview"/>
   <include package=".controlpanel"/>
+
+  <!-- Pond Location View override -->
+  <browser:page
+    for="senaite.samplepointlocations.content.samplepointlocation.ISamplePointLocation"
+    name="view"
+    class=".overrides.samplepointlocation.PondLocationView"
+    permission="senaite.core.permissions.ManageBika"
+    layer="bika.aquaculture.interfaces.IBikaAquacultureLayer"/>
 </configure>
