@@ -17,6 +17,10 @@
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".batch.BatchSchemaModifier" />
 
+    <adapter name='bika.aquaculture.client'
+             provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             factory=".client.ClientSchemaExtender"/>
+
     <adapter name='bika.aquaculture.bikasetup'
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
              factory=".bikasetup.BikaSetupSchemaExtender"/>
@@ -28,5 +32,12 @@
     <adapter name='bika.aquaculture.method.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".method.MethodSchemaModifier" />
+  <browser:page
+      for="*"
+      name="getsuppliers"
+      class=".client.ajaxGetSuppliers"
+      permission="zope.Public"
+      layer="bika.aquaculture.interfaces.IBikaAquacultureLayer"
+      />
 
 </configure>
