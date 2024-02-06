@@ -1,0 +1,17 @@
+name: build and test senaite.core
+on:
+  - push
+  - pull_request
+env:
+  PLONE_VERSION: "5.2"
+jobs:
+  build-and-test:
+    runs-on: 'ubuntu-20.04'
+    container:
+      image: python:2.7.18-buster
+    steps:
+      - uses: actions/checkout@v3
+      - name: lint
+        run: |
+          bin/pip install flake8
+          bin/flake8 src/bika/
