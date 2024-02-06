@@ -1,4 +1,4 @@
-name: build and lint 
+name: build and lint2
 on:
   - push
   - pull_request
