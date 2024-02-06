@@ -49,9 +49,9 @@ couriers_field = ExtRecordsField(
         "AccountNumber": _("Account number"),
         "supplier_uid": "",
     },
-    subfield_sizes={"Supplier": 35,},
-    subfield_hidden={"supplier_uid": True,},
-    default=[{"Supplier": "", "supplier_uid": "", "AccountNumber": "",}],
+    subfield_sizes={"Supplier": 35},
+    subfield_hidden={"supplier_uid": True},
+    default=[{"Supplier": "", "supplier_uid": "", "AccountNumber": ""}],
     widget=ClientSuppliersWidget(
         label=_("Couriers"),
         combogrid_options={
@@ -149,7 +149,7 @@ class ajaxGetSuppliers:
             "total": pages,
             "records": len(rows),
             "rows": rows[
-                (int(page) - 1) * int(nr_rows) : int(page) * int(nr_rows)
+                (int(page) - 1) * int(nr_rows): int(page) * int(nr_rows)
             ],
         }
         return json.dumps(ret)

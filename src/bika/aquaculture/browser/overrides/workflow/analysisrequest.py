@@ -97,7 +97,7 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
             message = _("Sent email for ")
             message = _(
                 "Sent email for receiving samples for ${batch_id}",
-                mapping={"batch_id": api.get_id(batch),},
+                mapping={"batch_id": api.get_id(batch)},
             )
             self.context.plone_utils.addPortalMessage(message, "info")
 

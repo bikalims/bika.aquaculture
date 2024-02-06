@@ -155,7 +155,7 @@ notified_samples_received_field = ExtBooleanField(
     widget=BooleanWidget(
         label=_("Notified Batch Samples have been Received"),
         format="select",
-        visible={"add": "invinsible", "edit": "invinsible",},
+        visible={"add": "invinsible", "edit": "invinsible"},
     ),
 )
 

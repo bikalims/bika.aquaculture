@@ -58,14 +58,14 @@ class PondLocationView(SPLV):
                 "id": "default",
                 "title": _("Active"),
                 "contentFilter": {"is_active": True},
-                "transitions": [{"id": "deactivate"},],
+                "transitions": [{"id": "deactivate"}],
                 "columns": self.columns.keys(),
             },
             {
                 "id": "inactive",
                 "title": _("Inactive"),
                 "contentFilter": {"is_active": False},
-                "transitions": [{"id": "activate"},],
+                "transitions": [{"id": "activate"}],
                 "columns": self.columns.keys(),
             },
             {
@@ -105,5 +105,5 @@ class PondLocationView(SPLV):
             },
             {"title": "Account Managers", "value": ", ".join(managers)},
             {"title": "Address ", "value": ", ".join(address_lst)},
-            {"title": "Summary", "value": self.context.description,},
+            {"title": "Summary", "value": self.context.description},
         ]
