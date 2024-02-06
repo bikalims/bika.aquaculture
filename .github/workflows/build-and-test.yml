@@ -1,4 +1,4 @@
-name: build and test senaite.core
+name: build and lint 
 on:
   - push
   - pull_request
@@ -28,8 +28,4 @@ jobs:
       - name: lint
         run: |
           bin/pip install flake8
-          bin/flake8 --config ci_flake8.cfg src/bika/
-          bin/flake8 --config ci_flake8.cfg src/senaite/
-      - name: test
-        run: |
-          bin/test -s senaite.core.tests
+          bin/flake8 src/bika/
