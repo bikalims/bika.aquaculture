@@ -25,19 +25,17 @@ class ClientSuppliersWidget(ARTPW):
     """
 
 
-registerWidget(ClientSuppliersWidget,
-               title='Client Supplier Widget',
-               description=('AR Template Partition Layout'),
-               )
+registerWidget(
+    ClientSuppliersWidget,
+    title="Client Supplier Widget",
+    description=("AR Template Partition Layout"),
+)
 
 postal_mail_field = ExtBooleanField(
     "PostalMail",
     mode="rw",
     schemata="Preferences",
-    widget=BooleanWidget(
-        label=_("Postal Mail"),
-        format='select',
-    )
+    widget=BooleanWidget(label=_("Postal Mail"), format="select",),
 )
 
 couriers_field = ExtRecordsField(
@@ -45,42 +43,30 @@ couriers_field = ExtRecordsField(
     schemata="Preferences",
     required=0,
     type="Courier",
-    subfields=(
-        "Supplier",
-        "AccountNumber",
-    ),
+    subfields=("Supplier", "AccountNumber",),
     subfield_labels={
         "Supplier": _("Supplier"),
         "AccountNumber": _("Account number"),
         "supplier_uid": "",
     },
-    subfield_sizes={
-        "Supplier": 35,
-    },
-    subfield_hidden={
-        "supplier_uid": True,
-    },
-    default=[{
-        "Supplier": "",
-        "supplier_uid": "",
-        "AccountNumber": "",
-    }],
+    subfield_sizes={"Supplier": 35,},
+    subfield_hidden={"supplier_uid": True,},
+    default=[{"Supplier": "", "supplier_uid": "", "AccountNumber": "",}],
     widget=ClientSuppliersWidget(
         label=_("Couriers"),
         combogrid_options={
             "Supplier": {
                 "colModel": [
-                    {
-                        "columnName": "supplier_uid",
-                        "hidden": True},
+                    {"columnName": "supplier_uid", "hidden": True},
                     {
                         "columnName": "Supplier",
                         "width": "30",
-                        "label": _("Supplier")
-                    }],
+                        "label": _("Supplier"),
+                    },
+                ],
                 "url": "getsuppliers",
                 "showOn": True,
-                "width": "550px"
+                "width": "550px",
             },
         },
     ),
@@ -109,9 +95,8 @@ class ClientSchemaExtender(object):
 
 class ajaxGetSuppliers:
 
-    catalog_name = 'senaite_catalog_setup'
-    contentFilter = {'portal_type': 'Supplier',
-                     'is_active': True}
+    catalog_name = "senaite_catalog_setup"
+    contentFilter = {"portal_type": "Supplier", "is_active": True}
 
     def __init__(self, context, request):
         self.context = context
@@ -120,35 +105,51 @@ class ajaxGetSuppliers:
     def __call__(self):
 
         plone.protect.CheckAuthenticator(self.request)
-        searchTerm = 'searchTerm' in self.request and self.request[
-            'searchTerm'].lower() or ''
-        page = self.request['page']
-        nr_rows = self.request['rows']
-        sord = self.request['sord']
-        sidx = self.request['sidx']
+        searchTerm = (
+            "searchTerm" in self.request
+            and self.request["searchTerm"].lower()
+            or ""
+        )
+        page = self.request["page"]
+        nr_rows = self.request["rows"]
+        sord = self.request["sord"]
+        sidx = self.request["sidx"]
         rows = []
 
         # lookup objects from ZODB
         catalog = api.get_tool(SETUP_CATALOG)
         brains = catalog(self.contentFilter)
-        brains = searchTerm and \
-            [p for p in brains if p.Title.lower().find(searchTerm) > -1] \
+        brains = (
+            searchTerm
+            and [p for p in brains if p.Title.lower().find(searchTerm) > -1]
             or brains
+        )
 
-        rows = [{'UID': p.UID,
-                 'supplier_uid': p.UID,
-                 'Supplier': p.Title,
-                 'AccountNumber': p.getObject().getAccountNumber()}
-                for p in brains]
+        rows = [
+            {
+                "UID": p.UID,
+                "supplier_uid": p.UID,
+                "Supplier": p.Title,
+                "AccountNumber": p.getObject().getAccountNumber(),
+            }
+            for p in brains
+        ]
 
-        rows = sorted(rows, cmp=lambda x, y: cmp(x.lower(
-        ), y.lower()), key=itemgetter(sidx and sidx or 'Supplier'))
-        if sord == 'desc':
+        rows = sorted(
+            rows,
+            cmp=lambda x, y: cmp(x.lower(), y.lower()),
+            key=itemgetter(sidx and sidx or "Supplier"),
+        )
+        if sord == "desc":
             rows.reverse()
         pages = len(rows) / int(nr_rows)
         pages += divmod(len(rows), int(nr_rows))[1] and 1 or 0
-        ret = {'page': page,
-               'total': pages,
-               'records': len(rows),
-               'rows': rows[(int(page) - 1) * int(nr_rows): int(page) * int(nr_rows)]}
+        ret = {
+            "page": page,
+            "total": pages,
+            "records": len(rows),
+            "rows": rows[
+                (int(page) - 1) * int(nr_rows) : int(page) * int(nr_rows)
+            ],
+        }
         return json.dumps(ret)

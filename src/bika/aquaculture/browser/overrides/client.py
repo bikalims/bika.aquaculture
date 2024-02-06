@@ -32,9 +32,9 @@ class ClientSamplePointsView(SamplePointsView):
             return
         self.title = self.context.translate(_("Ponds"))
         if "Title" in self.columns:
-            self.columns['Title']['title'] = "Pond"
+            self.columns["Title"]["title"] = "Pond"
         if "SampleTypes" in self.columns:
-            self.columns['SampleTypes']['title'] = "Specimen Types"
+            self.columns["SampleTypes"]["title"] = "Specimen Types"
 
     def folder_item(self, obj, item, index):
         if not is_installed():

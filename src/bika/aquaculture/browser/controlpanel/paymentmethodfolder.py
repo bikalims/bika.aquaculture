@@ -45,7 +45,8 @@ class PaymentMethodFolderView(ListingView):
             _("Add"): {
                 "url": "++add++PaymentMethod",
                 "icon": "++resource++bika.lims.images/add.png",
-            }}
+            }
+        }
 
         t = self.context.translate
         self.title = t(_("Payment Methods"))
@@ -54,11 +55,9 @@ class PaymentMethodFolderView(ListingView):
         self.show_select_column = True
         self.pagesize = 25
 
-        self.columns = collections.OrderedDict((
-            ("title", {
-                "title": _("Title"),
-                "index": "sortable_title"}),
-        ))
+        self.columns = collections.OrderedDict(
+            (("title", {"title": _("Title"), "index": "sortable_title"}),)
+        )
 
         self.review_states = [
             {
@@ -66,12 +65,14 @@ class PaymentMethodFolderView(ListingView):
                 "title": _("Active"),
                 "contentFilter": {"is_active": True},
                 "columns": self.columns.keys(),
-            }, {
+            },
+            {
                 "id": "inactive",
                 "title": _("Inactive"),
-                "contentFilter": {'is_active': False},
+                "contentFilter": {"is_active": False},
                 "columns": self.columns.keys(),
-            }, {
+            },
+            {
                 "id": "all",
                 "title": _("All"),
                 "contentFilter": {},

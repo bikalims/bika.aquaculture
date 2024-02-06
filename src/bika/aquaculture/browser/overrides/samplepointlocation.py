@@ -3,18 +3,21 @@ from bika.lims import api
 from bika.lims.permissions import AddSamplePoint
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.samplepointlocations import _
-from senaite.samplepointlocations.browser.samplepointlocation import \
-    SamplePointLocationView as SPLV
+from senaite.samplepointlocations.browser.samplepointlocation import (
+    SamplePointLocationView as SPLV,
+)
 
 
 class PondLocationView(SPLV):
-
     def __init__(self, context, request):
         super(PondLocationView, self).__init__(context, request)
         self.catalog = SETUP_CATALOG
         path = api.get_path(self.context)
         self.contentFilter = dict(
-            portal_type="SamplePoint", sort_on="sortable_title", sort_order="ascending", path={"query": path}
+            portal_type="SamplePoint",
+            sort_on="sortable_title",
+            sort_order="ascending",
+            path={"query": path},
         )
         self.form_id = "locations"
 
@@ -27,7 +30,9 @@ class PondLocationView(SPLV):
         }
 
         self.icon = "{}/{}/{}".format(
-            self.portal_url, "/++resource++bika.lims.images", "sampletype_big.png"
+            self.portal_url,
+            "/++resource++bika.lims.images",
+            "sampletype_big.png",
         )
 
         self.title = "Ponds"
@@ -38,29 +43,12 @@ class PondLocationView(SPLV):
             (
                 ("SamplePointId", dict(title=_("Pond ID"))),
                 ("location_title", dict(title=_("Title"), index="Title")),
-                (
-                    "sample_types",
-                    dict(
-                        title=_("Specimen Type"),
-                    ),
-                ),
-                (
-                    "equipment_id",
-                    dict(
-                        title=_("Equipment ID"),
-                    ),
-                ),
-                (
-                    "equipment_type",
-                    dict(
-                        title=_("Equipment Type"),
-                    ),
-                ),
+                ("sample_types", dict(title=_("Specimen Type"),),),
+                ("equipment_id", dict(title=_("Equipment ID"),),),
+                ("equipment_type", dict(title=_("Equipment Type"),),),
                 (
                     "equipment_description",
-                    dict(
-                        title=_("Equipment Description"),
-                    ),
+                    dict(title=_("Equipment Description"),),
                 ),
             )
         )
@@ -70,18 +58,14 @@ class PondLocationView(SPLV):
                 "id": "default",
                 "title": _("Active"),
                 "contentFilter": {"is_active": True},
-                "transitions": [
-                    {"id": "deactivate"},
-                ],
+                "transitions": [{"id": "deactivate"},],
                 "columns": self.columns.keys(),
             },
             {
                 "id": "inactive",
                 "title": _("Inactive"),
                 "contentFilter": {"is_active": False},
-                "transitions": [
-                    {"id": "activate"},
-                ],
+                "transitions": [{"id": "activate"},],
                 "columns": self.columns.keys(),
             },
             {
@@ -107,7 +91,10 @@ class PondLocationView(SPLV):
             if address.get("country"):
                 address_lst.append(address["country"])
         managers = []
-        if self.context.account_managers and len(self.context.account_managers) > 0:
+        if (
+            self.context.account_managers
+            and len(self.context.account_managers) > 0
+        ):
             for uid in self.context.account_managers:
                 man = api.get_object_by_uid(uid)
                 managers.append(man.getFullname())
@@ -118,9 +105,5 @@ class PondLocationView(SPLV):
             },
             {"title": "Account Managers", "value": ", ".join(managers)},
             {"title": "Address ", "value": ", ".join(address_lst)},
-            {
-                "title": "Summary",
-                "value": self.context.description,
-            },
+            {"title": "Summary", "value": self.context.description,},
         ]
-

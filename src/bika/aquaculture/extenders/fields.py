@@ -27,28 +27,33 @@ class SamplerExtensionField(object):
     def getAccessor(self, instance):
         def accessor():
             return self.get(instance)
+
         return accessor
 
     def getEditAccessor(self, instance):
         def edit_accessor():
             return self.getRaw(instance)
+
         return edit_accessor
 
     def getMutator(self, batch):
         def mutator(value, **kw):
-            old_value = batch.getField('Sampler').get(batch)
+            old_value = batch.getField("Sampler").get(batch)
             pu = api.get_tool("plone_utils")
             change_samples = False
             if old_value != value:
-                query = {"getBatchUID": batch.UID(),
-                         "portal_type": "AnalysisRequest",
-                         "getDateVerified": {'query': '', 'range': 'min'},
-                         }
+                query = {
+                    "getBatchUID": batch.UID(),
+                    "portal_type": "AnalysisRequest",
+                    "getDateVerified": {"query": "", "range": "min"},
+                }
                 brains = api.search(query, SAMPLE_CATALOG)
                 if brains:
-                    message = _("""Case sampler cannot  be modified - the case
-                                   contains verified specimen""")
-                    pu.addPortalMessage(message, 'error')
+                    message = _(
+                        """Case sampler cannot  be modified - the case
+                                   contains verified specimen"""
+                    )
+                    pu.addPortalMessage(message, "error")
                     change_samples = False
                 else:
                     change_samples = True
@@ -61,9 +66,11 @@ class SamplerExtensionField(object):
                 if samples:
                     user = ploneapi.user.get(userid=value)
                     fullname = user.getProperty("fullname")
-                    message = _("""Changed the sampler on child specimen of this
-                                   case to {}""").format(fullname)
-                    pu.addPortalMessage(message, 'info')
+                    message = _(
+                        """Changed the sampler on child specimen of this
+                                   case to {}"""
+                    ).format(fullname)
+                    pu.addPortalMessage(message, "info")
                 self.set(batch, value)
 
         return mutator
@@ -96,28 +103,33 @@ class RoutineExtensionField(object):
     def getAccessor(self, instance):
         def accessor():
             return self.get(instance)
+
         return accessor
 
     def getEditAccessor(self, instance):
         def edit_accessor():
             return self.getRaw(instance)
+
         return edit_accessor
 
     def getMutator(self, batch):
         def mutator(value, **kw):
-            old_value = batch.getField('BatchPriority').get(batch)
+            old_value = batch.getField("BatchPriority").get(batch)
             pu = api.get_tool("plone_utils")
             change_samples = False
             if old_value != value:
-                query = {"getBatchUID": batch.UID(),
-                         "portal_type": "AnalysisRequest",
-                         "getDateVerified": {'query': '', 'range': 'min'},
-                         }
+                query = {
+                    "getBatchUID": batch.UID(),
+                    "portal_type": "AnalysisRequest",
+                    "getDateVerified": {"query": "", "range": "min"},
+                }
                 brains = api.search(query, SAMPLE_CATALOG)
                 if brains:
-                    message = _("""Case routine cannot  be modified - the case
-                                   contains verified specimen""")
-                    pu.addPortalMessage(message, 'error')
+                    message = _(
+                        """Case routine cannot  be modified - the case
+                                   contains verified specimen"""
+                    )
+                    pu.addPortalMessage(message, "error")
                     change_samples = False
                 else:
                     change_samples = True
@@ -131,9 +143,11 @@ class RoutineExtensionField(object):
                     sample.Priority = priority
                     sample.reindexObject()
                 if samples:
-                    message = _("""Changed the priority on child specimen of this
-                                   case to {}""").format(value)
-                    pu.addPortalMessage(message, 'info')
+                    message = _(
+                        """Changed the priority on child specimen of this
+                                   case to {}"""
+                    ).format(value)
+                    pu.addPortalMessage(message, "info")
                 self.set(batch, value)
 
         return mutator

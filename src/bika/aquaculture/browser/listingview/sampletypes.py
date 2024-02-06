@@ -22,7 +22,7 @@ class SampleTypesListingViewAdapter(object):
             return
         self.listing.title = self.context.translate(_("Specimen Types"))
         if "Title" in self.listing.columns:
-            self.listing.columns['Title']['title'] = "Specimen Type"
+            self.listing.columns["Title"]["title"] = "Specimen Type"
 
     def folder_item(self, obj, item, index):
         if not is_installed():

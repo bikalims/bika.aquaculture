@@ -19,8 +19,7 @@ class MethodSchemaModifier(object):
         """
         """
         if is_installed():
-            schema['MethodID'].widget.label = _("Protocol")
-            schema['MethodDocument'].widget.label = _("Protocol Document")
+            schema["MethodID"].widget.label = _("Protocol")
+            schema["MethodDocument"].widget.label = _("Protocol Document")
 
         return schema
-

@@ -22,9 +22,7 @@ class BatchFolderContentsListingViewAdapter(object):
             return
         self.listing.title = self.context.translate(_("Cases"))
         batch_priority = [
-            ("Priority",
-             {"toggle": False, "sortable": True, "title": ""},
-             )
+            ("Priority", {"toggle": False, "sortable": True, "title": ""},)
         ]
         self.listing.columns.update(batch_priority)
         for i in range(len(self.listing.review_states)):

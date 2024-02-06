@@ -22,7 +22,7 @@ class MethodsListingViewAdapter(object):
             return
         self.listing.title = self.context.translate(_("Protocols"))
         if "Title" in self.listing.columns:
-            self.listing.columns['Title']['title'] = "Protocol"
+            self.listing.columns["Title"]["title"] = "Protocol"
 
     def folder_item(self, obj, item, index):
         if not is_installed():

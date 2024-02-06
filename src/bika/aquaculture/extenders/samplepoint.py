@@ -17,12 +17,13 @@ class SamplePointSchemaModifier(object):
         """
         """
         if is_installed():
-            schema['SampleTypes'].widget.label = _("Specimen Types")
-            schema['SampleTypes'].widget.description = _(
-                    """The list of sample types that can be collected at this
+            schema["SampleTypes"].widget.label = _("Specimen Types")
+            schema["SampleTypes"].widget.description = _(
+                """The list of sample types that can be collected at this
                        sample point. If no sample types are selected, then all
-                       sample types are available.""")
-            schema['SamplePointId'].widget.label = "Pond ID"
-            schema['SamplePointLocation'].widget.label = "Pond Location"
+                       sample types are available."""
+            )
+            schema["SamplePointId"].widget.label = "Pond ID"
+            schema["SamplePointLocation"].widget.label = "Pond Location"
 
         return schema

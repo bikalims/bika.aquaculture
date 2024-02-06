@@ -8,16 +8,16 @@ from bika.aquaculture.config import logger
 from bika.lims import api
 from senaite.core.setuphandlers import add_dexterity_items
 from senaite.samplepointlocations.content.samplepointlocation import (
-    ISamplePointLocation)
+    ISamplePointLocation,
+)
 
 
 @implementer(INonInstallable)
 class HiddenProfiles(object):
-
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller."""
         return [
-            'bika.aquaculture:uninstall',
+            "bika.aquaculture:uninstall",
         ]
 
 
@@ -45,21 +45,14 @@ def add_dexterity_setup_items(portal):
     """
     # Tuples of ID, Title, FTI
     items = [
-        ("purpose_of_testing_folder",
-         "Purpose of Testing",
-         "PurposeOfTestingFolder"),
-
-        ("payment_method_folder",
-         "Payment Methods",
-         "PaymentMethodFolder"),
-
-        ("species_folder",
-         "Species",
-         "SpeciesFolder"),
-
-        ("life_stage_folder",
-         "Life Stages",
-         "LifeStageFolder"),
+        (
+            "purpose_of_testing_folder",
+            "Purpose of Testing",
+            "PurposeOfTestingFolder",
+        ),
+        ("payment_method_folder", "Payment Methods", "PaymentMethodFolder"),
+        ("species_folder", "Species", "SpeciesFolder"),
+        ("life_stage_folder", "Life Stages", "LifeStageFolder"),
     ]
     setup = api.get_setup()
     add_dexterity_items(setup, items)
@@ -67,23 +60,23 @@ def add_dexterity_setup_items(portal):
 
 def setup(portal):
     # Batches
-    batches = portal['batches']
-    batches.title = _('Cases')
+    batches = portal["batches"]
+    batches.title = _("Cases")
     batches.reindexObject()
 
     # pt
     pt = api.get_tool("portal_types", context=portal)
     # Batch
     fti = pt.get("Batch")
-    fti.title = _('Case')
+    fti.title = _("Case")
 
     # Methods
-    methods = portal['methods']
-    methods.title = 'Protocols'
+    methods = portal["methods"]
+    methods.title = "Protocols"
     methods.reindexObject()
     # Method
     fti = pt.get("Method")
-    fti.title = _('Protocol')
+    fti.title = _("Protocol")
 
     # Client
     fti = pt.get("Client")
@@ -99,16 +92,16 @@ def setup(portal):
             action.title = _("Pond Locations")
 
     # Sample Types
-    portal['bika_setup']["bika_sampletypes"].setTitle("Specimen Types")
+    portal["bika_setup"]["bika_sampletypes"].setTitle("Specimen Types")
     # Sample Type
     fti = pt.get("SampleType")
-    fti.title = _('Specimen Type')
+    fti.title = _("Specimen Type")
 
     # Sample Points
-    portal['bika_setup']["bika_samplepoints"].setTitle("Ponds")
+    portal["bika_setup"]["bika_samplepoints"].setTitle("Ponds")
     # Sample Type
     fti = pt.get("SamplePoint")
-    fti.title = _('Pond')
+    fti.title = _("Pond")
 
     # SamplePointLocation
     spl_schema = ISamplePointLocation

@@ -21,11 +21,12 @@ class BikaAquacultureLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.restapi
+
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=bika.aquaculture)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'bika.aquaculture:default')
+        applyProfile(portal, "bika.aquaculture:default")
 
 
 BIKA_AQUACULTURE_FIXTURE = BikaAquacultureLayer()
@@ -33,13 +34,13 @@ BIKA_AQUACULTURE_FIXTURE = BikaAquacultureLayer()
 
 BIKA_AQUACULTURE_INTEGRATION_TESTING = IntegrationTesting(
     bases=(BIKA_AQUACULTURE_FIXTURE,),
-    name='BikaAquacultureLayer:IntegrationTesting',
+    name="BikaAquacultureLayer:IntegrationTesting",
 )
 
 
 BIKA_AQUACULTURE_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(BIKA_AQUACULTURE_FIXTURE,),
-    name='BikaAquacultureLayer:FunctionalTesting',
+    name="BikaAquacultureLayer:FunctionalTesting",
 )
 
 
@@ -49,5 +50,5 @@ BIKA_AQUACULTURE_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='BikaAquacultureLayer:AcceptanceTesting',
+    name="BikaAquacultureLayer:AcceptanceTesting",
 )

@@ -14,15 +14,15 @@ def getUsers(context, roles, allow_empty=True):
     """ Present a DisplayList containing users in the specified
         list of roles
     """
-    pairs = allow_empty and [['', '']] or []
+    pairs = allow_empty and [["", ""]] or []
     if not context:
         return DisplayList(pairs)
 
-    mtool = api.get_tool('portal_membership')
+    mtool = api.get_tool("portal_membership")
     users = mtool.searchForMembers(roles=roles)
     for user in users:
         uid = user.getId()
-        fullname = user.getProperty('fullname')
+        fullname = user.getProperty("fullname")
         if not fullname:
             fullname = uid
         pairs.append((uid, fullname))
@@ -43,6 +43,8 @@ SEXES = [
 
 
 def get_countries():
-    items = map(lambda country: (country.alpha_2, country.name), geo.get_countries())
+    items = map(
+        lambda country: (country.alpha_2, country.name), geo.get_countries()
+    )
     items.insert(0, ("", ""))
     return items

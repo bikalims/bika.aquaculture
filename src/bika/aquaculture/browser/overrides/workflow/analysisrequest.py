@@ -24,9 +24,11 @@ from senaite.core.catalog import SAMPLE_CATALOG
 class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
     """Adapter to execute the workflow transition "receive" for samples
     """
+
     def __init__(self, view, context, request):
         super(SampleReceiveWorkflowTransition, self).__init__(
-            view, context, request)
+            view, context, request
+        )
         self.back_url = request.get_header("referer")
 
     def get_redirect_url(self):
@@ -69,10 +71,11 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         if batch.NotifiedSamplesReceived:
             return False
 
-        query = {"getBatchUID": batch.UID(),
-                 "portal_type": "AnalysisRequest",
-                 "getDateReceived": {'query': '', 'range': 'min'},
-                 }
+        query = {
+            "getBatchUID": batch.UID(),
+            "portal_type": "AnalysisRequest",
+            "getDateReceived": {"query": "", "range": "min"},
+        }
         brains = api.search(query, SAMPLE_CATALOG)
 
         samples = batch.getAnalysisRequests()
@@ -94,9 +97,8 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
             message = _("Sent email for ")
             message = _(
                 "Sent email for receiving samples for ${batch_id}",
-                mapping={
-                    "batch_id": api.get_id(batch),
-                })
+                mapping={"batch_id": api.get_id(batch),},
+            )
             self.context.plone_utils.addPortalMessage(message, "info")
 
     def send_received_email(self, samples):
@@ -113,8 +115,9 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
                 "Cannot send email for receiving samples for ${batch_id} : ${error}",
                 mapping={
                     "batch_id": api.get_id(batch),
-                    "error": safe_unicode(err_msg)
-                })
+                    "error": safe_unicode(err_msg),
+                },
+            )
             self.context.plone_utils.addPortalMessage(message, "warning")
 
     def get_invalidation_email(self, samples):
@@ -141,10 +144,12 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         # TODO: Get Batch and see if the unique batch
         batch = samples[0].getBatch()
         # Compose the email
-        subject = self.context.translate(_(
-            "Samples received for case: ${batch_id}",
-            mapping={"batch_id": api.get_id(batch)}
-        ))
+        subject = self.context.translate(
+            _(
+                "Samples received for case: ${batch_id}",
+                mapping={"batch_id": api.get_id(batch)},
+            )
+        )
 
         setup = api.get_setup()
         lab_name = setup.laboratory.Title()
@@ -156,19 +161,26 @@ class SampleReceiveWorkflowTransition(ListingWorkflowTransition):
         batch_url = batch.absolute_url()
         client_batch_id = batch.getClientBatchID()
         body = Template(setup.ReceivedSamplesEmailBody())
-        body = body.safe_substitute({
-            "case_id": get_link(batch_url, value=batch_id),
-            "case_title": get_link_for(batch, csrf=False),
-            "case_number": get_link(batch_url, value=client_batch_id),
-            "client_name": client_name,
-            "lab_name": lab_name,
-            "lab_address": "<br/>".join(lab_address),
-            "number_of_samples": number_of_samples,
-            "recipients": ", ".join([i.getFullname() for i in contacts]),
-        })
+        body = body.safe_substitute(
+            {
+                "case_id": get_link(batch_url, value=batch_id),
+                "case_title": get_link_for(batch, csrf=False),
+                "case_number": get_link(batch_url, value=client_batch_id),
+                "client_name": client_name,
+                "lab_name": lab_name,
+                "lab_address": "<br/>".join(lab_address),
+                "number_of_samples": number_of_samples,
+                "recipients": ", ".join([i.getFullname() for i in contacts]),
+            }
+        )
 
-        return compose_email(from_addr=lab_email, to_addr=recipients,
-                             subj=subject, body=body, html=True)
+        return compose_email(
+            from_addr=lab_email,
+            to_addr=recipients,
+            subj=subject,
+            body=body,
+            html=True,
+        )
 
     def get_email_address(self, contact_user_email):
         """Returns the email address for the contact, member or email

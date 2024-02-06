@@ -29,21 +29,14 @@ from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 
 
 nan_field = ExtStringField(
-    "NAN",
-    mode="rw",
-    schemata="default",
-    widget=StringWidget(
-        label=_(u"NAN"),
-    ),
+    "NAN", mode="rw", schemata="default", widget=StringWidget(label=_(u"NAN"),),
 )
 
 reference_number_field = ExtStringField(
     "ReferenceNumber",
     mode="rw",
     schemata="default",
-    widget=StringWidget(
-        label=_(u"Reference Number"),
-    ),
+    widget=StringWidget(label=_(u"Reference Number"),),
 )
 
 purpose_of_testing_field = ExtUIDReferenceField(
@@ -83,10 +76,7 @@ country_of_origin_field = ExtStringField(
     mode="rw",
     schemata="default",
     vocabulary=get_countries(),
-    widget=SelectionWidget(
-        label=_("Country of Origin"),
-        format='select',
-    )
+    widget=SelectionWidget(label=_("Country of Origin"), format="select",),
 )
 
 
@@ -95,19 +85,14 @@ destination_country_field = ExtStringField(
     mode="rw",
     schemata="default",
     vocabulary=get_countries(),
-    widget=SelectionWidget(
-        label=_("Destination Country"),
-        format='select',
-    )
+    widget=SelectionWidget(label=_("Destination Country"), format="select",),
 )
 
 pooling_info_field = ExtStringField(
     "PoolingInfo",
     mode="rw",
     schemata="default",
-    widget=StringWidget(
-        label=_(u"Pooling Info"),
-    ),
+    widget=StringWidget(label=_(u"Pooling Info"),),
 )
 
 payment_method_field = ExtUIDReferenceField(
@@ -149,9 +134,9 @@ batch_priority_field = ExtRoutineExtensionField(
     widget=SelectionWidget(
         label=_("Batch Priority"),
         description=_("Select batch priority"),
-        format='select',
+        format="select",
         default="routine",
-    )
+    ),
 )
 
 sampler_field = ExtSamplerStringField(
@@ -160,10 +145,7 @@ sampler_field = ExtSamplerStringField(
     mode="rw",
     write_permission=FieldEditContact,
     vocabulary=getUsers(None, ["Sampler"]),
-    widget=SelectionWidget(
-        label=_("Sampler"),
-        format='select',
-    )
+    widget=SelectionWidget(label=_("Sampler"), format="select",),
 )
 
 notified_samples_received_field = ExtBooleanField(
@@ -172,12 +154,9 @@ notified_samples_received_field = ExtBooleanField(
     schemata="default",
     widget=BooleanWidget(
         label=_("Notified Batch Samples have been Received"),
-        format='select',
-        visible={
-            "add": "invinsible",
-            "edit": "invinsible",
-        },
-    )
+        format="select",
+        visible={"add": "invinsible", "edit": "invinsible",},
+    ),
 )
 
 
@@ -220,10 +199,14 @@ class BatchSchemaModifier(object):
         """
         """
         if is_installed():
-            schema['Sampler'].vocabulary = getUsers(self.context, ["Sampler"])
-            schema['ClientBatchID'].widget.label = "Case Number"
-            schema['BatchLabels'].widget.label = "Case Labels"
-            schema['title'].widget.description = "If no Title value is entered, the Case ID will be used."
-            schema['BatchPriority'].default = "routine"
+            schema["Sampler"].vocabulary = getUsers(self.context, ["Sampler"])
+            schema["ClientBatchID"].widget.label = "Case Number"
+            schema["BatchLabels"].widget.label = "Case Labels"
+            schema[
+                "title"
+            ].widget.description = (
+                "If no Title value is entered, the Case ID will be used."
+            )
+            schema["BatchPriority"].default = "routine"
 
         return schema

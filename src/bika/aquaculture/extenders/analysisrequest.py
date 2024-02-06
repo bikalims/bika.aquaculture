@@ -134,7 +134,7 @@ sex_field = ExtStringField(
         description=_("Select sex of the sample."),
         render_own_label=True,
         showOn=True,
-        format='select',
+        format="select",
         visible={
             "add": "edit",
             "header_table": "visible",
@@ -142,7 +142,7 @@ sex_field = ExtStringField(
             "verified": "view",
             "published": "view",
         },
-    )
+    ),
 )
 
 
@@ -181,17 +181,21 @@ class AnalysisRequestSchemaModifier(object):
         """
         """
         if is_installed():
-            schema['Batch'].widget.label = _("Case")
-            schema['Batch'].widget.description = _("Assign a sample to a case")
-            schema['ClientSampleID'].widget.label = _("Pool ID")
-            schema['SampleType'].widget.label = _("Specimen Type")
-            schema['SampleType'].widget.description = _("Select the specimen type of this specimen")
-            schema['SamplePoint'].widget.label = _("Pond")
-            schema['SamplePointLocation'].widget.label = "Pond Location"
-            schema['SubGroup'].widget.label = _("Case Sub Group")
-            schema['SubGroup'].widget.description = _("The assigned case sub group of this request")
+            schema["Batch"].widget.label = _("Case")
+            schema["Batch"].widget.description = _("Assign a sample to a case")
+            schema["ClientSampleID"].widget.label = _("Pool ID")
+            schema["SampleType"].widget.label = _("Specimen Type")
+            schema["SampleType"].widget.description = _(
+                "Select the specimen type of this specimen"
+            )
+            schema["SamplePoint"].widget.label = _("Pond")
+            schema["SamplePointLocation"].widget.label = "Pond Location"
+            schema["SubGroup"].widget.label = _("Case Sub Group")
+            schema["SubGroup"].widget.description = _(
+                "The assigned case sub group of this request"
+            )
             if schema.get("Sampler"):
                 if IBatch.providedBy(self.context.aq_parent):
-                    schema['Sampler'].default = self.context.aq_parent.Sampler
+                    schema["Sampler"].default = self.context.aq_parent.Sampler
 
         return schema

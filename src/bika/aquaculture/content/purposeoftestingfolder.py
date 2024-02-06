@@ -31,7 +31,9 @@ class IPurposeOfTestingFolderSchema(model.Schema):
     """
 
 
-@implementer(IPurposeOfTestingFolder, IPurposeOfTestingFolderSchema, IHideActionsMenu)
+@implementer(
+    IPurposeOfTestingFolder, IPurposeOfTestingFolderSchema, IHideActionsMenu
+)
 class PurposeOfTestingFolder(Container):
     """A folder/container for purposeoftesting
     """

@@ -5,7 +5,9 @@ from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 from bika.lims.interfaces import IBikaLIMS
-from senaite.samplepointlocations.interfaces import ISenaiteSamplePointLocationsLayer
+from senaite.samplepointlocations.interfaces import (
+    ISenaiteSamplePointLocationsLayer,
+)
 
 
 class IBikaAquacultureLayer(IBikaLIMS, ISenaiteSamplePointLocationsLayer):
@@ -14,6 +16,7 @@ class IBikaAquacultureLayer(IBikaLIMS, ISenaiteSamplePointLocationsLayer):
     All views and viewlets register against this layer will appear in the site
     only when the add-on installer has been run.
     """
+
 
 class IBikaSamplePointLocationsLayer(ISenaiteSamplePointLocationsLayer):
     """Zope 3 browser Layer interface specific for senaite.sampleimporter
