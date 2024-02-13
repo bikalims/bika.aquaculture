@@ -348,7 +348,7 @@
                              <th tal:content="model/Species/title|nothing"></th>
                              <th tal:content="model/LifeStage/title|nothing"></th>
                              <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th tal:content="model/Sex/title">Sex</th>
+                             <th tal:content="model/Sex/title|nothing">Sex</th>
                              </tal:header>
                              <tal:analyses repeat="page pages">
                                  <tal:analysis repeat="analysis page">
@@ -367,7 +367,7 @@
                              <th tal:content="model/Species/title|nothing"></th>
                              <th tal:content="model/LifeStage/title|nothing"></th>
                              <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th tal:content="model/Sex/title">Sex</th>
+                             <th tal:content="model/Sex/title|nothing">Sex</th>
                              </tal:header>
 
                                <tal:analyses repeat="page pages">
