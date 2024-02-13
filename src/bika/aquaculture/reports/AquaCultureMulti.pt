@@ -332,70 +332,74 @@
                 <tal:models define="models python:view.get_pages_aqua_culture(category)">
                   <tal:model repeat="model models">
                      <tal:pages define="pages python:view.get_pages_aqua_culture(category, model)">
-                   <tr>
-                    <tal:header tal:condition="python: repeat['model'].start">
-                     <th>Pool ID</th>
-                     <th>Identification no.<br /> (pond, tank, etc.)</th>
-                     <th>Species</th>
-                     <th>Age</th>
-                     <th>Specimen Type</th>
-                     <th>Sex</th>
-                     </tal:header>
-                    <tal:header tal:condition="python: not repeat['model'].start">
-                     <th tal:content="model/id"></th>
-                     <th tal:content="model/SamplePointTitle"></th>
-                     <th tal:content="model/Species/title|nothing"></th>
-                     <th tal:content="model/LifeStage/title|nothing"></th>
-                     <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                     <th tal:content="model/Sex/title">Sex</th>
-                     </tal:header>
-                     <tal:analyses repeat="page pages">
-                         <tal:analysis repeat="analysis page">
-                           <th tal:condition="python: repeat['page'].start"
-                               tal:content="analysis/title"/>
-                         </tal:analysis>
-                     </tal:analyses>
-                   </tr>
-                   <tr>
-                    <tal:header tal:condition="python: not repeat['model'].start">
-                     <th colspan="6"></th>
-                     </tal:header>
-                    <tal:header tal:condition="python: repeat['model'].start">
-                     <th tal:content="model/id"></th>
-                     <th tal:content="model/SamplePointTitle"></th>
-                     <th tal:content="model/Species/title|nothing"></th>
-                     <th tal:content="model/LifeStage/title|nothing"></th>
-                     <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                     <th tal:content="model/Sex/title">Sex</th>
-                     </tal:header>
+                       <thead>
+                           <tr>
+                            <tal:header tal:condition="python: repeat['model'].start">
+                             <th>Pool ID</th>
+                             <th>Identification no.<br /> (pond, tank, etc.)</th>
+                             <th>Species</th>
+                             <th>Age</th>
+                             <th>Specimen Type</th>
+                             <th>Sex</th>
+                             </tal:header>
+                            <tal:header tal:condition="python: not repeat['model'].start">
+                             <th tal:content="model/id"></th>
+                             <th tal:content="model/SamplePointTitle"></th>
+                             <th tal:content="model/Species/title|nothing"></th>
+                             <th tal:content="model/LifeStage/title|nothing"></th>
+                             <th tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th tal:content="model/Sex/title">Sex</th>
+                             </tal:header>
+                             <tal:analyses repeat="page pages">
+                                 <tal:analysis repeat="analysis page">
+                                   <th tal:condition="python: repeat['page'].start"
+                                       tal:content="analysis/title"/>
+                                 </tal:analysis>
+                             </tal:analyses>
+                           </tr>
+                           <tr>
+                            <tal:header tal:condition="python: not repeat['model'].start">
+                             <th colspan="6"></th>
+                             </tal:header>
+                            <tal:header tal:condition="python: repeat['model'].start">
+                             <th tal:content="model/id"></th>
+                             <th tal:content="model/SamplePointTitle"></th>
+                             <th tal:content="model/Species/title|nothing"></th>
+                             <th tal:content="model/LifeStage/title|nothing"></th>
+                             <th tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th tal:content="model/Sex/title">Sex</th>
+                             </tal:header>
 
-                       <tal:analyses repeat="page pages">
-                         <tal:analysis repeat="analysis page">
-                           <th class="font-weight-normal"
-                               tal:condition="python: repeat['page'].start"
-                               tal:content="structure python:model.get_formatted_result(analysis)"/>
-                         </tal:analysis>
-                       </tal:analyses>
-                   </tr>
+                               <tal:analyses repeat="page pages">
+                                 <tal:analysis repeat="analysis page">
+                                   <th class="font-weight-normal"
+                                       tal:condition="python: repeat['page'].start"
+                                       tal:content="structure python:model.get_formatted_result(analysis)"/>
+                                 </tal:analysis>
+                               </tal:analyses>
+                           </tr>
+                       </thead>
 
-                   <tal:analyses repeat="page pages">
-                      <tr tal:condition="python: not repeat['page'].start">
-                        <th colspan="6"></th>
-                        <tal:analysis repeat="analysis page">
-                         <th tal:content="analysis/title"/>
-                        </tal:analysis>
-                      </tr>
-                      <tr tal:condition="python: not repeat['page'].start">
-                         <th colspan="6"></th>
-                         <tal:analysis repeat="analysis page">
-                           <th class="font-weight-normal"
-                               tal:content="structure python:model.get_formatted_result(analysis)"/>
-                         </tal:analysis>
-                      </tr>
-                   </tal:analyses>
-                 </tal:pages>
-                </tal:model>
-               </tal:models>
+                       <tbody>
+                         <tal:analyses repeat="page pages">
+                            <tr tal:condition="python: not repeat['page'].start">
+                              <th colspan="6"></th>
+                              <tal:analysis repeat="analysis page">
+                                <th tal:content="analysis/title"/>
+                              </tal:analysis>
+                            </tr>
+                            <tr tal:condition="python: not repeat['page'].start">
+                              <th colspan="6"></th>
+                              <tal:analysis repeat="analysis page">
+                                <th class="font-weight-normal"
+                                    tal:content="structure python:model.get_formatted_result(analysis)"/>
+                              </tal:analysis>
+                            </tr>
+                         </tal:analyses>
+                       <tbody>
+                     </tal:pages>
+                    </tal:model>
+                   </tal:models>
               </table>
               <div class="clearfix"></div>
           </tal:categories_in_poc>
