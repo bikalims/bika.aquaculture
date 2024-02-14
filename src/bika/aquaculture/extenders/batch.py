@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from Products.Archetypes.atapi import InAndOutWidget
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.Widget import BooleanWidget
 from Products.Archetypes.Widget import StringWidget
@@ -20,6 +21,7 @@ from bika.aquaculture.vocabularies import getUsers
 from bika.aquaculture.vocabularies import get_countries
 from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from bika.extras.extenders.fields import ExtBooleanField
+from bika.extras.extenders.fields import ExtLinesField
 from bika.extras.extenders.fields import ExtStringField
 from bika.extras.extenders.fields import ExtUIDReferenceField
 from bika.lims import FieldEditContact
@@ -80,12 +82,15 @@ country_of_origin_field = ExtStringField(
 )
 
 
-destination_country_field = ExtStringField(
+destination_country_field = ExtLinesField(
     "DestinationCountry",
     mode="rw",
     schemata="default",
     vocabulary=get_countries(),
-    widget=SelectionWidget(label=_("Destination Country"), format="select",),
+    widget=InAndOutWidget(
+        label=_("Destination Country"),
+        visible=True,
+        format="checkbox",),
 )
 
 pooling_info_field = ExtStringField(
