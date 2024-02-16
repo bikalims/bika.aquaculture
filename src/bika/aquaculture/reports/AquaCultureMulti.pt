@@ -247,7 +247,9 @@
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">Country Origin</td>
-                  <td tal:content="primarymodel/Batch/CountryOfOrigin/title|nothing"></td>
+                  <td tal:define="country primarymodel/Batch/CountryOfOrigin|nothing">
+                      <span tal:content="python: view.get_country_name(country)"/>
+                  </td>
                 </tr>
               </table>
             </td>
@@ -277,7 +279,9 @@
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">Country Destination</td>
-                  <td tal:content="primarymodel/Batch/DestinationCountry|nothing"></td>
+                  <td tal:define="countries primarymodel/Batch/DestinationCountry">
+                      <span tal:content="python: view.get_country_titles(countries)" />
+                  </td>
                 </tr>
               </table>
             </td>
@@ -569,6 +573,35 @@
       </div>
     </div>
   </tal:render>
+
+  <!-- Disclaimers start -->
+  <tal:render>
+    <div class="row section-results no-gutters">
+      <div class="w-100">
+        <br />
+        <h1 i18n:translate="">UAZ Policy on certification</h1>
+        <p>
+        This report provides our findings on the samples submitted to our laboratory for examination, health status evaluation, disease diagnosis, or pathogen detection. It is our policy and intent to perform the most appropriate assay(s) for the determination of the health/pathogen status of all specimens submitted to our laboratory.
+        </p>
+        <h1 i18n:translate="">PCR disclaimer</h1>
+        <p>
+        This report provides our findings on the samples submitted to our laboratory for pathogen detection.
+        </p>
+      </div>
+      <div class="w-100">
+        <p>
+      The <strong>UAZ Aquaculture Pathology Lab</strong> is an <strong>OIE</strong> (Office International des Épizooties or the Organization or World Animal Health Organization) Reference Laboratory for Acute Hepatopancreatic Necrosis Disease, Hepatobacter penaei (NHP), Infectious Hypodermal and Hematopoietic Necrosis, Taura Syndrome, and White Spot Disease.
+        </p>
+      </div>
+      <div class="w-100">
+        <p>
+        The <strong>UAZ Aquaculture Pathology Lab</strong> is also a <strong>U.S.D.A. A.P.H.I.S</strong>. Approved Aquaculture Laboratory for export testing for White Spot Disease, Taura Syndrome, Infectious Hypodermal and Hematopoietic Necrosis, Infectious Myonecrosis, Yellowhead Disease, Acute Hepatopancreatic Necrosis Disease, Crayfish plague (Aphanomyces astaci), White tail disease (Macrobrachium rosenbergii nodavirus), and Necrotizing hepatopancreatitis (Hepatobacter penaei).
+        </p>
+      </div>
+    </div>
+      <div class="clearfix"></div>
+  </tal:render>
+        <!-- Disclaimers end -->
 
   <!-- CUSTOM FOOTER -->
   <tal:render condition="python:footer">

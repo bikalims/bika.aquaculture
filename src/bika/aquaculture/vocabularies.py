@@ -44,7 +44,7 @@ SEXES = [
 
 def get_countries():
     items = map(
-        lambda country: (country.alpha_2, country.name), geo.get_countries()
+        lambda country: (_(country.alpha_2), _(country.name)), geo.get_countries()
     )
     items.insert(0, ("", ""))
-    return items
+    return DisplayList(items)
