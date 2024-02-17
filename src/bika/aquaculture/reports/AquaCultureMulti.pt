@@ -51,6 +51,7 @@
   <tal:css>
     <style type="text/css">
      .noborder { border: none !important}
+     .nobold { font-weight: normal !important}
      .report * { font: 9pt; }
      .report h1 { font-size: 140%; }
      .report h2 { font-size: 120%; }
@@ -347,16 +348,16 @@
                              <th>Sex</th>
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th tal:content="model/id"></th>
-                             <th tal:content="model/SamplePointTitle"></th>
-                             <th tal:content="model/Species/title|nothing"></th>
-                             <th tal:content="model/LifeStage/title|nothing"></th>
-                             <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th tal:content="model/Sex/title|nothing">Sex</th>
+                             <th class="nobold" tal:content="model/id"></th>
+                             <th class="nobold" tal:content="model/SamplePointTitle"></th>
+                             <th class="nobold" tal:content="model/Species/title|nothing"></th>
+                             <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
+                             <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th class="nobold" tal:content="model/Sex/title|nothing">Sex</th>
                              </tal:header>
                              <tal:analyses repeat="page pages">
                                  <tal:analysis repeat="analysis page">
-                                   <th tal:condition="python: repeat['page'].start"
+                                   <th class="nobold" tal:condition="python: repeat['page'].start"
                                        tal:content="analysis/ShortTitle"/>
                                  </tal:analysis>
                              </tal:analyses>
@@ -366,12 +367,12 @@
                              <th colspan="6"></th>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
-                             <th tal:content="model/id"></th>
-                             <th tal:content="model/SamplePointTitle"></th>
-                             <th tal:content="model/Species/title|nothing"></th>
-                             <th tal:content="model/LifeStage/title|nothing"></th>
-                             <th tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th tal:content="model/Sex/title|nothing">Sex</th>
+                             <th class="nobold" tal:content="model/id"></th>
+                             <th class="nobold" tal:content="model/SamplePointTitle"></th>
+                             <th class="nobold" tal:content="model/Species/title|nothing"></th>
+                             <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
+                             <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th class="nobold" tal:content="model/Sex/title|nothing">Sex</th>
                              </tal:header>
 
                                <tal:analyses repeat="page pages">
@@ -389,7 +390,7 @@
                             <tr tal:condition="python: not repeat['page'].start">
                               <th colspan="6"></th>
                               <tal:analysis repeat="analysis page">
-                                <th tal:content="analysis/ShortTitle"/>
+                                <th class="nobold" tal:content="analysis/ShortTitle"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
