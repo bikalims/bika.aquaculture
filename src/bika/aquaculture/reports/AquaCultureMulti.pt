@@ -62,7 +62,9 @@
      .report .font-size-100 { font-size: 100%; }
      .report .colon-after:after { content: ":"; }
      .report address {}
+     .report table td { border-top:0; border-bottom: 1px solid #dee2e6 }
      .report table.noborder td, .report table.noborder th { border: none; }
+     .report table.noborder td, .report table th.noborder { border: none; }
      .report table.noborder td, .report table th.noborder { border: none; }
      .report table.nopadding td { padding: 0; }
      .report table td.label { padding-right: 0.3rem; font-weight: bold; }
@@ -389,23 +391,23 @@
                        <tbody class="text-center">
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th class="nobold noborder" colspan="6"></th>
+                              <td class="nobold noborder" colspan="6"></td>
                               <tal:analysis repeat="analysis page">
-                                <th class="nobold" tal:content="analysis/ShortTitle"/>
+                                <td class="nobold" tal:content="analysis/ShortTitle"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th class="nobold noborder" colspan="6"></th>
+                              <td class="nobold noborder" colspan="6"></td>
                               <tal:analysis repeat="analysis page">
-                                <th class="font-weight-normal"
+                                <td class="font-weight-normal"
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: repeat['page'].end and len(pages)>1">
-                              <th class="nobold noborder" colspan="6"></th>
+                              <td class="nobold noborder" colspan="6"></td>
                             </tr>
                             <tr tal:condition="python: repeat['page'].end and len(pages)>1">
-                              <th class="nobold noborder" colspan="6"></th>
+                              <td class="nobold noborder" colspan="6"></td>
                             </tr>
                          </tal:analyses>
                        <tbody>
