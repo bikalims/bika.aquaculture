@@ -365,7 +365,7 @@
                            </tr>
                            <tr class="text-center">
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th class="nobold" colspan="6"></th>
+                             <th class="nobold noborder" colspan="6"></th>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <th class="nobold" tal:content="model/id"></th>
@@ -389,20 +389,20 @@
                        <tbody class="text-center">
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th class="nobold" colspan="6"></th>
+                              <th class="nobold noborder" colspan="6"></th>
                               <tal:analysis repeat="analysis page">
                                 <th class="nobold" tal:content="analysis/ShortTitle"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th class="nobold" colspan="6"></th>
+                              <th class="nobold noborder" colspan="6"></th>
                               <tal:analysis repeat="analysis page">
                                 <th class="font-weight-normal"
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: repeat['page'].end and len(pages)>1">
-                              <th class="nobold" colspan="6"></th>
+                              <th class="nobold noborder" colspan="6"></th>
                             </tr>
                             <tr tal:condition="python: repeat['page'].end and len(pages)>1">
                               <th class="nobold noborder" colspan="6"></th>
