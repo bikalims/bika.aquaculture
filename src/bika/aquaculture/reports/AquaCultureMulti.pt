@@ -137,7 +137,7 @@
               <table class="table table-sm table-condensed"
                      tal:define="laboratory python:view.laboratory;">
                 <tr>
-                  <td>
+                  <td class="noborder">
                     <!-- Laboratory Info -->
                     <address class="laboratory-address text-center">
                       <div class="lab-title font-weight-bold">
@@ -339,14 +339,14 @@
                   <tal:model repeat="model models">
                      <tal:pages define="pages python:view.get_pages_aqua_culture(category, model)">
                        <thead>
-                           <tr>
+                           <tr class="text-center">
                             <tal:header tal:condition="python: repeat['model'].start">
-                             <th>Pool ID</th>
-                             <th>Pond</th>
-                             <th>Species</th>
-                             <th>Age</th>
-                             <th>Specimen Type</th>
-                             <th>Sex</th>
+                             <th class="label">Pool ID</th>
+                             <th class="label">Pond</th>
+                             <th class="label">Species</th>
+                             <th class="label">Age</th>
+                             <th class="label">Specimen Type</th>
+                             <th class="label">Sex</th>
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
                              <th class="nobold" tal:content="model/id"></th>
@@ -363,7 +363,7 @@
                                  </tal:analysis>
                              </tal:analyses>
                            </tr>
-                           <tr>
+                           <tr class="text-center">
                             <tal:header tal:condition="python: not repeat['model'].start">
                              <th class="nobold" colspan="6"></th>
                              </tal:header>
@@ -386,7 +386,7 @@
                            </tr>
                        </thead>
 
-                       <tbody>
+                       <tbody class="text-center">
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
                               <th class="nobold" colspan="6"></th>
