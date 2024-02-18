@@ -63,6 +63,7 @@
      .report .colon-after:after { content: ":"; }
      .report address {}
      .report table.noborder td, .report table.noborder th { border: none; }
+     .report table.noborder td, .report table th.noborder { border: none; }
      .report table.nopadding td { padding: 0; }
      .report table td.label { padding-right: 0.3rem; font-weight: bold; }
      .report table.range-table td { padding: 0 0.3rem 0 0; border: none; }
@@ -353,7 +354,7 @@
                              <th class="nobold" tal:content="model/Species/title|nothing"></th>
                              <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
                              <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th class="nobold" tal:content="model/Sex/title|nothing">Sex</th>
+                             <th class="nobold" tal:content="python:view.get_sex_title(model)">Sex</th>
                              </tal:header>
                              <tal:analyses repeat="page pages">
                                  <tal:analysis repeat="analysis page">
@@ -364,7 +365,7 @@
                            </tr>
                            <tr>
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th colspan="6"></th>
+                             <th class="nobold" colspan="6"></th>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <th class="nobold" tal:content="model/id"></th>
@@ -372,7 +373,7 @@
                              <th class="nobold" tal:content="model/Species/title|nothing"></th>
                              <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
                              <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th class="nobold" tal:content="model/Sex/title|nothing">Sex</th>
+                             <th class="nobold" tal:content="python:view.get_sex_title(model)">Sex</th>
                              </tal:header>
 
                                <tal:analyses repeat="page pages">
@@ -388,17 +389,23 @@
                        <tbody>
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th colspan="6"></th>
+                              <th class="nobold" colspan="6"></th>
                               <tal:analysis repeat="analysis page">
                                 <th class="nobold" tal:content="analysis/ShortTitle"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
-                              <th colspan="6"></th>
+                              <th class="nobold" colspan="6"></th>
                               <tal:analysis repeat="analysis page">
                                 <th class="font-weight-normal"
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
+                            </tr>
+                            <tr tal:condition="python: repeat['page'].end and len(pages)>1">
+                              <th class="nobold" colspan="6"></th>
+                            </tr>
+                            <tr tal:condition="python: repeat['page'].end and len(pages)>1">
+                              <th class="nobold noborder" colspan="6"></th>
                             </tr>
                          </tal:analyses>
                        <tbody>
