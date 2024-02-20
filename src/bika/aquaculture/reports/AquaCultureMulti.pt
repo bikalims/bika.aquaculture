@@ -89,6 +89,24 @@
        height: 2mm;
        border-top: 1px solid black;
      }
+    .footerContainer {
+        position:relative;
+        width:100%;
+        height:100px;
+    }
+
+    .bgbehind {
+        background-image:url(<tal:t replace="python:view.get_footer_logo()"/>);
+        z-index:100;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 100%;
+        left:<tal:t replace="python:'{:.2f}mm'.format((content_width/2)-20)"/> ;
+        height:<tal:t replace="python:'{:.2f}mm'.format(40)"/>;
+        width:<tal:t replace="python:'{:.2f}mm'.format(40)"/> ;
+    }
+
 
      <tal:block condition="python:content_width and content_height">
      <tal:block condition="python:all([content_width, content_height])"
@@ -105,11 +123,23 @@
      }
      </tal:block>
      @page {
-       @bottom-right {
+       @bottom-left {
          vertical-align: top;
          margin-top: 2mm;
          font-size: 9pt;
          content: "<tal:t i18n:translate=''>Page</tal:t> " counter(page) " <tal:t i18n:translate=''>of</tal:t> " counter(pages);
+       }
+       @bottom-center {
+         vertical-align: top;
+         margin-top: 2mm;
+         font-size: 9pt;
+         content: "Arizona's first university - Since 1885"
+       }
+       @bottom-right {
+         vertical-align: top;
+         margin-top: 2mm;
+         font-size: 9pt;
+         content:  "<tal:t i18n:translate=''>Date Generated: </tal:t>" " " "<tal:t replace="python: view.timestamp.Date()"></tal:t>"
        }
      }
     </style>
@@ -649,6 +679,19 @@
         <!-- Disclaimers end -->
 
   <!-- CUSTOM FOOTER -->
+      <!-- DEFAULT FOOTER -->
+      <!-- If no custom footer then watermark will appear -->
+      <tal:render condition="python:not footer"
+                  define="laboratory python:view.laboratory;">
+        <div class="row section-footer no-gutters">
+          <div class="footerContainer">
+            <div class="bgbehind"> <!-- An absolute div within a relative div -->
+            </div>
+          <!-- Footer Line -->
+          <div id="footer-line"></div>
+          </div>
+        </div>
+      </tal:render>
   <tal:render condition="python:footer">
     <div class="row section-footer no-gutters">
       <!-- Footer Line -->

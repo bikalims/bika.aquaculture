@@ -1,8 +1,14 @@
-<?xml version="1.0"?>
-<registry
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="bika.aquaculture">
+<?xml version="1.0" encoding="UTF-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="bika.aquaculture">
 
-<!-- -*- extra stuff goes here -*- -->
+  <record name="bika.footer_logo" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="footer_logo">
+    <field type="plone.registry.field.TextLine">
+      <default>/++plone++bika.aquaculture.static/assets/images/footer.png</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This must be a URL relative to the site root. </description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Relative URL for the SENAITE toolbar logo </title>
+    </field>
+    <value>/++plone++bika.aquaculture.static/assets/images/footer.png</value>
+  </record>
 
 </registry>

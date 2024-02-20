@@ -13,7 +13,7 @@
 
   <!-- Publish static files -->
   <plone:static
-      name="bika.aquaculture"
+      name="bika.aquaculture.static"
       type="plone"
       directory="static"
       />
