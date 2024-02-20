@@ -297,11 +297,11 @@
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">Date Collected</td>
-                  <td></td>
+                  <td tal:content="python:view.to_localized_date(primarymodel.DateSampled)"></td>
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">Collected By</td>
-                  <td></td>
+                  <td tal:content="python: view.get_batch_sampler(primarymodel.getBatch(), primarymodel.getBatch().Sampler)"></td>
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">NAN</td>
