@@ -678,6 +678,22 @@
   </tal:render>
         <!-- Disclaimers end -->
 
+  <tal:render condition="python:len(collection)>0"
+              define="primarymodel python:collection[0];">
+    <div class="row section-results no-gutters">
+      <div class="col-6">
+          <div class="w-100">Tests conducted by: </div>
+          <div class="w-100">XXXX</div>
+      </div>
+      <div class="col-6">
+        <div class="w-100">Results authorized by: </div>
+        <div class="w-100">XXX</div>
+        </div>
+      <div class="clearfix"></div>
+    </div>
+  </tal:render>
+
+
   <!-- CUSTOM FOOTER -->
       <!-- DEFAULT FOOTER -->
       <!-- If no custom footer then watermark will appear -->
