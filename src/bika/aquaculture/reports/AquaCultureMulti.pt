@@ -144,6 +144,18 @@
      }
     </style>
   </tal:css>
+  <!-- Batch error message start -->
+  <tal:render condition="python:not view.is_batch_unique(collection)">
+    <div>
+      <h1 i18n:translate=""> Please make sure all Specimen are on the same Case</h1>
+    </div>
+  </tal:render>
+  <tal:render condition="python:not view.is_sps_unique(collection)">
+    <div>
+      <h1 i18n:translate=""> Please make sure all Specimen have the same location</h1>
+    </div>
+  </tal:render>
+  <!-- Batch error message end -->
 
 <tal:define_verifiers define="verifier_pair python:view.is_verifier_unique(collection)">
  <tal:not_unique_verifier condition="python:not verifier_pair[0]"
@@ -156,7 +168,7 @@
 </tal:define_verifiers>
 
   <!-- HEADER -->
- <tal:same_verifier condition="python:view.is_verifier_unique(collection)[0]">
+ <tal:same_verifier condition="python:view.is_verifier_unique(collection)[0] and view.is_batch_unique(collection) and view.is_sps_unique(collection)">
   <tal:render condition="python:True">
     <div class="row section-header no-gutters">
       <!-- Header Table -->
@@ -261,6 +273,7 @@
                 <tr>
                   <td class="label" i18n:translate="">Animal Location</td>
                   <td class="field">
+                      <div tal:content="primarymodel/SamplePointTitle"/>
                   </td>
                 </tr>
                 <tr>
@@ -293,7 +306,7 @@
                      tal:define="laboratory python:view.laboratory;">
                 <tr>
                   <td class="label" i18n:translate="">Case Number</td>
-                  <td tal:content="primarymodel/Batch/ClientBatchID/title|nothing"></td>
+                  <td tal:content="primarymodel/Batch/ClientBatchID"></td>
                 </tr>
                 <tr>
                   <td class="label" i18n:translate="">Date Collected</td>
@@ -357,8 +370,11 @@
   <!-- RESULTS -->
   <tal:render condition="python:True">
     <div class="row section-results no-gutters">
-      <div class="w-100">Case number</div>
-      <div class="w-100">
+      <div class="col-12" tal:condition="python:len(collection)>0" tal:define="primarymodel python:collection[0];">
+          <span>Case number</span>
+          <span tal:content="primarymodel/Batch/ClientBatchID"/>
+      </div>
+      <div class="col-12">
           <!-- Categories in PoC -->
           <tal:categories_in_poc tal:repeat="category python:view.sort_items(view.get_analyses_by_category(collection))">
               <h6>Table <span tal:content="repeat/category/number"></span>:
@@ -619,7 +635,7 @@
     <div class="row section-results no-gutters">
       <div class="w-100">
         <br />
-        <h1 i18n:translate="" tal:content="primarymodel/Batch/ClientBatchID/title|nothing">
+        <h1 i18n:translate="" tal:content="primarymodel/Batch/ClientBatchID">
         <table class="table table-sm table-condensed"
                tal:define="methods python:view.get_analyses_methods(collection)">
             <tr tal:repeat="method methods">
