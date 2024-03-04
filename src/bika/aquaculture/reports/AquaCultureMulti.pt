@@ -374,9 +374,9 @@
           <span>Case number</span>
           <span tal:content="primarymodel/Batch/ClientBatchID"/>
       </div>
-      <div class="col-12">
           <!-- Categories in PoC -->
-          <tal:categories_in_poc tal:repeat="category python:view.sort_items(view.get_analyses_by_category(collection))">
+      <tal:categories_in_poc tal:repeat="category python:view.sort_items(view.get_analyses_by_category(collection))">
+          <div class="col-12">
               <h6>Table <span tal:content="repeat/category/number"></span>:
                   Summary of Results for <span tal:content="category/Title"></span>
               </h6>
@@ -461,9 +461,9 @@
                     </tal:model>
                    </tal:models>
               </table>
+              </div>
               <div class="clearfix"></div>
           </tal:categories_in_poc>
-      </div>
     </div>
   </tal:render>
 
