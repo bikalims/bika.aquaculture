@@ -221,7 +221,7 @@
               </table>
         </div>
         <div class="col-4 text-right">
-            <div class="accreditation-logo text-left"
+            <div class="accreditation-logo text-center"
                  tal:define="accredited laboratory/LaboratoryAccredited;
                              accreditation_logo laboratory/AccreditationBodyLogo;"
                  tal:condition="accredited">
