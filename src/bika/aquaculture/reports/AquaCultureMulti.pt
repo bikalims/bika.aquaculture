@@ -147,12 +147,12 @@
   <!-- Batch error message start -->
   <tal:render condition="python:not view.is_batch_unique(collection)">
     <div>
-      <h1 i18n:translate=""> Please make sure all Specimen are on the same Case</h1>
+      <h1 i18n:translate=""> Samples are not from the same Case </h1>
     </div>
   </tal:render>
   <tal:render condition="python:not view.is_sps_unique(collection)">
     <div>
-      <h1 i18n:translate=""> Please make sure all Specimen have the same location</h1>
+      <h1 i18n:translate=""> Samples are not from the same Location </h1>
     </div>
   </tal:render>
   <!-- Batch error message end -->
