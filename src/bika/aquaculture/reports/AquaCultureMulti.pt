@@ -63,6 +63,8 @@
      .report .colon-after:after { content: ":"; }
      .report address {}
      .report table td { border-top:0; border-bottom: 1px solid #dee2e6 }
+     .report table.result thead th.result { border: 1px solid #dee2e6 }
+     .report table.result tbody td.result{ border: 1px solid #dee2e6 }
      .report table.noborder td, .report table.noborder th { border: none; }
      .report table.noborder td, .report table th.noborder { border: none; }
      .report table.noborder td, .report table th.noborder { border: none; }
@@ -181,7 +183,7 @@
               <table class="table table-sm table-condensed"
                      tal:define="laboratory python:view.laboratory;">
                 <tr>
-                  <td class="noborder">
+                  <td class="">
                     <!-- Laboratory Info -->
                     <address class="laboratory-address text-center">
                       <div class="lab-title font-weight-bold">
@@ -369,7 +371,7 @@
 
   <!-- RESULTS -->
   <tal:render condition="python:True">
-    <div class="row section-results no-gutters">
+    <div class="report row section-results no-gutters">
       <div class="col-12" tal:condition="python:len(collection)>0" tal:define="primarymodel python:collection[0];">
           <span>Case number</span>
           <span tal:content="primarymodel/Batch/ClientBatchID"/>
@@ -382,52 +384,60 @@
               </h6>
 
               <!-- Results table per PoC -->
-              <table class="table table-sm table-condensed small">
+              <table class="table table-sm table-condensed small result">
                 <tal:models define="models python:view.get_pages_aqua_culture(category)">
                   <tal:model repeat="model models">
                      <tal:pages define="pages python:view.get_pages_aqua_culture(category, model)">
-                       <thead>
+                       <thead class="result">
                            <tr class="text-center">
                             <tal:header tal:condition="python: repeat['model'].start">
-                             <th class="label">Pool ID</th>
-                             <th class="label">Pond</th>
-                             <th class="label">Species</th>
-                             <th class="label">Age</th>
-                             <th class="label">Specimen Type</th>
-                             <th class="label">Sex</th>
+                             <th class="label result">Pool ID</th>
+                             <th class="label result">Pond</th>
+                             <th class="label result">Species</th>
+                             <th class="label result">Age</th>
+                             <th class="label result">Specimen Type</th>
+                             <th class="label result">Sex</th>
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th class="nobold" tal:content="model/id"></th>
-                             <th class="nobold" tal:content="model/SamplePointTitle"></th>
-                             <th class="nobold" tal:content="model/Species/title|nothing"></th>
-                             <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
-                             <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th class="nobold" tal:content="python:view.get_sex_title(model)">Sex</th>
+                             <th class="nobold result" tal:content="model/id"></th>
+                             <th class="nobold result" tal:content="model/SamplePointTitle"></th>
+                             <th class="nobold result" tal:content="model/Species/title|nothing"></th>
+                             <th class="nobold result" tal:content="model/LifeStage/title|nothing"></th>
+                             <th class="nobold result" tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th class="nobold result" tal:content="python:view.get_sex_title(model)">Sex</th>
                              </tal:header>
                              <tal:analyses repeat="page pages">
+                                 <tal:some tal:condition="python: repeat['model'].start">
                                  <tal:analysis repeat="analysis page">
-                                   <th class="nobold" tal:condition="python: repeat['page'].start"
-                                       tal:content="analysis/ShortTitle"/>
+                                   <th class="nobold result" tal:condition="python: repeat['page'].start"
+                                       tal:content="analysis/ShortTitle|nothing"/>
                                  </tal:analysis>
+                                 </tal:some>
+                                 <tal:some tal:condition="python: not repeat['model'].start">
+                                 <tal:analysis repeat="analysis page">
+                                   <th class="nobold result" tal:condition="python: repeat['page'].start"
+                                       tal:content="analysis/ShortTitle|nothing"/>
+                                 </tal:analysis>
+                                 </tal:some>
                              </tal:analyses>
                            </tr>
                            <tr class="text-center">
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th class="nobold noborder" colspan="6"></th>
+                             <th class="nobold result" colspan="6"></th>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
-                             <th class="nobold" tal:content="model/id"></th>
-                             <th class="nobold" tal:content="model/SamplePointTitle"></th>
-                             <th class="nobold" tal:content="model/Species/title|nothing"></th>
-                             <th class="nobold" tal:content="model/LifeStage/title|nothing"></th>
-                             <th class="nobold" tal:content="model/SampleTypeTitle">Specimen Type</th>
-                             <th class="nobold" tal:content="python:view.get_sex_title(model)">Sex</th>
+                             <th class="nobold result" tal:content="model/id"></th>
+                             <th class="nobold result" tal:content="model/SamplePointTitle"></th>
+                             <th class="nobold result" tal:content="model/Species/title|nothing"></th>
+                             <th class="nobold result" tal:content="model/LifeStage/title|nothing"></th>
+                             <th class="nobold result" tal:content="model/SampleTypeTitle">Specimen Type</th>
+                             <th class="nobold result" tal:content="python:view.get_sex_title(model)">Sex</th>
                              </tal:header>
 
                                <tal:analyses repeat="page pages">
                                  <tal:analysis repeat="analysis page">
-                                   <th class="font-weight-normal"
-                                       tal:condition="python: repeat['page'].start"
+                                   <th class="font-weight-normal result"
+                                       tal:condition="python: repeat['page'].start and analysis"
                                        tal:content="structure python:model.get_formatted_result(analysis)"/>
                                  </tal:analysis>
                                </tal:analyses>
@@ -437,23 +447,19 @@
                        <tbody class="text-center">
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
-                              <td class="nobold noborder" colspan="6"></td>
+                              <td class="nobold result" colspan="6"></td>
                               <tal:analysis repeat="analysis page">
-                                <td class="nobold" tal:content="analysis/ShortTitle"/>
+                                <td class="nobold result"
+                                    tal:content="analysis/ShortTitle|nothing"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
-                              <td class="nobold noborder" colspan="6"></td>
+                              <td class="nobold result" colspan="6"></td>
                               <tal:analysis repeat="analysis page">
-                                <td class="font-weight-normal"
+                                <td class="font-weight-normal result" style="padding-bottom: 20px; vertical-align: top;"
+                                    tal:condition="analysis"
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
-                            </tr>
-                            <tr tal:condition="python: repeat['page'].end and len(pages)>1">
-                              <td class="nobold noborder" colspan="6"></td>
-                            </tr>
-                            <tr tal:condition="python: repeat['page'].end and len(pages)>1">
-                              <td class="nobold noborder" colspan="6"></td>
                             </tr>
                          </tal:analyses>
                        <tbody>
