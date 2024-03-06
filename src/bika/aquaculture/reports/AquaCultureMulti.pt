@@ -373,8 +373,9 @@
   <tal:render condition="python:True">
     <div class="report row section-results no-gutters">
       <div class="col-12" tal:condition="python:len(collection)>0" tal:define="primarymodel python:collection[0];">
-          <span>Case number</span>
-          <span tal:content="primarymodel/Batch/ClientBatchID"/>
+          <h1>
+            Case no: <span tal:content="primarymodel/Batch/ClientBatchID"/>
+          </h1>
       </div>
           <!-- Categories in PoC -->
       <tal:categories_in_poc tal:repeat="category python:view.sort_items(view.get_analyses_by_category(collection))">
