@@ -371,8 +371,8 @@
 
   <!-- RESULTS -->
   <tal:render condition="python:True">
-    <div class="report row section-results no-gutters">
-      <div class="col-12" tal:condition="python:len(collection)>0" tal:define="primarymodel python:collection[0];">
+    <div class="row section-results no-gutters" tal:define="primarymodel python:collection[0];">
+      <div class="col-12" tal:condition="python:len(collection)>0">
           <h1>
             Case no: <span tal:content="primarymodel/Batch/ClientBatchID"/>
           </h1>
@@ -468,6 +468,12 @@
                     </tal:model>
                    </tal:models>
               </table>
+              </div>
+              <div class="col-12">
+                  Note: *N/A – Not Available ‡ND – Not Detected
+              </div>
+              <div class="col-12">
+                  Pooling info: <span tal:content="primarymodel/Batch/PoolingInfo"/>
               </div>
               <div class="clearfix"></div>
           </tal:categories_in_poc>
