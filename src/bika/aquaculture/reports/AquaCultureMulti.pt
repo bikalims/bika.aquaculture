@@ -154,7 +154,7 @@
   </tal:render>
   <tal:render condition="python:not view.is_sps_unique(collection)">
     <div>
-      <h1 i18n:translate=""> Samples are not from the same Location </h1>
+      <h1 i18n:translate=""> Samples are not from the same Pond Location </h1>
     </div>
   </tal:render>
   <!-- Batch error message end -->
@@ -273,7 +273,7 @@
                 </tr>
                 <!-- Contact Name(s) -->
                 <tr>
-                  <td class="label" i18n:translate="">Animal Location</td>
+                  <td class="label" i18n:translate="">Pond Location</td>
                   <td class="field">
                       <div tal:content="primarymodel/SamplePointTitle"/>
                   </td>
@@ -468,13 +468,13 @@
                     </tal:model>
                    </tal:models>
               </table>
-              </div>
-              <div class="col-12">
-                  Note: *N/A – Not Available ‡ND – Not Detected
-              </div>
-              <div class="col-12">
-                  Pooling info: <span tal:content="primarymodel/Batch/PoolingInfo"/>
-              </div>
+          </div>
+          <div class="col-12">
+              Note: *N/A – Not Available ‡ND – Not Detected
+          </div>
+          <div class="col-12" style="padding-top: 2px">
+              Pooling info: <span tal:content="primarymodel/Batch/PoolingInfo"/>
+          </div>
               <div class="clearfix"></div>
           </tal:categories_in_poc>
     </div>
