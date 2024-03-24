@@ -105,7 +105,7 @@
         position: absolute;
         bottom: 100%;
         left:<tal:t replace="python:'{:.2f}mm'.format((content_width/2)-20)"/> ;
-        height:<tal:t replace="python:'{:.2f}mm'.format(40)"/>;
+        height:<tal:t replace="python:'{:.2f}mm'.format(16)"/>;
         width:<tal:t replace="python:'{:.2f}mm'.format(40)"/> ;
     }
 
@@ -159,7 +159,7 @@
   </tal:render>
   <!-- Batch error message end -->
 
-<tal:define_verifiers define="verifier_pair python:view.is_verifier_unique(collection)">
+<tal:verifiers define="verifier_pair python:view.is_verifier_unique(collection)">
  <tal:not_unique_verifier condition="python:not verifier_pair[0]"
  			  define="kw_list python:verifier_pair[1]">
   <div>
@@ -167,7 +167,7 @@
     	Analysis for all samples included"/>
   </div> 
  </tal:not_unique_verifier>
-</tal:define_verifiers>
+</tal:verifiers>
 
   <!-- HEADER -->
  <tal:same_verifier condition="python:view.is_verifier_unique(collection)[0] and view.is_batch_unique(collection) and view.is_sps_unique(collection)">
@@ -712,12 +712,46 @@
     <div class="row section-results no-gutters">
       <div class="col-6">
           <div class="w-100">Tests conducted by: </div>
-          <div class="w-100">XXXX</div>
+          <div class="w-100">
+            <table class="table table-condensed" tal:define="analysts python:view.get_analysts(collection)">
+                <tal:analysts tal:repeat="analyst analysts">
+                <tr>
+                  <td style="border:none">
+                    <div class="font-weight-bold">
+                      <span tal:content="analyst/analyst"></span>
+                    </div>
+                  </td>
+                </tr>
+              </tal:analysts>
+            </table>
+          </div>
       </div>
       <div class="col-6">
         <div class="w-100">Results authorized by: </div>
-        <div class="w-100">XXX</div>
+        <div class="w-100">
+            <table class="table table-condensed" tal:define="verifiers python:view.get_verifiers(collection)">
+                <tal:verifiers tal:repeat="verifier verifiers">
+                <tr>
+                  <td style="border:none">
+                    <div>
+                      <img tal:condition="verifier/signature"
+                          tal:attributes="src string:${verifier/signature}" style="height:75px"/>
+                    </div>
+                    <div class="font-weight-bold">
+                      <span tal:content="verifier/verifier"></span>
+                    </div>
+                    <div>
+                      <span tal:content="verifier/jobtitle"></span>
+                    </div>
+                    <div>
+                      <span tal:content="verifier/default_department|nothing"></span>
+                    </div>
+                  </td>
+                </tr>
+              </tal:verifiers>
+            </table>
         </div>
+      </div>
       <div class="clearfix"></div>
     </div>
   </tal:render>
