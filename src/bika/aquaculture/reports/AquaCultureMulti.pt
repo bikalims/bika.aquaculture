@@ -218,6 +218,7 @@
                            tal:content="laboratory/LabURL"></a>
                       </div>
                     </address>
+                   <span name='coa_num' tal:content="python: coa_num" style="display:none"/>
                   </td>
                 </tr>
               </table>
@@ -385,7 +386,7 @@
               </h6>
 
               <!-- Results table per PoC -->
-              <table class="table table-sm table-condensed small result">
+              <table class="table table-sm table-condensed small result" style="margin-bottom: 0 !important">
                 <tal:models define="models python:view.get_pages_aqua_culture(category)">
                   <tal:model repeat="model models">
                      <tal:pages define="pages python:view.get_pages_aqua_culture(category, model)">
@@ -457,10 +458,13 @@
                             <tr tal:condition="python: not repeat['page'].start">
                               <td class="nobold result" colspan="6"></td>
                               <tal:analysis repeat="analysis page">
-                                <td class="font-weight-normal result" style="padding-bottom: 20px; vertical-align: top;"
+                                <td class="font-weight-normal result"
                                     tal:condition="analysis"
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
+                            </tr>
+                            <tr>
+                              <td></td>
                             </tr>
                          </tal:analyses>
                        <tbody>
@@ -468,12 +472,11 @@
                     </tal:model>
                    </tal:models>
               </table>
-          </div>
-          <div class="col-12">
-              Note: *N/A – Not Available ‡ND – Not Detected
-          </div>
-          <div class="col-12" style="padding-top: 2px">
-              Pooling info: <span tal:content="primarymodel/Batch/PoolingInfo"/>
+              <table class="table table-sm table-condensed small result">
+                       <tr><td>
+              Note: *N/A – Not Available ‡ND – Not Detected &emsp;Pooling info: <span tal:content="primarymodel/Batch/PoolingInfo"/>
+                       </td></tr>
+              </table>
           </div>
               <div class="clearfix"></div>
           </tal:categories_in_poc>
