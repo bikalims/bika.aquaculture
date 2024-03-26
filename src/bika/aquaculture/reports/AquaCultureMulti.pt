@@ -655,7 +655,7 @@
         <table class="table table-sm table-condensed"
                tal:define="methods python:view.get_analyses_methods(collection)">
             <tr tal:repeat="method methods">
-                <td tal:content="method/method_id">
+                <td tal:content="method/title">
                 <td tal:content="method/description">
             </tr>
         </table>
