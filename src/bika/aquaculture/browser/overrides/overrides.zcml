@@ -20,4 +20,13 @@
         factory=".workflow.analysisrequest.SampleReceiveWorkflowTransition"
         name="receive"/>
 
+  <!-- Download PDF Action Adapter -->
+  <adapter
+      for="senaite.impress.interfaces.IPublishView
+           *
+           zope.publisher.interfaces.browser.IBrowserRequest"
+      name="download_pdf"
+      factory=".adapters.DownloadPDFActionProvider"
+      />
+
 </configure>
