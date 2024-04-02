@@ -8,8 +8,8 @@ class DownloadPDFActionProvider(ActionProvider):
     """
     def __init__(self, view, context, request):
         super(DownloadPDFActionProvider, self).__init__(view, context, request)
-        self.title = _("Download the generated PDF to your computer")
-        self.text = "<i class='fas fa-file-download'></i>"
+        self.title = _("Open COA for printing")
+        self.text = "<i class='fa fa-print'></i>"
         self.name = "impress_download_pdf"
         self.context_url = api.get_url(self.context)
         self.url = "{}/{}".format(self.context_url, self.name)
