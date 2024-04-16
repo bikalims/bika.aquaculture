@@ -13,12 +13,6 @@
       layer="bika.lims.interfaces.IBikaLIMS"
     />
 
-    <adapter
-        for="senaite.app.listing.interfaces.IAjaxListingView
-             bika.lims.interfaces.IAnalysisRequest
-             senaite.core.interfaces.ISenaiteCore"
-        factory=".workflow.analysisrequest.SampleReceiveWorkflowTransition"
-        name="receive"/>
 
   <!-- Download PDF Action Adapter -->
   <adapter
