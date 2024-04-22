@@ -241,7 +241,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <h1>Final Report</h1>
-            <p>Confidential. Distribute on a need to kow basis only</p>
+            <p>Confidential. Distribute on a need to know basis only</p>
         </div>
     </div>
   </tal:render>
