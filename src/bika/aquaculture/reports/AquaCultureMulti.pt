@@ -659,9 +659,6 @@
                 <td tal:content="method/description">
             </tr>
         </table>
-        <p>
-        This report provides our findings on the samples submitted to our laboratory for examination, health status evaluation, disease diagnosis, or pathogen detection. It is our policy and intent to perform the most appropriate assay(s) for the determination of the health/pathogen status of all specimens submitted to our laboratory.
-        </p>
       </div>
     </div>
       <div class="clearfix"></div>
