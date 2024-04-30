@@ -28,6 +28,13 @@ class BatchFolderContentsListingViewAdapter(object):
         for i in range(len(self.listing.review_states)):
             self.listing.review_states[i]["columns"].insert(0, "Priority")
 
+        batch_id = "BatchID"
+        if batch_id in self.listing.columns:
+            self.listing.columns[batch_id]["title"] = _("Case ID")
+        batch_labels = "BatchLabels"
+        if batch_labels in self.listing.columns:
+            self.listing.columns[batch_labels]["title"] = _("Case Labels")
+
     def folder_item(self, obj, item, index):
         if not is_installed():
             return item

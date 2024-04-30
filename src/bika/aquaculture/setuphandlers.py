@@ -70,6 +70,11 @@ def setup(portal):
     fti = pt.get("Batch")
     fti.title = _("Case")
 
+    # Batch Label
+    fti = pt.get("BatchLabel")
+    fti.title = _("Case Label")
+    portal["bika_setup"]["bika_batchlabels"].setTitle("Case Labels")
+
     # Methods
     methods = portal["methods"]
     methods.title = "Protocols"

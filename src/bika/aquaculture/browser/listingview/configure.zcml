@@ -8,6 +8,13 @@
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".batchfolder.BatchFolderContentsListingViewAdapter"/>
 
+    <!-- batch label listing -->
+    <subscriber
+            for="bika.lims.controlpanel.bika_batchlabels.BatchLabelsView
+                 zope.interface.Interface"
+            provides="senaite.app.listing.interfaces.IListingViewAdapter"
+            factory=".batchlabels.BatchLabelsListingViewAdapter"/>
+
     <!-- sample types listing -->
     <subscriber
             for="bika.lims.controlpanel.bika_sampletypes.SampleTypesView
