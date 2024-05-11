@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from collections import OrderedDict
 from zope.component import adapts
 from zope.interface import implements
 
@@ -25,6 +26,14 @@ class BatchFolderContentsListingViewAdapter(object):
             ("Priority", {"toggle": False, "sortable": True, "title": ""},)
         ]
         self.listing.columns.update(batch_priority)
+        keys = self.listing.columns.keys()
+        keys.pop(-1)
+        keys.insert(0, "Priority")
+        new_cols = OrderedDict()
+        for k in keys:
+            new_cols[k] = self.listing.columns[k]
+        self.listing.columns = new_cols
+
         for i in range(len(self.listing.review_states)):
             self.listing.review_states[i]["columns"].insert(0, "Priority")
 
@@ -34,6 +43,9 @@ class BatchFolderContentsListingViewAdapter(object):
         batch_labels = "BatchLabels"
         if batch_labels in self.listing.columns:
             self.listing.columns[batch_labels]["title"] = _("Case Labels")
+        client_batch_id = "ClientBatchID"
+        if client_batch_id in self.listing.columns:
+            self.listing.columns[client_batch_id]["title"] = _("Client Case ID")
 
     def folder_item(self, obj, item, index):
         if not is_installed():
