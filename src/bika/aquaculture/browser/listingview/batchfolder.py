@@ -25,12 +25,13 @@ class BatchFolderContentsListingViewAdapter(object):
         batch_priority = [
             ("Priority", {"toggle": False, "sortable": True, "title": ""},)
         ]
+        # inserts Priority at the end
         self.listing.columns.update(batch_priority)
         keys = self.listing.columns.keys()
-        keys.pop(-1)
-        keys.insert(0, "Priority")
+        priority = keys.index("Priority")
+        new_keys = [keys[priority]] + keys[:priority] + keys[priority + 1:]
         new_cols = OrderedDict()
-        for k in keys:
+        for k in new_keys:
             new_cols[k] = self.listing.columns[k]
         self.listing.columns = new_cols
 
@@ -51,7 +52,7 @@ class BatchFolderContentsListingViewAdapter(object):
         if not is_installed():
             return item
         batch = obj.getObject()
-        batch_priority = batch.BatchPriority
+        batch_priority = batch.Schema()["BatchPriority"].getAccessor(batch)()
         priority = "3"
         priority_text = "Routine"
         if batch_priority == "rush":
