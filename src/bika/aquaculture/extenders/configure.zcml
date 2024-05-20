@@ -30,6 +30,10 @@
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".method.MethodSchemaModifier" />
 
+    <adapter name='bika.aquaculture.client'
+             provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             factory=".bikasetup.BikaSetupSchemaExtender"/>
+
   <browser:page
       for="*"
       name="getsuppliers"

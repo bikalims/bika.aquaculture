@@ -182,6 +182,7 @@ class BatchSchemaExtender(object):
 class BatchSchemaModifier(object):
     adapts(IBatch)
     implements(ISchemaModifier)
+    layer = IBikaAquacultureLayer
 
     def __init__(self, context):
         self.context = context

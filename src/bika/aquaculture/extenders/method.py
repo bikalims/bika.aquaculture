@@ -4,6 +4,7 @@ from archetypes.schemaextender.interfaces import ISchemaModifier
 from bika.lims.interfaces import IMethod
 from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
+from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from zope.component import adapts
 from zope.interface import implements
 
@@ -11,6 +12,7 @@ from zope.interface import implements
 class MethodSchemaModifier(object):
     adapts(IMethod)
     implements(ISchemaModifier)
+    layer = IBikaAquacultureLayer
 
     def __init__(self, context):
         self.context = context
