@@ -31,14 +31,14 @@
 
     <!-- sample points listing -->
     <subscriber
-            for="bika.lims.controlpanel.bika_samplepoints.SamplePointsView
+            for="senaite.core.browser.controlpanel.samplepoints.view.SamplePointsView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".samplepoints.SamplePointsListingViewAdapter"/>
 
     <!-- client sample points listing -->
     <subscriber
-            for="bika.lims.browser.client.views.samplepoints.ClientSamplePointsView
+            for="senaite.core.browser.clients.client.samplepoints.view.ClientSamplePointsView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".samplepoints.SamplePointsListingViewAdapter"/>

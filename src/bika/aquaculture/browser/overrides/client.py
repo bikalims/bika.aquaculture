@@ -20,7 +20,7 @@
 
 from bika.aquaculture.config import _
 from bika.aquaculture.config import is_installed
-from bika.lims.controlpanel.bika_samplepoints import SamplePointsView
+from senaite.core.browser.controlpanel.samplepoints.view import SamplePointsView
 
 
 class ClientSamplePointsView(SamplePointsView):
