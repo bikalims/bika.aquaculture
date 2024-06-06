@@ -60,6 +60,7 @@ def add_dexterity_setup_items(portal):
 
 def setup(portal):
     # Batches
+    senaite_setup = api.get_senaite_setup()
     batches = portal["batches"]
     batches.title = _("Cases")
     batches.reindexObject()
@@ -103,7 +104,7 @@ def setup(portal):
     fti.title = _("Specimen Type")
 
     # Sample Points
-    portal["bika_setup"]["bika_samplepoints"].setTitle("Ponds")
+    senaite_setup.samplepoints.setTitle("Ponds")
     # Sample Type
     fti = pt.get("SamplePoint")
     fti.title = _("Pond")
