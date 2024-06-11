@@ -10,7 +10,7 @@
 
     <!-- batch label listing -->
     <subscriber
-            for="bika.lims.controlpanel.bika_batchlabels.BatchLabelsView
+            for="senaite.core.browser.controlpanel.batchlabels.view.BatchLabelsView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".batchlabels.BatchLabelsListingViewAdapter"/>
