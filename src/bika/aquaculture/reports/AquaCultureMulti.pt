@@ -324,6 +324,10 @@
                   <td tal:content="primarymodel/Batch/NAN|nothing"></td>
                 </tr>
                 <tr>
+                  <td class="label" i18n:translate="">Purpose</td>
+                  <td tal:content="python: view.get_batch_purpose_of_testing(primarymodel.getBatch())"></td>
+                </tr>
+                <tr>
                   <td class="label" i18n:translate="">Reference Number</td>
                   <td tal:content="primarymodel/Batch/ReferenceNumber|nothing"></td>
                 </tr>
