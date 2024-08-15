@@ -348,6 +348,29 @@
       <div class="clearfix"></div>
     </div>
   </tal:render>
+  <!-- REMARKS -->
+  <tal:t define="collection python:view.collection;
+                 report_options python:options.get('report_options', {});">
+    <tal:model repeat="model collection">
+      <div class="row section-remarks no-gutters"
+           tal:define="remarks python:model.getRemarks()"
+           tal:condition="remarks">
+        <div class="remarks_history">
+          <h2 i18n:translate>Remarks for <span tal:replace="model/getId"/></h2>
+          <tal:record repeat="record remarks">
+            <div class="record" tal:attributes="id record/id;">
+              <div class="record-header border-bottom" tal:condition="record/user_id">
+                <span class="record-username" tal:content="record/user_name"/>
+                <span class="record-date" tal:content="record/created_ulocalized"/>
+              </div>
+              <div class="record-content"
+                   tal:content="structure record/html_content"></div>
+            </div>
+          </tal:record>
+        </div>
+      </div>
+    </tal:model>
+  </tal:t>
 
   <!-- ALERTS -->
   <tal:render condition="python:True">
@@ -504,20 +527,6 @@
     </tal:model>
   </tal:render>
 
-  <!-- REMARKS -->
-  <tal:render condition="python:True">
-    <tal:model repeat="model collection">
-      <div class="row section-remarks no-gutters" tal:condition="model/Remarks">
-        <div class="">
-          <h2 i18n:translate>Remarks for <span tal:replace="model/getId"/></h2>
-          <div class="text-info" tal:repeat="remark model/Remarks">
-              <div class="text-info" tal:content="python: '{}, {}: {}'.format(remark['user_name'], remark['created'][:10], remark['content'])"></div>
-          </div>
-        </div>
-        <br />
-      </div>
-    </tal:model>
-  </tal:render>
 
   <!-- ATTACHMENTS -->
   <tal:render condition="python:True">
