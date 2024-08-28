@@ -24,6 +24,25 @@ from bika.lims.browser.widgets import SelectionWidget
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 
 
+pool_id_field = ExtStringField(
+    "PoolID",
+    required=False,
+    mode="rw",
+    read_permission=View,
+    write_permission=FieldEditContact,
+    widget=StringWidget(
+        label=_(u"Pool ID"),
+        description=_("Pool ID"),
+        render_own_label=True,
+        visible={
+            "add": "edit",
+            "header_table": "visible",
+            "secondary": "disabled",
+            "verified": "view",
+            "published": "view",
+        },
+    ),
+)
 lot_field = ExtStringField(
     "Lot",
     required=False,
@@ -152,6 +171,7 @@ class AnalysisRequestSchemaExtender(object):
     layer = IBikaAquacultureLayer
 
     fields = [
+        pool_id_field,
         lot_field,
         species_field,
         life_stage_field,
@@ -183,7 +203,6 @@ class AnalysisRequestSchemaModifier(object):
         if is_installed():
             schema["Batch"].widget.label = _("Case")
             schema["Batch"].widget.description = _("Assign a sample to a case")
-            schema["ClientSampleID"].widget.label = _("Pool ID")
             schema["SampleType"].widget.label = _("Specimen Type")
             schema["SampleType"].widget.description = _(
                 "Select the specimen type of this specimen"

@@ -421,6 +421,7 @@
                            <tr class="text-center">
                             <tal:header tal:condition="python: repeat['model'].start">
                              <th class="label result">Pool ID</th>
+                             <th class="label result">CSID</th>
                              <th class="label result">Pond</th>
                              <th class="label result">Species</th>
                              <th class="label result">Age</th>
@@ -429,6 +430,7 @@
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
                              <th class="nobold result" tal:content="model/id"></th>
+                             <th class="nobold result" tal:content="model/ClientSampleID"></th>
                              <th class="nobold result" tal:content="model/SamplePointTitle"></th>
                              <th class="nobold result" tal:content="model/Species/title|nothing"></th>
                              <th class="nobold result" tal:content="model/LifeStage/title|nothing"></th>
@@ -456,6 +458,7 @@
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <th class="nobold result" tal:content="model/id"></th>
+                             <th class="nobold result" tal:content="model/ClientSampleID"></th>
                              <th class="nobold result" tal:content="model/SamplePointTitle"></th>
                              <th class="nobold result" tal:content="model/Species/title|nothing"></th>
                              <th class="nobold result" tal:content="model/LifeStage/title|nothing"></th>
