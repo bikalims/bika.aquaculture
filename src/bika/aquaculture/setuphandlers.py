@@ -6,9 +6,14 @@ from bika.aquaculture.config import _
 from bika.aquaculture.config import PROFILE_ID
 from bika.aquaculture.config import logger
 from bika.lims import api
+from senaite.core.content.samplepoint import ISamplePointSchema
 from senaite.core.setuphandlers import add_dexterity_items
 from senaite.samplepointlocations.content.samplepointlocation import (
     ISamplePointLocation,
+)
+from senaite.samplepointlocations.extenders.samplepoint import (
+
+    IExtendedSamplePoint,
 )
 
 
@@ -99,13 +104,17 @@ def setup(portal):
 
     # Sample Types
     portal["bika_setup"]["bika_sampletypes"].setTitle("Specimen Types")
-    # Sample Type
     fti = pt.get("SampleType")
     fti.title = _("Specimen Type")
 
     # Sample Points
+    sp_schema = ISamplePointSchema
+    sample_type_filed = sp_schema["sample_types"]
+    sample_type_filed.title = _("Specimen Types")
+    sp_bhv_schema = IExtendedSamplePoint
+    sp_bhv_schema["sample_point_id"].title = _("Pond ID")
+    sp_bhv_schema["sample_point_location"].title = _("Pond Location")
     senaite_setup.samplepoints.setTitle("Ponds")
-    # Sample Type
     fti = pt.get("SamplePoint")
     fti.title = _("Pond")
 

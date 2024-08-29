@@ -22,10 +22,6 @@
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
              factory=".client.ClientSchemaExtender"/>
 
-    <adapter name='bika.aquaculture.samplepoint.schemamodifier'
-             provides="archetypes.schemaextender.interfaces.ISchemaModifier"
-             factory=".samplepoint.SamplePointSchemaModifier" />
-
     <adapter name='bika.aquaculture.method.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
              factory=".method.MethodSchemaModifier" />
