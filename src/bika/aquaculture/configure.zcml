@@ -44,6 +44,9 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+    <include package=".behaviors" />
+
   <plone:static directory="reports" type="senaite.impress.reports"/>
 
 </configure>
