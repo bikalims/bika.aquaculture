@@ -22,9 +22,11 @@ from bika.aquaculture.interfaces import IBikaAquacultureLayer
 from bika.extras.extenders.fields import ExtLinesField
 from bika.extras.extenders.fields import ExtStringField
 from bika.extras.extenders.fields import ExtUIDReferenceField
+from bika.extras.extenders.fields import ExtDateTimeField
 from bika.lims import FieldEditContact
 from bika.lims.interfaces import IBatch
 from senaite.core.catalog import SETUP_CATALOG
+from senaite.core.browser.widgets import DateTimeWidget
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 
 
@@ -151,6 +153,17 @@ sampler_field = ExtSamplerStringField(
     widget=SelectionWidget(label=_("Sampler"), format="select",),
 )
 
+due_date_field = ExtDateTimeField(
+    "DueDate",
+    required=True,
+    widget=DateTimeWidget(
+        label=_("Due Date"),
+        description=_("The date the case is due"),
+        show_time=False,
+        mode="r",
+    ),
+)
+
 
 @implementer(ISchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
@@ -167,6 +180,7 @@ class BatchSchemaExtender(object):
         sampler_field,
         payment_method_field,
         batch_priority_field,
+        due_date_field,
     ]
 
     def __init__(self, context):
