@@ -349,27 +349,25 @@
     </div>
   </tal:render>
   <!-- REMARKS -->
-  <tal:t define="collection python:view.collection;
-                 report_options python:options.get('report_options', {});">
-    <tal:model repeat="model collection">
-      <div class="row section-remarks no-gutters"
-           tal:define="remarks python:model.getRemarks()"
-           tal:condition="remarks">
-        <div class="remarks_history">
-          <h2 i18n:translate>Remarks for <span tal:replace="model/getId"/></h2>
-          <tal:record repeat="record remarks">
-            <div class="record" tal:attributes="id record/id;">
-              <div class="record-header border-bottom" tal:condition="record/user_id">
-                <span class="record-username" tal:content="record/user_name"/>
-                <span class="record-date" tal:content="record/created_ulocalized"/>
-              </div>
-              <div class="record-content"
-                   tal:content="structure record/html_content"></div>
-            </div>
-          </tal:record>
-        </div>
+  <tal:t define="collection python:view.collection; primarymodel python:collection[0];">
+      <div class="row section-remarks no-gutters">
+          <div class="w-100">
+            <!-- Client Info -->
+            <table class="table table-sm table-condensed">
+              <colgroup>
+                <col style="width:25%"/>
+                <col style="width:75%"/>
+              </colgroup>
+              <tr>
+                  <td class="label" i18n:translate="">Remarks</td>
+                  <td class="field">
+                      <div class="record-content"
+                           tal:content="structure primarymodel/Batch/COARemarks"/>
+                  </td>
+              </tr>
+            </table>
+          </div>
       </div>
-    </tal:model>
   </tal:t>
 
   <!-- ALERTS -->
