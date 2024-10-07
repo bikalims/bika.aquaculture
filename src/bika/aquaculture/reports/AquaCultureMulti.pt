@@ -367,6 +367,7 @@
               </tr>
             </table>
           </div>
+          <div class="clearfix"></div>
       </div>
   </tal:t>
 
