@@ -1,21 +1,28 @@
 <configure xmlns:browser="http://namespaces.zope.org/browser"
            xmlns="http://namespaces.zope.org/zope"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
            i18n_domain="bika.aquaculture">
 
     <include package="archetypes.schemaextender"/>
+
     <adapter name='bika.aquaculture.analysisrequest'
+             zcml:condition="installed bika.aquaculture"
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
              factory=".analysisrequest.AnalysisRequestSchemaExtender"/>
+
     <adapter name='bika.aquaculture.analysisrequest.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             zcml:condition="installed bika.aquaculture"
              factory=".analysisrequest.AnalysisRequestSchemaModifier" />
 
     <adapter name='bika.aquaculture.batch'
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             zcml:condition="installed bika.aquaculture"
              factory=".batch.BatchSchemaExtender"/>
 
     <adapter name='bika.aquaculture.batch.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             zcml:condition="installed bika.aquaculture"
              factory=".batch.BatchSchemaModifier" />
 
     <adapter name='bika.aquaculture.client'
@@ -24,10 +31,12 @@
 
     <adapter name='bika.aquaculture.method.schemamodifier'
              provides="archetypes.schemaextender.interfaces.ISchemaModifier"
+             zcml:condition="installed bika.aquaculture"
              factory=".method.MethodSchemaModifier" />
 
     <adapter name='bika.aquaculture.client'
              provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             zcml:condition="installed bika.aquaculture"
              factory=".bikasetup.BikaSetupSchemaExtender"/>
 
   <browser:page
