@@ -42,8 +42,9 @@ received_samples_email_body_field = ExtTextField(
             default="Set the email body text to be used by default when "
             "sending out received samples notification to the selected recipients. "
             "You can use reserved keywords: "
-            "$case_id, $case_title, $case_number, $case_due_date, $client_name,"
-            "$lab_name, $lab_address, $number_of_samples, $recipients",
+            "$case_id, $case_title, $case_number, $case_due_date, $client_name, "
+            "$client_sample_ids, $date_time_received, $lab_name, $lab_address,"
+            "$number_of_samples, $recipients.",
         ),
         default_mime_type="text/x-html",
         output_mime_type="text/x-html",
