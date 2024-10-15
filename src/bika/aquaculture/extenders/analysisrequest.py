@@ -131,7 +131,7 @@ number_of_animals_field = ExtIntegerField(
     "NumberOfAnimals",
     mode="rw",
     widget=IntegerWidget(
-        label=_(u"Number Of Animals"),
+        label=_(u"Number of Animals"),
         description=_("Number of animals."),
         render_own_label=True,
         visible={
