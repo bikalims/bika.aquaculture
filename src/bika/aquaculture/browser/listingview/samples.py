@@ -32,6 +32,8 @@ class SamplesListingViewAdapter(object):
         if stt in self.listing.columns:
             self.listing.columns[stt]["title"] = _("Specimen Type")
 
+        # on the buildout eggs section, bika.aquaculture needs to be before
+        # senaite.samplepointlocation for this to work
         loc = "location"
         if loc in self.listing.columns:
             self.listing.columns[loc]["title"] = _("Pond Location")
