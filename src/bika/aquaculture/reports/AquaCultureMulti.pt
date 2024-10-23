@@ -478,14 +478,14 @@
                        <tbody class="text-center">
                          <tal:analyses repeat="page pages">
                             <tr tal:condition="python: not repeat['page'].start">
-                              <td class="nobold result" colspan="6"></td>
+                              <td class="nobold result" colspan="7"></td>
                               <tal:analysis repeat="analysis page">
                                 <td class="nobold result"
                                     tal:content="analysis/ShortTitle|nothing"/>
                               </tal:analysis>
                             </tr>
                             <tr tal:condition="python: not repeat['page'].start">
-                              <td class="nobold result" colspan="6"></td>
+                              <td class="nobold result" colspan="7"></td>
                               <tal:analysis repeat="analysis page">
                                 <td class="font-weight-normal result"
                                     tal:condition="analysis"
