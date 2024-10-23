@@ -207,6 +207,7 @@ class BatchSchemaModifier(object):
         if is_installed():
             schema["Sampler"].vocabulary = getUsers(self.context, ["Sampler"])
             schema["ClientBatchID"].widget.label = "Case Number"
+            schema["ClientBatchID"].required = True
             schema["BatchLabels"].widget.label = "Case Labels"
             schema[
                 "title"
