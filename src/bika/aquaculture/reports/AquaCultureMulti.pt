@@ -453,7 +453,7 @@
                            </tr>
                            <tr class="text-center">
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <th class="nobold result" colspan="6"></th>
+                             <th class="nobold result" colspan="7"></th>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <th class="nobold result" tal:content="model/id"></th>
