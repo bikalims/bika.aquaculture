@@ -99,7 +99,6 @@
 
     .bgbehind {
         background-image:url(<tal:t replace="python:view.get_footer_logo()"/>);
-        z-index:-1;
         background-position: bottom center;
         background-repeat: no-repeat;
         position: absolute;
@@ -107,6 +106,8 @@
         left:<tal:t replace="python:'{:.2f}mm'.format((content_width/2)-20)"/> ;
         height:<tal:t replace="python:'{:.2f}mm'.format(16)"/>;
         width:<tal:t replace="python:'{:.2f}mm'.format(40)"/> ;
+        z-index:1;
+        opacity: 0.6;
     }
 
     .table {
@@ -630,7 +631,7 @@
                 <td style="border:none">
                   <div>
                     <img tal:condition="manager/Signature"
-                         tal:attributes="src string:${manager/absolute_url}/Signature" style="height:75px;z-index:-20"/>
+                         tal:attributes="src string:${manager/absolute_url}/Signature" style="height:75px"/>
                   </div>
                   <div class="font-weight-bold">
                     <span tal:content="manager/Salutation"></span>
