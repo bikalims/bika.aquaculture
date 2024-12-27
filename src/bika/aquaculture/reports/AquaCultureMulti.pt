@@ -106,8 +106,8 @@
         left:<tal:t replace="python:'{:.2f}mm'.format((content_width/2)-20)"/> ;
         height:<tal:t replace="python:'{:.2f}mm'.format(16)"/>;
         width:<tal:t replace="python:'{:.2f}mm'.format(40)"/> ;
-        z-index:1;
-        opacity: 0.6;
+	    z-index:1;
+	    opacity: 0.6;
     }
 
     .table {
@@ -130,7 +130,6 @@
       display: table-cell;
       padding: 2px;
       border-top: 1px solid #ccc;
-      width: 22mm;
     }
     .table.result  .table-header.result { border: 1px solid #dee2e6 }
     .table.result  .table-cell.result{ border: 1px solid #dee2e6 }
@@ -512,14 +511,20 @@
                        <tbody class="text-center">
                        -->
                          <tal:analyses repeat="page pages">
-                            <div class="table-row" tal:condition="python: not repeat['page'].start">
-                              <div class="table-cell nobold result" colspan="7"></div>
+                            <div class="table-row text-center" tal:condition="python: not repeat['page'].start">
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
                               <tal:analysis repeat="analysis page">
                                 <div class="table-cell nobold result"
                                     tal:content="analysis/ShortTitle|nothing"/>
                               </tal:analysis>
                             </div>
-                            <div class="table-row" tal:condition="python: not repeat['page'].start">
+                            <div class="table-row text-center" tal:condition="python: not repeat['page'].start">
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
@@ -533,7 +538,7 @@
                                     tal:content="structure python:model.get_formatted_result(analysis)"/>
                               </tal:analysis>
                             </div>
-                            <div class="table-row">
+                            <div class="table-row text-center">
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
