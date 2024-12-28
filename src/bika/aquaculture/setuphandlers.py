@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 
@@ -12,7 +13,6 @@ from senaite.samplepointlocations.content.samplepointlocation import (
     ISamplePointLocation,
 )
 from senaite.samplepointlocations.extenders.samplepoint import (
-
     IExtendedSamplePoint,
 )
 
@@ -103,7 +103,7 @@ def setup(portal):
             action.title = _("Pond Locations")
 
     # Sample Types
-    portal["bika_setup"]["bika_sampletypes"].setTitle("Specimen Types")
+    senaite_setup.sampletypes.setTitle("Specimen Types")
     fti = pt.get("SampleType")
     fti.title = _("Specimen Type")
 

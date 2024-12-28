@@ -17,7 +17,7 @@
 
     <!-- sample types listing -->
     <subscriber
-            for="bika.lims.controlpanel.bika_sampletypes.SampleTypesView
+            for="senaite.core.browser.controlpanel.sampletypes.view.SampleTypesView
                  zope.interface.Interface"
             provides="senaite.app.listing.interfaces.IListingViewAdapter"
             factory=".sampletypes.SampleTypesListingViewAdapter"/>
