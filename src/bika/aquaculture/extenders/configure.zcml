@@ -39,6 +39,11 @@
              zcml:condition="installed bika.aquaculture"
              factory=".bikasetup.BikaSetupSchemaExtender"/>
 
+    <adapter name='bika.aquaculture.laboratory'
+             provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+             zcml:condition="installed bika.aquaculture"
+             factory=".laboratory.LaboratorySchemaExtender"/>
+
   <browser:page
       for="*"
       name="getsuppliers"
