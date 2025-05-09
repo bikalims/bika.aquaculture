@@ -8,7 +8,7 @@ from zope.interface import implementer
 from bika.aquaculture.interfaces import ILifeStage
 from bika.lims.interfaces import IDeactivable
 from senaite.core.catalog import SETUP_CATALOG
-from senaite import api
+from bika.lims import api
 
 
 class ILifeStageSchema(model.Schema):
