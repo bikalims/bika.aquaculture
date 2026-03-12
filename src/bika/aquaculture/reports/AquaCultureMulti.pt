@@ -297,7 +297,7 @@
                 </tr>
                 <!-- Contact Name(s) -->
                 <tr>
-                  <td class="label" i18n:translate="">Pond Location</td>
+                  <td class="label" i18n:translate="">Animal Location</td>
                   <td class="field">
                       <div tal:content="primarymodel/SamplePointTitle"/>
                   </td>
