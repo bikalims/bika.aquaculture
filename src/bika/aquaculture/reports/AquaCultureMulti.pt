@@ -1,6 +1,7 @@
 <tal:report
   i18n:domain="bika.aquaculture"
   define="collection view/collection;
+          primarymodel python:collection[0];
           laboratory view/laboratory;
           coa_num view/get_coa_number;
           disclaimer laboratory/COADisclamer|nothing;
@@ -262,7 +263,7 @@
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Final Report</h1>
+            <h1 tal:content="primarymodel/Batch/ClientBatchID">Final Report</h1>
             <p>Confidential. Distribute on a need to know basis only</p>
         </div>
     </div>
