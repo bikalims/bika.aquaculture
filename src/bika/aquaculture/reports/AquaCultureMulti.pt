@@ -770,44 +770,48 @@
               define="primarymodel python:collection[0];">
     <div class="row section-results no-gutters">
       <div class="col-6">
-          <div class="w-100">Tests conducted by: </div>
+          <div class="w-100">Published by: </div>
           <div class="w-100">
-            <table class="table table-condensed" tal:define="analysts python:view.get_analysts(collection)">
-                <tal:analysts tal:repeat="analyst analysts">
+            <table class="table table-condensed" tal:define="publisher python:view.get_publisher()">
                 <tr>
                   <td style="border:none">
-                    <div class="font-weight-bold">
-                      <span tal:content="analyst/analyst"></span>
+                    <div>
+                      <img tal:condition="publisher/signature|nothing"
+                          tal:attributes="src string:${publisher/signature}" style="height:75px"/>
                     </div>
                   </td>
                 </tr>
-              </tal:analysts>
+                <tr>
+                  <td style="border:none">
+                    <div class="font-weight-bold">
+                      <span tal:condition="publisher/fullname|nothing"/>
+                    </div>
+                  </td>
+                </tr>
             </table>
           </div>
       </div>
       <div class="col-6">
         <div class="w-100">Results authorized by: </div>
         <div class="w-100">
-            <table class="table table-condensed" tal:define="verifiers python:view.get_verifiers(collection)">
-                <tal:verifiers tal:repeat="verifier verifiers">
+            <table class="table table-condensed" tal:define="supervisor python:view.get_lab_supervisor()">
                 <tr>
                   <td style="border:none">
                     <div>
-                      <img tal:condition="verifier/signature"
-                          tal:attributes="src string:${verifier/signature}" style="height:75px"/>
+                      <img tal:condition="supervisor/signature|nothing"
+                          tal:attributes="src string:${supervisor/signature}" style="height:75px"/>
                     </div>
                     <div class="font-weight-bold">
-                      <span tal:content="verifier/verifier"></span>
+                      <span tal:content="supervisor/fullname"></span>
                     </div>
                     <div>
-                      <span tal:content="verifier/jobtitle"></span>
+                      <span tal:content="supervisor/jobtitle"></span>
                     </div>
                     <div>
-                      <span tal:content="verifier/default_department|nothing"></span>
+                      Office: <span tal:replace="laboratory/Phone|nothing"/>
                     </div>
                   </td>
                 </tr>
-              </tal:verifiers>
             </table>
         </div>
       </div>
