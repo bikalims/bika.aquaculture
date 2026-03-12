@@ -191,7 +191,7 @@
   <div>
 	<h1 tal:content="string: Multiple Verifiers are found for the analysis with keyword ${kw_list} to use this COA the same user has to verify an
     	Analysis for all samples included"/>
-  </div> 
+  </div>
  </tal:not_unique_verifier>
 </tal:verifiers>
 
@@ -214,10 +214,6 @@
                     <address class="laboratory-address text-center">
                       <div class="lab-title font-weight-bold">
                         <div tal:replace="laboratory/title|nothing"/>
-                      </div>
-                      <div class="lab-supervisor" tal:condition="laboratory/Supervisor">
-                        <span i18n:translate="">Supervisor</span>:
-                        <div tal:replace="laboratory/Supervisor/Fullname|nothing"/>
                       </div>
                       <div class="lab-address">
                         <div class="lab-street">
