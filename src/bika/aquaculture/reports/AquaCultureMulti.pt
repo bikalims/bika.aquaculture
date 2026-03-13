@@ -445,6 +445,7 @@
                             <tal:header tal:condition="python: repeat['model'].start">
                              <div class="table-header label result">Pool ID</div>
                              <div class="table-header label result">Sample Name</div>
+                             <div class="table-header label result">Lot/Batch Number</div>
                              <div class="table-header label result">Pond</div>
                              <div class="table-header label result">Species</div>
                              <div class="table-header label result">Specimen</div>
@@ -452,6 +453,7 @@
                             <tal:header tal:condition="python: not repeat['model'].start">
                              <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
+                             <div class="table-header nobold result" tal:content="model/Lot"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
                              <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen</div>
@@ -478,10 +480,12 @@
                              <div class="table-header nobold result"></div>
                              <div class="table-header nobold result"></div>
                              <div class="table-header nobold result"></div>
+                             <div class="table-header nobold result"></div>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
+                             <div class="table-header nobold result" tal:content="model/Lot"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
                              <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen</div>
@@ -508,12 +512,14 @@
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
+                              <div class="table-cell nobold result"></div>
                               <tal:analysis repeat="analysis page">
                                 <div class="table-cell nobold result"
                                     tal:content="analysis/ShortTitle|nothing"/>
                               </tal:analysis>
                             </div>
                             <div class="table-row text-center" tal:condition="python: not repeat['page'].start">
+                              <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
@@ -526,6 +532,7 @@
                               </tal:analysis>
                             </div>
                             <div class="table-row text-center">
+                              <div class="table-cell"></div>
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
