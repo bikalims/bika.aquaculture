@@ -444,21 +444,17 @@
                            <div class="table-row result text-center">
                             <tal:header tal:condition="python: repeat['model'].start">
                              <div class="table-header label result">Pool ID</div>
-                             <div class="table-header label result">CSID</div>
+                             <div class="table-header label result">Sample Name</div>
                              <div class="table-header label result">Pond</div>
                              <div class="table-header label result">Species</div>
-                             <div class="table-header label result">Age</div>
-                             <div class="table-header label result">Specimen Type</div>
-                             <div class="table-header label result">Sex</div>
+                             <div class="table-header label result">Specimen</div>
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
                              <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
-                             <div class="table-header nobold result" tal:content="model/LifeStage/title|nothing"></div>
-                             <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen Type</div>
-                             <div class="table-header nobold result" tal:content="python:view.get_sex_title(model)">Sex</div>
+                             <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen</div>
                              </tal:header>
                              <tal:analyses repeat="page pages">
                                  <tal:some tal:condition="python: repeat['model'].start">
@@ -482,24 +478,21 @@
                              <div class="table-header nobold result"></div>
                              <div class="table-header nobold result"></div>
                              <div class="table-header nobold result"></div>
-                             <div class="table-header nobold result"></div>
-                             <div class="table-header nobold result"></div>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
                              <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
-                             <div class="table-header nobold result" tal:content="model/LifeStage/title|nothing"></div>
-                             <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen Type</div>
-                             <div class="table-header nobold result" tal:content="python:view.get_sex_title(model)">Sex</div>
+                             <div class="table-header nobold result" tal:content="model/SampleTypeTitle">Specimen</div>
                              </tal:header>
 
                                <tal:analyses repeat="page pages">
                                  <tal:analysis repeat="analysis page">
                                    <div class="table-header font-weight-normal result"
-                                       tal:condition="python: repeat['page'].start and analysis"
-                                       tal:content="structure python:model.get_formatted_result(analysis)"/>
+                                       tal:condition="python: repeat['page'].start and analysis">
+                                       <span tal:content="structure python:model.get_formatted_result(analysis)"/>
+                                   </div>
                                  </tal:analysis>
                                </tal:analyses>
                            </div>
@@ -510,8 +503,6 @@
                        -->
                          <tal:analyses repeat="page pages">
                             <div class="table-row text-center" tal:condition="python: not repeat['page'].start">
-                              <div class="table-cell nobold result"></div>
-                              <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
@@ -528,8 +519,6 @@
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
                               <div class="table-cell nobold result"></div>
-                              <div class="table-cell nobold result"></div>
-                              <div class="table-cell nobold result"></div>
                               <tal:analysis repeat="analysis page">
                                 <div class="table-cell font-weight-normal result"
                                     tal:condition="analysis"
@@ -537,8 +526,6 @@
                               </tal:analysis>
                             </div>
                             <div class="table-row text-center">
-                              <div class="table-cell"></div>
-                              <div class="table-cell"></div>
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
                               <div class="table-cell"></div>
