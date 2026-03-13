@@ -217,5 +217,6 @@ class AnalysisRequestSchemaModifier(object):
                 if IBatch.providedBy(self.context.aq_parent):
                     schema["Sampler"].default = self.context.aq_parent.Sampler
             schema["ClientSampleID"].required = True
+            schema["ClientSampleID"].widget.label = _("Sample Name")
 
         return schema
