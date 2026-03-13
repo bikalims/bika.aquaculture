@@ -716,7 +716,7 @@
               define="primarymodel python:collection[0];">
     <div class="row section-results no-gutters">
       <div class="col-6">
-          <div class="w-100">Published by: </div>
+          <div class="w-100" style="font-size:13px">Published by: </div>
           <div class="w-100">
             <table class="table table-condensed" tal:define="publisher python:view.get_publisher()">
                 <tr>
@@ -738,7 +738,7 @@
           </div>
       </div>
       <div class="col-6">
-        <div class="w-100">Results authorized by: </div>
+        <div class="w-100" style="font-size:13px">Results authorized by: </div>
         <div class="w-100">
             <table class="table table-condensed" tal:define="supervisor python:view.get_lab_supervisor()">
                 <tr>
@@ -752,6 +752,9 @@
                     </div>
                     <div>
                       <span tal:content="supervisor/jobtitle"></span>
+                    </div>
+                    <div>
+                      <span tal:content="laboratory/title|nothing"></span>
                     </div>
                     <div>
                       Office: <span tal:replace="laboratory/Phone|nothing"/>
