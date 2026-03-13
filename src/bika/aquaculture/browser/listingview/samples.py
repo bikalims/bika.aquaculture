@@ -20,9 +20,14 @@ class SamplesListingViewAdapter(object):
     def before_render(self):
         if not is_installed():
             return
+
         spt = "getSamplePointTitle"
         if spt in self.listing.columns:
             self.listing.columns[spt]["title"] = _("Pond")
+
+        csid = "getClientSampleID"
+        if csid in self.listing.columns:
+            self.listing.columns[csid]["title"] = _("Sample Name")
 
         spl = "SamplePointLocation"
         if spl in self.listing.columns:
