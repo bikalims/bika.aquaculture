@@ -324,6 +324,44 @@
                       <span tal:content="python: view.get_country_name(country)"/>
                   </td>
                 </tr>
+                <tal:by_client repeat="client python:view.group_items_by('Client', collection)">
+                  <tr>
+                    <td class="label noborder" i18n:translate="">Office Address</td>
+                    <td class="nopadding noborder" i18n:translate="" >
+                        <div tal:replace="client/PhysicalAddress/address|nothing"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="nopadding noborder" i18n:translate=""></td>
+                    <td class="noborder nopadding" i18n:translate="">
+                        <div tal:replace="laboratory/PhysicalAddress/city|nothing"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="noborder" i18n:translate=""></td>
+                    <td class="noborder" i18n:translate="">
+                        <div tal:replace="laboratory/PhysicalAddress/state|nothing"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="" i18n:translate=""></td>
+                    <td class="label " i18n:translate="">
+                        <div tal:replace="laboratory/PhysicalAddress/district|nothing"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label" i18n:translate="">Email Address</td>
+                    <td class="" i18n:translate="">
+                        <div tal:replace="client/EmailAddress|nothing"/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label nopadding" i18n:translate="">Phone Number</td>
+                    <td class="" i18n:translate="">
+                          <div tal:replace="client/Phone|nothing"/>
+                    </td>
+                  </tr>
+                </tal:by_client>
               </table>
             </td>
             <td style="border:none;" class="align-top pl-2">
