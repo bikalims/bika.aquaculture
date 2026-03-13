@@ -737,7 +737,7 @@
                 <tr>
                   <td style="border:none">
                     <div class="font-weight-bold">
-                      <span tal:condition="publisher/fullname|nothing"/>
+                      <span tal:content="publisher/publisher|nothing"/>
                     </div>
                   </td>
                 </tr>
