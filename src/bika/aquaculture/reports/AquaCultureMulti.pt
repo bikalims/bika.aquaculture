@@ -452,7 +452,7 @@
                              <div class="table-header label result">Sex</div>
                              </tal:header>
                             <tal:header tal:condition="python: not repeat['model'].start">
-                             <div class="table-header nobold result" tal:content="model/id"></div>
+                             <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
@@ -486,7 +486,7 @@
                              <div class="table-header nobold result"></div>
                              </tal:header>
                             <tal:header tal:condition="python: repeat['model'].start">
-                             <div class="table-header nobold result" tal:content="model/id"></div>
+                             <div class="table-header nobold result"><span tal:content="model/Batch/ClientBatchID|nothing"/><span tal:content="model/PoolID|nothing"/></div>
                              <div class="table-header nobold result" tal:content="model/ClientSampleID"></div>
                              <div class="table-header nobold result" tal:content="model/SamplePointTitle"></div>
                              <div class="table-header nobold result" tal:content="model/Species/title|nothing"></div>
