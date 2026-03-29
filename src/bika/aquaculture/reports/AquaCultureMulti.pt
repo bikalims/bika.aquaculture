@@ -720,7 +720,7 @@
         <h1 i18n:translate="" class="tenpx">
             Protocols used
         </h1>
-        <table class="table table-sm table-condensed eightpx"
+        <table class="table table-sm table-condensed eightpx noborder"
                tal:define="methods python:view.get_analyses_methods(collection)">
             <tr tal:repeat="method methods">
                 <td tal:content="method/title">
