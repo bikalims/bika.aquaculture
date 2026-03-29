@@ -99,6 +99,10 @@
        font-size: 8px !important;
        font-weight: normal;
        }
+     .report table.eightpx td {
+       font-size: 8px !important;
+       font-weight: normal;
+       }
      .report .section-footer table td { border: none; }
      .report .section-footer {
        position: fixed;
