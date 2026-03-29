@@ -182,18 +182,21 @@
        @bottom-left {
          vertical-align: top;
          margin-top: 2mm;
+         font-family: "Times New Roman", Times, serif;
          font-size: 9pt;
          content: "<tal:t i18n:translate=''>Page</tal:t> " counter(page) " <tal:t i18n:translate=''>of</tal:t> " counter(pages);
        }
        @bottom-center {
          vertical-align: top;
          margin-top: 2mm;
+         font-family: "Times New Roman", Times, serif;
          font-size: 9pt;
          content: "Arizona's first university - Since 1885"
        }
        @bottom-right {
          vertical-align: top;
          margin-top: 2mm;
+         font-family: "Times New Roman", Times, serif;
          font-size: 9pt;
          content:  "<tal:t i18n:translate=''>Date Generated: </tal:t>" " " "<tal:t replace="python: view.timestamp.Date()"></tal:t>"
        }
