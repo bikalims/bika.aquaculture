@@ -85,6 +85,20 @@
      .report .eightpx {
        font-size: 10px !important;
        }
+     .report div.tenpx h1,
+     .report div.tenpx h2,
+     .report div.tenpx h3,
+     .report div.tenpx h4,
+     .report div.tenpx h5,
+     .report div.tenpx h6
+     {
+       font-size: 10px !important;
+       font-weight: bold;
+       }
+     .report div.eightpx p {
+       font-size: 8px !important;
+       font-weight: normal;
+       }
      .report .section-footer table td { border: none; }
      .report .section-footer {
        position: fixed;
@@ -761,7 +775,7 @@
       <div class="clearfix"></div>
   </tal:render>
   <tal:render condition="python:disclaimer">
-    <div class="row section-results no-gutters">
+    <div class="row section-results no-gutters  eightpx tenpx">
       <div tal:replace="structure disclaimer"/>
     </div>
   </tal:render>
