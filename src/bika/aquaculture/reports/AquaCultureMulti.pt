@@ -333,20 +333,6 @@
                     </tal:by_contact>
                   </td>
                 </tr>
-                <tr>
-                  <td class="label" i18n:translate="">Date Received</td>
-                  <td tal:content="python:view.to_localized_date(primarymodel.DateReceived or view.timestamp)"></td>
-                </tr>
-                <tr>
-                  <td class="label" i18n:translate="">Date Completed</td>
-                  <td tal:content="python:view.to_localized_date(primarymodel.DatePublished or view.timestamp)"></td>
-                </tr>
-                <tr>
-                  <td class="label" i18n:translate="">Country Origin</td>
-                  <td tal:define="country primarymodel/Batch/CountryOfOrigin|nothing">
-                      <span tal:content="python: view.get_country_name(country)"/>
-                  </td>
-                </tr>
                 <tal:by_client repeat="client python:view.group_items_by('Client', collection)">
                   <tr>
                     <td class="label noborder" i18n:translate="">Office Address</td>
@@ -416,10 +402,24 @@
                   <td tal:content="primarymodel/Batch/ReferenceNumber|nothing"></td>
                 </tr>
                 <tr>
+                  <td class="label" i18n:translate="">Country Origin</td>
+                  <td tal:define="country primarymodel/Batch/CountryOfOrigin|nothing">
+                      <span tal:content="python: view.get_country_name(country)"/>
+                  </td>
+                </tr>
+                <tr>
                   <td class="label" i18n:translate="">Country Destination</td>
                   <td tal:define="countries primarymodel/Batch/DestinationCountry">
                       <span tal:content="python: view.get_country_titles(countries)" />
                   </td>
+                </tr>
+                <tr>
+                  <td class="label" i18n:translate="">Date Received</td>
+                  <td tal:content="python:view.to_localized_date(primarymodel.DateReceived or view.timestamp)"></td>
+                </tr>
+                <tr>
+                  <td class="label" i18n:translate="">Date Completed</td>
+                  <td tal:content="python:view.to_localized_date(primarymodel.DatePublished or view.timestamp)"></td>
                 </tr>
               </table>
             </td>
