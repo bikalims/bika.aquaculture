@@ -742,7 +742,7 @@
         This report provides our findings on the samples submitted to our laboratory for examination, health status evaluation, disease diagnosis, or pathogen detection.
         <strong>It is our policy and intent to perform the most appropriate assay(s) for the determination of the health/pathogen status of all specimens submitted to our laboratory.</strong>
         </p>
-        <h1 i18n:translate="" class="tenpx">PCR disclaimer</h1>
+        <p i18n:translate="" class="tenpx">PCR disclaimer</p>
         <p class="eightpx">
         This report provides our findings on the samples submitted to our laboratory for pathogen detection.
         </p>
