@@ -281,13 +281,13 @@
                    tal:condition="not:accreditation_logo"
                    tal:attributes="src python:view.get_resource_url('AccreditationBodyLogo.png', prefix='bika.lims.images');style styles/ac_styles"/>
             </div>
+            <div class="text-center">Final Report</div>
         </div>
     </div>
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-12 text-center">
-            <h1 tal:content="primarymodel/Batch/ClientBatchID">Final Report</h1>
-            <p>Confidential. Distribute on a need to know basis only</p>
+            <p>Confidential. Dissiminate on a need to know basis only</p>
         </div>
     </div>
   </tal:render>
