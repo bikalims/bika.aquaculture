@@ -58,7 +58,9 @@
      .report h1 { font-size: 140%; }
      .report h2 { font-size: 120%; }
      .report h3 { font-size: 110%; }
-     .report { font-family: TitilliumText22L-Regular; }
+     .report {
+       font-family: "Times New Roman", Times, serif !important;
+     }
      .report .font-size-140 { font-size: 140%; }
      .report .font-size-120 { font-size: 120%; }
      .report .font-size-100 { font-size: 100%; }
@@ -76,6 +78,13 @@
      .report .section-header h1 { font-size: 175%; }
      .report .section-header img.logo { max-height: 200px; margin-bottom: 10px }
      .report .barcode-hri { margin-top: -0.25em; font-size: 8pt; }
+     .report .tenpx {
+       font-size: 10px !important;
+       font-weight: bold;
+       }
+     .report .eightpx {
+       font-size: 10px !important;
+       }
      .report .section-footer table td { border: none; }
      .report .section-footer {
        position: fixed;
@@ -705,10 +714,13 @@
     <div class="row section-results no-gutters">
       <div class="w-100">
         <br />
-        <h1 i18n:translate="">
+        <h1 i18n:translate="" class="tenpx">
             Case no: <span i18n:translate="" tal:content="primarymodel/Batch/ClientBatchID"/>
         </h1>
-        <table class="table table-sm table-condensed"
+        <h1 i18n:translate="" class="tenpx">
+            Protocols used
+        </h1>
+        <table class="table table-sm table-condensed eightpx"
                tal:define="methods python:view.get_analyses_methods(collection)">
             <tr tal:repeat="method methods">
                 <td tal:content="method/title">
@@ -725,23 +737,23 @@
     <div class="row section-results no-gutters">
       <div class="w-100">
         <br />
-        <h1 i18n:translate="">UAZ Policy on certification</h1>
-        <p>
+        <h1 i18n:translate="" class="tenpx">UAZ Policy on certification</h1>
+        <p class="eightpx">
         This report provides our findings on the samples submitted to our laboratory for examination, health status evaluation, disease diagnosis, or pathogen detection.
         <strong>It is our policy and intent to perform the most appropriate assay(s) for the determination of the health/pathogen status of all specimens submitted to our laboratory.</strong>
         </p>
-        <h1 i18n:translate="">PCR disclaimer</h1>
-        <p>
+        <h1 i18n:translate="" class="tenpx">PCR disclaimer</h1>
+        <p class="eightpx">
         This report provides our findings on the samples submitted to our laboratory for pathogen detection.
         </p>
       </div>
       <div class="w-100">
-        <p>
+        <p class="eightpx">
       The <strong>UAZ Aquaculture Pathology Lab</strong> is an <strong>OIE</strong> (Office International des Épizooties or the Organization or World Animal Health Organization) Reference Laboratory for Acute Hepatopancreatic Necrosis Disease, Hepatobacter penaei (NHP), Infectious Hypodermal and Hematopoietic Necrosis, Taura Syndrome, and White Spot Disease.
         </p>
       </div>
       <div class="w-100">
-        <p>
+        <p class="eightpx">
         The <strong>UAZ Aquaculture Pathology Lab</strong> is also a <strong>U.S.D.A. A.P.H.I.S</strong>. Approved Aquaculture Laboratory for export testing for White Spot Disease, Taura Syndrome, Infectious Hypodermal and Hematopoietic Necrosis, Infectious Myonecrosis, Yellowhead Disease, Acute Hepatopancreatic Necrosis Disease, Crayfish plague (Aphanomyces astaci), White tail disease (Macrobrachium rosenbergii nodavirus), and Necrotizing hepatopancreatitis (Hepatobacter penaei).
         </p>
       </div>
