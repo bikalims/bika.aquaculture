@@ -508,22 +508,14 @@
 
           <tal:rows tal:repeat="row python:block['table']">
             <div class="table-row result text-center">
-
-              <tal:header tal:condition="python:repeat['row'].start">
-                <tal:cells tal:repeat="cell row">
-                  <div class="table-header label result">
-                    <span tal:content="cell" />
-                  </div>
-                </tal:cells>
-              </tal:header>
-
-              <tal:body tal:condition="python:not repeat['row'].start">
-                <tal:cells tal:repeat="cell row">
-                  <div class="table-cell nobold result">
-                    <span tal:content="cell" />
-                  </div>
-                </tal:cells>
-              </tal:body>
+              <tal:cells tal:repeat="cell row">
+                <div tal:attributes="class python:
+                      'table-header nobold result'
+                      if row and row[0] == 'Pool ID'
+                      else 'table-cell nobold result'">
+                  <span tal:content="cell" />
+                </div>
+              </tal:cells>
 
             </div>
           </tal:rows>
