@@ -507,20 +507,25 @@
         <div class="table table-sm table-condensed small result" style="margin-bottom: 0 !important">
 
           <tal:rows tal:repeat="row python:block['table']">
-            <div class="table-row result text-center">
+            <tal:blank tal:condition="python:not row">
+              <div class="table-row result spacer-row">
+                <div class="table-cell result">&nbsp;</div>
+              </div>
+            </tal:blank>
 
-              <tal:cells tal:repeat="cell row">
-                <div tal:attributes="class python:
-                      'table-header label result'
-                      if row and row[0] == 'Pool ID'
-                      else 'table-cell nobold result'">
-                  <span tal:content="cell" />
-                </div>
-              </tal:cells>
-
-            </div>
+            <tal:not_blank tal:condition="python:row">
+              <div class="table-row result text-center">
+                  <tal:cells tal:repeat="cell row">
+                        <div tal:attributes="class python:
+                              'table-header label result'
+                              if row and row[0] == 'Pool ID'
+                              else 'table-cell nobold result'">
+                          <span tal:content="cell" />
+                        </div>
+                      </tal:cells>
+              </div>
+            </tal:not_blank>
           </tal:rows>
-
         </div>
 
         <div class="table table-sm table-condensed small result">
