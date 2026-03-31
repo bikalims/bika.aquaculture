@@ -508,9 +508,10 @@
 
           <tal:rows tal:repeat="row python:block['table']">
             <div class="table-row result text-center">
+
               <tal:cells tal:repeat="cell row">
                 <div tal:attributes="class python:
-                      'table-header nobold result'
+                      'table-header label result'
                       if row and row[0] == 'Pool ID'
                       else 'table-cell nobold result'">
                   <span tal:content="cell" />
