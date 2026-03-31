@@ -4,7 +4,7 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title" purge="True">Pond Location</property>
+      name="title" purge="True">Animal Location</property>
   <property
       i18n:translate=""
       name="description">A container of Ponds in an area</property>

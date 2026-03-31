@@ -31,7 +31,7 @@ class SamplesListingViewAdapter(object):
 
         spl = "SamplePointLocation"
         if spl in self.listing.columns:
-            self.listing.columns[spl]["title"] = _("Pond Location")
+            self.listing.columns[spl]["title"] = _("Animal Location")
 
         stt = "getSampleTypeTitle"
         if stt in self.listing.columns:
@@ -41,7 +41,7 @@ class SamplesListingViewAdapter(object):
         # senaite.samplepointlocation for this to work
         loc = "location"
         if loc in self.listing.columns:
-            self.listing.columns[loc]["title"] = _("Pond Location")
+            self.listing.columns[loc]["title"] = _("Animal Location")
 
     def folder_item(self, obj, item, index):
         if not is_installed():

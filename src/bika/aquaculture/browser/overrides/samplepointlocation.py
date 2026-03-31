@@ -100,7 +100,7 @@ class PondLocationView(SPLV):
                 managers.append(man.getFullname())
         return [
             {
-                "title": "Pond Location ID",
+                "title": "Animal Location ID",
                 "value": self.context.getSamplePointLocationID(),
             },
             {"title": "Account Managers", "value": ", ".join(managers)},

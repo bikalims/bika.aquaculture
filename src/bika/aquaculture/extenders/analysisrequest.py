@@ -208,7 +208,7 @@ class AnalysisRequestSchemaModifier(object):
                 "Select the specimen type of this specimen"
             )
             schema["SamplePoint"].widget.label = _("Pond")
-            schema["SamplePointLocation"].widget.label = "Pond Location"
+            schema["SamplePointLocation"].widget.label = "Animal Location"
             schema["SubGroup"].widget.label = _("Case Sub Group")
             schema["SubGroup"].widget.description = _(
                 "The assigned case sub group of this request"

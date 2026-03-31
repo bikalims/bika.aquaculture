@@ -20,10 +20,10 @@ class SamplePointLocationsListingViewAdapter(object):
     def before_render(self):
         if not is_installed():
             return
-        self.listing.title = self.context.translate("Pond Locations")
+        self.listing.title = self.context.translate("Animal Locations")
         spl = "sample_point_location_id"
         if spl in self.listing.columns:
-            self.listing.columns[spl]["title"] = _("Pond Location ID")
+            self.listing.columns[spl]["title"] = _("Animal Location ID")
 
     def folder_item(self, obj, item, index):
         if not is_installed():

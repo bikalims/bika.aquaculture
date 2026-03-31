@@ -98,9 +98,11 @@ def setup(portal):
         if action.title == "Sample Points":
             action.title = _("Ponds")
         if action.title == "Sample Point Locations":
-            action.title = _("Pond Locations")
+            action.title = _("Animal Locations")
         if action.title == "SamplePointLocations":
-            action.title = _("Pond Locations")
+            action.title = _("Animal Locations")
+        if action.title == "Pond Locations":
+            action.title = _("Animal Locations")
 
     # Sample Types
     senaite_setup.sampletypes.setTitle("Specimen Types")
@@ -113,20 +115,20 @@ def setup(portal):
     sample_type_filed.title = _("Specimen Types")
     sp_bhv_schema = IExtendedSamplePoint
     sp_bhv_schema["sample_point_id"].title = _("Pond ID")
-    sp_bhv_schema["sample_point_location"].title = _("Pond Location")
+    sp_bhv_schema["sample_point_location"].title = _("Animal Location")
     senaite_setup.samplepoints.setTitle("Ponds")
     fti = pt.get("SamplePoint")
     fti.title = _("Pond")
 
     # SamplePointLocation
     spl_schema = ISamplePointLocation
-    spl_schema["sample_point_location_id"].title = _("Pond Location ID")
+    spl_schema["sample_point_location_id"].title = _("Animal Location ID")
     fti = pt.get("SamplePointLocation")
     actions = fti.listActions()
     for idx, action in enumerate(actions):
         if action.title == "Sample Point Locations":
-            action.title = _("Pond Locations")
+            action.title = _("Animal Locations")
         if action.title == "SamplePointLocations":
-            action.title = _("Pond Locations")
+            action.title = _("Animal Locations")
 
     logger.info("BIKA.AQUACULTURE setup [DONE]")
