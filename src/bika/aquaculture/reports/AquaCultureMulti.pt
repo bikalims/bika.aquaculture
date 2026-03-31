@@ -511,6 +511,9 @@
               <div class="table-row result spacer-row">
                 <div class="table-cell result">&nbsp;</div>
               </div>
+              <div class="table-row result spacer-row">
+                <div class="table-cell result">&nbsp;</div>
+              </div>
             </tal:blank>
 
             <tal:not_blank tal:condition="python:row">
