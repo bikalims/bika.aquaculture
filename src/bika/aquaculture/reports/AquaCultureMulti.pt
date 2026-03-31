@@ -514,7 +514,7 @@
           <tal:rows tal:repeat="row python:block['table']">
             <tal:blank tal:condition="python:not row">
               <div class="table-row result spacer-row">
-                <div class="table-cell result">&nbsp;</div>
+                <div class="table-cell-noborder result">&nbsp;</div>
               </div>
               <div class="table-row result spacer-row">
                 <div class="table-cell-noborder result">&nbsp;</div>
