@@ -163,6 +163,11 @@
       padding: 2px;
       border-top: 1px solid #ccc;
     }
+    .table-cell-noborder {
+      display: table-cell;
+      padding: 2px;
+      border: none;
+    }
     .table.result  .table-header.result { border: 1px solid #dee2e6 }
     .table.result  .table-cell.result{ border: 1px solid #dee2e6 }
 
@@ -512,7 +517,7 @@
                 <div class="table-cell result">&nbsp;</div>
               </div>
               <div class="table-row result spacer-row">
-                <div class="table-cell result">&nbsp;</div>
+                <div class="table-cell-noborder result">&nbsp;</div>
               </div>
             </tal:blank>
 
