@@ -170,6 +170,7 @@
     }
     .table.result  .table-header.result { border: 1px solid #dee2e6 }
     .table.result  .table-cell.result{ border: 1px solid #dee2e6 }
+    .no-margin-bottom{margin-bottom: 0 !important}
 
 
      <tal:block condition="python:content_width and content_height">
@@ -509,7 +510,8 @@
         </h6>
 
         <!-- Results table per category block -->
-        <div class="table table-sm table-condensed small result" style="margin-bottom: 0 !important">
+        <div class="table table-sm table-condensed small result no-margin-bottom" style=""
+             tal:attributes="style string:width:${block/table_width} !important;">
 
           <tal:rows tal:repeat="row python:block['table']">
             <tal:blank tal:condition="python:not row">
@@ -524,13 +526,13 @@
             <tal:not_blank tal:condition="python:row">
               <div class="table-row result text-center">
                   <tal:cells tal:repeat="cell row">
-                        <div tal:attributes="class python:
-                              'table-header label result'
-                              if row and row[0] == 'Pool ID'
-                              else 'table-cell nobold result'">
-                          <span tal:content="cell" />
-                        </div>
-                      </tal:cells>
+                     <div tal:attributes="class python:
+                           'table-header label result'
+                           if row and row[0] == 'Pool ID'
+                           else 'table-cell nobold result'">
+                       <span tal:content="cell" />
+                     </div>
+                  </tal:cells>
               </div>
             </tal:not_blank>
           </tal:rows>
