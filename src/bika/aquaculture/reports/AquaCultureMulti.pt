@@ -538,7 +538,7 @@
           </tal:rows>
         </div>
 
-        <div class="table table-sm table-condensed small result">
+        <div class="table table-sm table-condensed small result" style="width:225mm !important">
           <div class="table-row">
             <div>
               Note: *N/A – Not Available ‡ND – Not Detected &emsp;Pooling info:
