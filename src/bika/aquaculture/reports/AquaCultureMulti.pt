@@ -67,7 +67,6 @@
      .report .colon-after:after { content: ":"; }
      .report address {}
      .report table {table-layout: fixed;
-       word-break: break-all !important;
        overflow-wrap: break-word;
      }
      .report table .table-sm th,.table-sm td {
@@ -76,7 +75,6 @@
      .report table td {
        border-top:0;
        border-bottom: 1px solid #dee2e6;
-       word-break: break-all !important;
        overflow-wrap: break-word;
        }
      .report table.result thead th.result { border: 1px solid #dee2e6 }
@@ -533,7 +531,7 @@
                 <tal:cells tal:repeat="cell row">
 
                   <tal:width_0 tal:condition="python:repeat['cell'].index == 0">
-                    <th class="table-header label result" style="width:38mm !important">
+                    <th class="table-header label result" style="width:40mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_0>
