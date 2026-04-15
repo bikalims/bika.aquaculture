@@ -66,10 +66,16 @@
      .report .font-size-100 { font-size: 100%; }
      .report .colon-after:after { content: ":"; }
      .report address {}
+     .report table {table-layout: fixed;}
      .report table .table-sm th,.table-sm td {
     padding: 0.3rem !important;
 }
-     .report table td { border-top:0; border-bottom: 1px solid #dee2e6 }
+     .report table td {
+       border-top:0;
+       border-bottom: 1px solid #dee2e6;
+       word-break: break-all !important;
+       overflow-wrap: break-word;
+       }
      .report table.result thead th.result { border: 1px solid #dee2e6 }
      .report table.result tbody td.result{ border: 1px solid #dee2e6 }
      .report table.noborder td, .report table.noborder th { border: none; }
@@ -512,7 +518,7 @@
         </h6>
 
         <!-- Results table per category block -->
-        <table class="table table-sm table-condensed small result no-margin-bottom" style=""
+        <table class="table table-sm table-condensed small result no-margin-bottom lunga" style=""
              tal:attributes="style string:width:${block/table_width} !important;">
 
           <tal:rows tal:repeat="row python:block['table']">
@@ -530,7 +536,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:40mm !important">
+                               style="width:30mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -541,7 +547,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:35mm !important">
+                               style="width:30mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -552,7 +558,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:20mm !important">
+                               style="width:30mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -563,7 +569,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:30mm !important">
+                               style="width:20mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -574,7 +580,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:30mm !important">
+                               style="width:20mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -596,7 +602,7 @@
                                      'table-header label result'
                                      if row and row[0] == 'Pool ID'
                                      else 'table-cell nobold result'"
-                                     style="6.8mm">
+                                     style="width:12mm !important">
                                  <span tal:content="cell" />
                                </td>
                     </tal:widths>
