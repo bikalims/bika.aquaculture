@@ -596,7 +596,7 @@
                                      'table-header label result'
                                      if row and row[0] == 'Pool ID'
                                      else 'table-cell nobold result'"
-                                     style="">
+                                     style="13mm">
                                  <span tal:content="cell" />
                                </td>
                     </tal:widths>
@@ -619,8 +619,8 @@
           </tal:rows>
         </table>
 
-        <table class="table table-sm table-condensed small noborder">
-          <tr class="noborder">
+        <table class="table table-sm table-condensed small">
+          <tr>
             <td class="noborder">
               Note: *N/A – Not Available ‡ND – Not Detected &emsp;Pooling info:
               <span tal:content="primarymodel/Batch/PoolingInfo" />
