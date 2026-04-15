@@ -66,7 +66,10 @@
      .report .font-size-100 { font-size: 100%; }
      .report .colon-after:after { content: ":"; }
      .report address {}
-     .report table {table-layout: fixed;}
+     .report table {table-layout: fixed;
+       word-break: break-all !important;
+       overflow-wrap: break-word;
+     }
      .report table .table-sm th,.table-sm td {
     padding: 0.3rem !important;
 }
@@ -511,131 +514,104 @@
       </div>
 
       <!-- Categories in PoC -->
-      <tal:categories_in_poc tal:repeat="block python:view.get_category_pdf_tables()">
-        <h6>
-          Table <span tal:content="repeat/block/number"></span>:
-          Summary of Results for <span tal:content="block/category/Title"></span>
-        </h6>
+    <tal:categories_in_poc tal:repeat="block python:view.get_category_pdf_tables()">
+  <h6>
+    Table <span tal:content="repeat/block/number"></span>:
+    Summary of Results for <span tal:content="block/category/Title"></span>
+  </h6>
 
-        <!-- Results table per category block -->
-        <table class="table table-sm table-condensed small result no-margin-bottom lunga" style=""
-             tal:attributes="style string:width:${block/table_width} !important;">
+  <tal:tables tal:repeat="table_info python:block['tables']">
+    <!-- Results table per category block -->
+    <table class="table table-sm table-condensed small result no-margin-bottom lunga"
+           tal:attributes="style string:width:${table_info/table_width} !important;">
 
-          <tal:rows tal:repeat="row python:block['table']">
-            <tal:blank tal:condition="python:not row">
-              <tr class="noborder"><td class="noborder"></td></tr>
-              <tr class="noborder"><td class="noborder"></td></tr>
-            </tal:blank>
+      <tal:rows tal:repeat="row python:table_info['table']">
+        <tal:not_blank tal:condition="python:row">
+          <tal:is_header tal:condition="python:row[0] == 'Pool ID'">
+            <thead>
+              <tr class="result text-center">
+                <tal:cells tal:repeat="cell row">
 
-            <tal:not_blank tal:condition="python:row">
-            <tal:blank tal:condition="python: repeat['block'].index == 0">
-                <tr class="result text-center">
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 0">
-                         <th tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:30mm !important">
-                           <span tal:content="cell" />
-                         </th>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 1">
-                         <td tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:30mm !important">
-                           <span tal:content="cell" />
-                         </td>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 2">
-                         <td tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:30mm !important">
-                           <span tal:content="cell" />
-                         </td>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 3">
-                         <td tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:20mm !important">
-                           <span tal:content="cell" />
-                         </td>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 4">
-                         <td tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:20mm !important">
-                           <span tal:content="cell" />
-                         </td>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                      <tal:widths tal:condition="python: repeat['cell'].index == 5">
-                         <td tal:attributes="class python:
-                               'table-header label result'
-                               if row and row[0] == 'Pool ID'
-                               else 'table-cell nobold result'"
-                               style="width:20mm !important">
-                           <span tal:content="cell" />
-                         </td>
-                      </tal:widths>
-                    </tal:cells>
-                    <tal:cells tal:repeat="cell row">
-                    <tal:widths tal:condition="python: repeat['cell'].index not in [0, 1, 2, 3, 4, 5]">
-                               <td tal:attributes="class python:
-                                     'table-header label result'
-                                     if row and row[0] == 'Pool ID'
-                                     else 'table-cell nobold result'"
-                                     style="width:12mm !important">
-                                 <span tal:content="cell" />
-                               </td>
-                    </tal:widths>
-                            </tal:cells>
-                </tr>
-            </tal:blank>
-            <tal:blank tal:condition="python: repeat['block'].index != 0">
-                <tr class="result text-center">
-                    <tal:cells tal:repeat="cell row">
-                       <td tal:attributes="class python:
-                             'table-header label result'
-                             if row and row[0] == 'Pool ID'
-                             else 'table-cell nobold result'">
-                         <span tal:content="cell" />
-                       </td>
-                    </tal:cells>
-                </tr>
-            </tal:blank>
-            </tal:not_blank>
-          </tal:rows>
-        </table>
+                  <tal:width_0 tal:condition="python:repeat['cell'].index == 0">
+                    <th class="table-header label result" style="width:30mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_0>
 
-        <table class="table table-sm table-condensed small">
-          <tr>
-            <td class="noborder">
-              Note: *N/A – Not Available ‡ND – Not Detected &emsp;Pooling info:
-              <span tal:content="primarymodel/Batch/PoolingInfo" />
-            </td>
-          </tr>
-        </table>
+                  <tal:width_1 tal:condition="python:repeat['cell'].index == 1">
+                    <th class="table-header label result" style="width:30mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_1>
 
-        <div class="clearfix"></div>
-      </tal:categories_in_poc>
+                  <tal:width_2 tal:condition="python:repeat['cell'].index == 2">
+                    <th class="table-header label result" style="width:30mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_2>
+
+                  <tal:width_3 tal:condition="python:repeat['cell'].index == 3">
+                    <th class="table-header label result" style="width:20mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_3>
+
+                  <tal:width_4 tal:condition="python:repeat['cell'].index == 4">
+                    <th class="table-header label result" style="width:20mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_4>
+
+                  <tal:width_5 tal:condition="python:repeat['cell'].index == 5">
+                    <th class="table-header label result" style="width:20mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_5>
+
+                  <tal:width_as tal:condition="python:repeat['cell'].index not in [0, 1, 2, 3, 4, 5]">
+                    <th class="table-header label result" style="width:12mm !important">
+                      <span tal:content="cell" />
+                    </th>
+                  </tal:width_as>
+
+                </tal:cells>
+              </tr>
+            </thead>
+          </tal:is_header>
+
+          <tal:is_data tal:condition="python:row[0] != 'Pool ID'">
+            <tr class="result text-center">
+              <tal:cells tal:repeat="cell row">
+                <td class="table-cell nobold result">
+                  <span tal:content="cell" />
+                </td>
+              </tal:cells>
+            </tr>
+          </tal:is_data>
+        </tal:not_blank>
+      </tal:rows>
+    </table>
+
+    <tal:table_gap tal:condition="python:not repeat['table_info'].end">
+      <table class="table table-sm table-condensed small">
+        <tr>
+          <td class="noborder">&nbsp;</td>
+        </tr>
+      </table>
+    </tal:table_gap>
+  </tal:tables>
+
+  <table class="table table-sm table-condensed small">
+    <tr>
+      <td class="noborder">
+        Note: *N/A – Not Available ‡ND – Not Detected &emsp;Pooling info:
+        <span tal:content="primarymodel/Batch/PoolingInfo" />
+      </td>
+    </tr>
+  </table>
+
+  <div class="clearfix"></div>
+</tal:categories_in_poc>
     </div>
   </tal:render>
 
