@@ -315,25 +315,27 @@
                         <div class="lab-street">
                           <div tal:replace="laboratory/PhysicalAddress/address|nothing"></div>
                         </div>
-                        <span class="lab-zip">
-                          <div tal:replace="laboratory/PhysicalAddress/zip|nothing"></div>
-                        </span>
-                        <span class="lab-city">
+                        <div class="lab-street">
+                          <div tal:replace="laboratory/PostalAddress/address|nothing"></div>
+                        </div>
+                        <div class="lab-city">
                           <div tal:replace="laboratory/PhysicalAddress/city|nothing"></div>
-                        </span>
+                        </div>
+                        <div class="lab-state">
+                          <div tal:replace="laboratory/PhysicalAddress/state|nothing"></div>
+                        </div>
+                        <div class="lab-zip">
+                          <div tal:replace="laboratory/PhysicalAddress/zip|nothing"></div>
+                        </div>
                         <div class="lab-country">
                           <div tal:replace="laboratory/PhysicalAddress/country|nothing"></div>
                         </div>
                       </div>
                       <div class="lab-title">
-                        <div tal:replace="laboratory/EmailAddress|nothing"/>
+                        <div tal:content="string: Phone: ${laboratory/Phone|nothing}"/>
                       </div>
                       <div class="lab-title">
-                        <div tal:replace="laboratory/Phone|nothing"/>
-                      </div>
-                      <div class="lab-url">
-                        <a tal:attributes="href laboratory/LabURL"
-                           tal:content="laboratory/LabURL"></a>
+                        <div tal:content="string: Email: ${laboratory/EmailAddress|nothing}"/>
                       </div>
                     </address>
                    <span name='coa_num' tal:content="python: coa_num" style="display:none"/>
