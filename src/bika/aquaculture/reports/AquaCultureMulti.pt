@@ -530,7 +530,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:30mm !important">
+                               style="width:40mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -541,7 +541,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:20mm !important">
+                               style="width:35mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -552,7 +552,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:15mm !important">
+                               style="width:20mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -563,7 +563,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:15mm !important">
+                               style="width:30mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -574,7 +574,7 @@
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
-                               style="width:15mm !important">
+                               style="width:30mm !important">
                            <span tal:content="cell" />
                          </td>
                       </tal:widths>
@@ -596,7 +596,7 @@
                                      'table-header label result'
                                      if row and row[0] == 'Pool ID'
                                      else 'table-cell nobold result'"
-                                     style="13mm">
+                                     style="9.5mm">
                                  <span tal:content="cell" />
                                </td>
                     </tal:widths>
