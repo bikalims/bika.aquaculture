@@ -533,7 +533,7 @@
                 <tal:cells tal:repeat="cell row">
 
                   <tal:width_0 tal:condition="python:repeat['cell'].index == 0">
-                    <th class="table-header label result" style="width:30mm !important">
+                    <th class="table-header label result" style="width:38mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_0>
