@@ -532,13 +532,13 @@
                 <tr class="result text-center">
                     <tal:cells tal:repeat="cell row">
                       <tal:widths tal:condition="python: repeat['cell'].index == 0">
-                         <td tal:attributes="class python:
+                         <th tal:attributes="class python:
                                'table-header label result'
                                if row and row[0] == 'Pool ID'
                                else 'table-cell nobold result'"
                                style="width:30mm !important">
                            <span tal:content="cell" />
-                         </td>
+                         </th>
                       </tal:widths>
                     </tal:cells>
                     <tal:cells tal:repeat="cell row">
