@@ -596,7 +596,7 @@
                                      'table-header label result'
                                      if row and row[0] == 'Pool ID'
                                      else 'table-cell nobold result'"
-                                     style="9.5mm">
+                                     style="6.8mm">
                                  <span tal:content="cell" />
                                </td>
                     </tal:widths>
