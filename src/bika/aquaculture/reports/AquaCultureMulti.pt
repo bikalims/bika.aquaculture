@@ -286,12 +286,12 @@
                       </div>
                       <div class="lab-title">
                         <div>
-                            <strong>Phone</strong>:<span tal:content="string: ${laboratory/Phone|nothing}"/>
+                            <strong>Phone</strong>:<span tal:content="laboratory/Phone|nothing"/>
                         </div>
                       </div>
                       <div class="lab-title">
                         <div>
-                            <strong>E-mail</strong>:<span tal:content="${laboratory/EmailAddress|nothing}"/>
+                            <strong>E-mail</strong>:<span tal:content="laboratory/EmailAddress|nothing"/>
                         </div>
                       </div>
                     </address>
