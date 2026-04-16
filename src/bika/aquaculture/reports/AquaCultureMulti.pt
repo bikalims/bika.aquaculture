@@ -195,6 +195,13 @@
      }
      </tal:block>
      @page {
+       @top-left {
+         vertical-align: bottom;
+         margin-top: 2mm;
+         margin-bottom: 2mm;
+         font-family: "Times New Roman", Times, serif;
+         content:  "<tal:t i18n:translate=''>Case no: </tal:t>" " " "<tal:t replace="primarymodel/Batch/ClientBatchID|nothing"></tal:t>"
+       }
        @bottom-left {
          vertical-align: top;
          margin-top: 2mm;
@@ -217,6 +224,12 @@
          content:  "<tal:t i18n:translate=''>Date Generated: </tal:t>" " " "<tal:t replace="python: view.timestamp.Date()"></tal:t>"
        }
      }
+     /* First page: portrait */
+    @page :first {
+       @top-left {
+         content:  ""
+       }
+    }
     </style>
   </tal:css>
   <!-- Batch error message start -->
@@ -513,10 +526,6 @@
     <div class="row section-results no-gutters"
          tal:define="primarymodel python:collection[0];">
 
-      <div class="col-12" tal:condition="python:len(collection) > 0">
-        <h1>Case no: <span tal:content="primarymodel/Batch/ClientBatchID" /></h1>
-      </div>
-
       <!-- Categories in PoC -->
     <tal:categories_in_poc tal:repeat="block python:view.get_category_pdf_tables()">
   <h6>
@@ -731,10 +740,6 @@
               define="primarymodel python:collection[0];">
     <div class="row section-results no-gutters">
       <div class="w-100">
-        <br />
-        <h1 i18n:translate="" class="">
-            Case no: <span i18n:translate="" tal:content="primarymodel/Batch/ClientBatchID"/>
-        </h1>
         <h1 i18n:translate="" class="tenpx">
             Protocols used
         </h1>
