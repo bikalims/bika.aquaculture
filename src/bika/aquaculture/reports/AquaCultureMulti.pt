@@ -732,7 +732,7 @@
     <div class="row section-results no-gutters">
       <div class="w-100">
         <br />
-        <h1 i18n:translate="" class="tenpx">
+        <h1 i18n:translate="" class="">
             Case no: <span i18n:translate="" tal:content="primarymodel/Batch/ClientBatchID"/>
         </h1>
         <h1 i18n:translate="" class="tenpx">
