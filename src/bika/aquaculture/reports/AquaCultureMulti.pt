@@ -285,8 +285,8 @@
                         <div class="lab-city">
                           <div>
                             <span tal:replace="laboratory/PhysicalAddress/city|nothing"/>
-                            <span tal:condition="laboratory/PhysicalAddress/state|nothing">,
-                                <span tal:replace="laboratory/PhysicalAddress/state|nothing"/>
+                            <span tal:condition="laboratory/PhysicalAddress/state|nothing">
+                                <span tal:replace="string:${laboratory/PhysicalAddress/state|nothing},"/>
                             </span>
                             <span tal:condition="laboratory/PhysicalAddress/zip|nothing">
                                 <span tal:replace="laboratory/PhysicalAddress/zip|nothing"/>
