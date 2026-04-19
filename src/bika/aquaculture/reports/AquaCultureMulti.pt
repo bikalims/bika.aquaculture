@@ -740,7 +740,7 @@
               define="primarymodel python:collection[0];">
     <div class="row section-results no-gutters">
       <div class="w-100">
-        <h1 i18n:translate="" class="tenpx">
+        <h1 i18n:translate="" class="">
             Protocols used
         </h1>
         <table class="table table-sm table-condensed eightpx noborder"
