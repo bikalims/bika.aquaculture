@@ -533,7 +533,6 @@
 
       <!-- Categories in PoC -->
     <tal:categories_in_poc tal:repeat="block python:view.get_category_pdf_tables()">
-  <div class="clearfix"></div>
   <h6>
     Table <span tal:content="repeat/block/number"></span>:
     Summary of Results for <span tal:content="block/category/Title"></span>
@@ -552,19 +551,19 @@
                 <tal:cells tal:repeat="cell row">
 
                   <tal:width_0 tal:condition="python:repeat['cell'].index == 0">
-                    <th class="table-header label result" style="width:15mm !important">
+                    <th class="table-header label result" style="width:18mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_0>
 
                   <tal:width_1 tal:condition="python:repeat['cell'].index == 1">
-                    <th class="table-header label result" style="width:18mm !important">
+                    <th class="table-header label result" style="width:20mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_1>
 
                   <tal:width_2 tal:condition="python:repeat['cell'].index == 2">
-                    <th class="table-header label result" style="width:13mm !important">
+                    <th class="table-header label result" style="width:18mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_2>
@@ -588,7 +587,7 @@
                   </tal:width_5>
 
                   <tal:width_as tal:condition="python:repeat['cell'].index not in [0, 1, 2, 3, 4, 5]">
-                    <th class="table-header label result" style="width:20mm !important">
+                    <th class="table-header label result" style="width:14.2mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_as>
