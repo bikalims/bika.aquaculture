@@ -55,7 +55,7 @@
      .noborder { border: none !important}
      .nobold { font-weight: normal !important}
      .report * { font: 9pt; }
-     .report h1 { font-size: 140%; }
+     .report h1 { font-size: 140%; width:100% }
      .report h2 { font-size: 120%; }
      .report h3 { font-size: 110%; }
      .report {
@@ -533,6 +533,7 @@
 
       <!-- Categories in PoC -->
     <tal:categories_in_poc tal:repeat="block python:view.get_category_pdf_tables()">
+  <div class="clearfix"></div>
   <h6>
     Table <span tal:content="repeat/block/number"></span>:
     Summary of Results for <span tal:content="block/category/Title"></span>
@@ -587,7 +588,7 @@
                   </tal:width_5>
 
                   <tal:width_as tal:condition="python:repeat['cell'].index not in [0, 1, 2, 3, 4, 5]">
-                    <th class="table-header label result" style="width:12mm !important">
+                    <th class="table-header label result" style="width:20mm !important">
                       <span tal:content="cell" />
                     </th>
                   </tal:width_as>
