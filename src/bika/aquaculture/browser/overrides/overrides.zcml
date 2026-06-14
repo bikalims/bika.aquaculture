@@ -20,6 +20,7 @@
            *
            zope.publisher.interfaces.browser.IBrowserRequest"
       name="download_pdf"
+      zcml:condition="installed bika.aquaculture"
       factory=".adapters.DownloadPDFActionProvider"
       />
 

@@ -21,6 +21,10 @@ class DownloadPDFActionProvider(ActionProvider):
     def is_post_mail(self):
         uids = filter(api.is_uid, self.request.get("items", "").split(","))
         if uids:
-            postal_mail = api.get_object(uids[0]).getClient().PostalMail
-            return postal_mail
+            try:
+                postal_mail = api.get_object(uids[0]).getClient().PostalMail
+                return postal_mail
+            except AttributeError:
+                return False
+
         return False
